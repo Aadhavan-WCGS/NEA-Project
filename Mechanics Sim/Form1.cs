@@ -25,34 +25,32 @@ namespace Mechanics_Sim
 
     public class particle
     {
-        private double maxSpeed = 100;
+        private double maxSpeed = 20;
         private double c = 1;
         private double mass;
-        private double forceX;
-        private double forceY;
-        private double velX;
-        private double velY;
-        private double displacementX;
-        private double displacementY;
-        private double speed;
+        private double forceX = 0;
+        private double forceY = 0;
+        private double velX = 0;
+        private double velY = 0;
+        private double displacementX = 0;
+        private double displacementY = 0;
+        private double speed = 0;
         public particle(double givenMass)
         {
             mass = givenMass;
-            displacementX = 0;
-            displacementY = 0;
         }
 
         public void move(PictureBox pic)
         {
     
-            velX += (forceX / mass) / 1000;
-            velY += (forceY / mass) / 1000;
+            velX += ((forceX / mass) / 50);
+            velY += ((forceY / mass) / 50);
             speed = Math.Sqrt(velY * velY + velX * velX);
             pic.Left += Convert.ToInt32(velX * c);
             pic.Top -= Convert.ToInt32(velY * c);
             displacementY += velY / c;
             displacementX += velX / c;
-            if(speed == maxSpeed)
+            if(speed >= maxSpeed)
             {
                 forceX = 0;
                 forceY = 0;

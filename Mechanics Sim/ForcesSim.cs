@@ -15,6 +15,7 @@ namespace Mechanics_Sim
         double forceX;
         double forceY;
         double mass;
+        double timeNum = 0;
         public ForcesSim()
         {
             InitializeComponent();
@@ -56,6 +57,8 @@ namespace Mechanics_Sim
         {
             p.move(ball);
             speedBox.Text = "Speed: " + p.getSpeed().ToString() + "m/s";
+            
+            time.Text = "Time Elapsed: " + timeNum/1000 + " seconds";
         }
 
         private void mass_TextChanged(object sender, EventArgs e)

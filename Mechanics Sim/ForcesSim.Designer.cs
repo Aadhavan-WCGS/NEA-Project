@@ -44,6 +44,7 @@ namespace Mechanics_Sim
             this.massLabel = new System.Windows.Forms.Label();
             this.accBox = new System.Windows.Forms.Label();
             this.rfBox = new System.Windows.Forms.Label();
+            this.time = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,24 +65,24 @@ namespace Mechanics_Sim
             // 
             // forceTimer
             // 
-            this.forceTimer.Interval = 1;
+            this.forceTimer.Interval = 20;
             this.forceTimer.Tick += new System.EventHandler(this.forceTimer_Tick);
             // 
             // xforceLabel
             // 
             this.xforceLabel.AutoSize = true;
             this.xforceLabel.ForeColor = System.Drawing.Color.White;
-            this.xforceLabel.Location = new System.Drawing.Point(807, 657);
+            this.xforceLabel.Location = new System.Drawing.Point(790, 657);
             this.xforceLabel.Name = "xforceLabel";
-            this.xforceLabel.Size = new System.Drawing.Size(77, 15);
+            this.xforceLabel.Size = new System.Drawing.Size(94, 15);
             this.xforceLabel.TabIndex = 2;
-            this.xforceLabel.Text = "Vertical Force";
+            this.xforceLabel.Text = "Horizontal Force";
             // 
             // massBox
             // 
             this.massBox.BackColor = System.Drawing.Color.White;
             this.massBox.ForeColor = System.Drawing.Color.Black;
-            this.massBox.Location = new System.Drawing.Point(736, 649);
+            this.massBox.Location = new System.Drawing.Point(717, 649);
             this.massBox.Name = "massBox";
             this.massBox.Size = new System.Drawing.Size(56, 23);
             this.massBox.TabIndex = 3;
@@ -147,7 +148,7 @@ namespace Mechanics_Sim
             // 
             this.massLabel.AutoSize = true;
             this.massLabel.ForeColor = System.Drawing.Color.White;
-            this.massLabel.Location = new System.Drawing.Point(693, 652);
+            this.massLabel.Location = new System.Drawing.Point(674, 652);
             this.massLabel.Name = "massLabel";
             this.massLabel.Size = new System.Drawing.Size(37, 15);
             this.massLabel.TabIndex = 11;
@@ -175,6 +176,17 @@ namespace Mechanics_Sim
             this.rfBox.TabIndex = 13;
             this.rfBox.Text = "Resultant Force: ";
             // 
+            // time
+            // 
+            this.time.AutoSize = true;
+            this.time.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.time.ForeColor = System.Drawing.Color.White;
+            this.time.Location = new System.Drawing.Point(993, 110);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(132, 25);
+            this.time.TabIndex = 14;
+            this.time.Text = "Time Elapsed: ";
+            // 
             // ForcesSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -182,6 +194,7 @@ namespace Mechanics_Sim
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(1313, 749);
+            this.Controls.Add(this.time);
             this.Controls.Add(this.rfBox);
             this.Controls.Add(this.accBox);
             this.Controls.Add(this.massLabel);
@@ -221,5 +234,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Label massLabel;
         private System.Windows.Forms.Label accBox;
         private System.Windows.Forms.Label rfBox;
+        private System.Windows.Forms.Label time;
     }
 }
