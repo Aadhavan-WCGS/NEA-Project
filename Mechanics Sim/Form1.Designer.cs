@@ -39,10 +39,10 @@ namespace Mechanics_Sim
             // 
             this.fsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.fsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fsButton.Location = new System.Drawing.Point(10, 9);
+            this.fsButton.Location = new System.Drawing.Point(12, 20);
             this.fsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fsButton.Name = "fsButton";
-            this.fsButton.Size = new System.Drawing.Size(82, 22);
+            this.fsButton.Size = new System.Drawing.Size(82, 27);
             this.fsButton.TabIndex = 0;
             this.fsButton.Text = "Forces";
             this.fsButton.UseVisualStyleBackColor = false;
@@ -52,10 +52,10 @@ namespace Mechanics_Sim
             // 
             this.prButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.prButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prButton.Location = new System.Drawing.Point(10, 35);
+            this.prButton.Location = new System.Drawing.Point(10, 51);
             this.prButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.prButton.Name = "prButton";
-            this.prButton.Size = new System.Drawing.Size(82, 22);
+            this.prButton.Size = new System.Drawing.Size(82, 27);
             this.prButton.TabIndex = 1;
             this.prButton.Text = "Projectiles";
             this.prButton.UseVisualStyleBackColor = false;

@@ -141,7 +141,7 @@ namespace Mechanics_Sim
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle projectilesSetup(double u, double theta)
         {
-            double rad = theta * Math.PI / 180;
+            double rad = theta * Math.PI / 180; //Convert input angle from degrees to radians. Mechanics uses degrees only but c sharp works in radians.
             double g = 9.81;
             particle p = new particle(1);
             p.setForce(0, -g);
