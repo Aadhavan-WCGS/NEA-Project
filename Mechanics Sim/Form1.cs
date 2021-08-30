@@ -21,12 +21,19 @@ namespace Mechanics_Sim
             ForcesSim f = new ForcesSim();
             f.Show();
         }
+
+        private void prButton_Click(object sender, EventArgs e)
+        {
+            ProjectilesSim f = new ProjectilesSim();
+            f.Show();
+        }
     }
 
     public class particle
     {
-        private double maxSpeed = 20;
+        private double maxSpeed = 100000;
         private double c = 1;
+        private double d = 50;
         private double mass;
         private double forceX = 0;
         private double forceY = 0;
@@ -40,16 +47,16 @@ namespace Mechanics_Sim
             mass = givenMass;
         }
 
-        public void move(PictureBox pic)
+        public void move(PictureBox pic) // Applies motion to a picturebox passed into the procedure.
         {
     
-            velX += ((forceX / mass) / 50);
-            velY += ((forceY / mass) / 50);
+            velX += ((forceX / mass) / d);
+            velY += ((forceY / mass) / d);
             speed = Math.Sqrt(velY * velY + velX * velX);
             pic.Left += Convert.ToInt32(velX * c);
             pic.Top -= Convert.ToInt32(velY * c);
-            displacementY += velY / c;
-            displacementX += velX / c;
+            displacementY += velY / d;
+            displacementX += velX / d;
             if(speed >= maxSpeed)
             {
                 forceX = 0;
@@ -80,7 +87,7 @@ namespace Mechanics_Sim
 
         public double getSpeed()
         {
-            return speed;
+            return Math.Round(speed, 2);
         }
         public void setPos(double x, double y)
         {
@@ -99,15 +106,69 @@ namespace Mechanics_Sim
         }
     }
 
-    public class sim
+    public class forces // Class for the forces simulation.
     {
-        public particle forces(double m, double fx, double fy)
+        private double acceleration;
+        private double rF;
+
+        //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
+        public particle forcesSetup(double m, double fx, double fy) 
         {
             particle p = new particle(m);
             p.setForce(fx, fy);
+            rF = Math.Sqrt(fx * fx + fy * fy);
+            acceleration = rF / m;
             return p;
+        }
+
+        public double getrF() //Returns resultant force of particle.
+        {
+            return rF;
+        }
+
+        public double getAcc() // Returns acceleration of particle.
+        {
+            return acceleration;
         }
     }
 
-    
+    public class projectiles
+    {
+        public double range;
+        public double maxH;
+        public double tof;
+
+        //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
+        public particle projectilesSetup(double u, double theta)
+        {
+            double rad = theta * Math.PI / 180;
+            double g = 9.81;
+            particle p = new particle(1);
+            p.setForce(0, -g);
+            p.setVel(u * Math.Cos(rad), u * Math.Sin(rad));
+            range = (u * u * Math.Sin(2 * rad)) / g;
+            maxH = (u * u * Math.Sin(rad) * Math.Sin(rad)) / (g * 2);
+            tof = (2 * u * Math.Sin(rad)) / g;
+            return p;
+        }
+
+
+        //Getters to return approprate stats for the projectile.
+        public double getRange()
+        {
+            return Math.Round(range, 2);
+        }
+
+        public double getMaxH()
+        {
+            return Math.Round(maxH, 2);
+        }
+
+        public double getTof()
+        {
+            return Math.Round(tof, 2);
+        }
+
+    }
+
 }

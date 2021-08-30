@@ -30,26 +30,41 @@ namespace Mechanics_Sim
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            this.fsButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.prButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // fsButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Forces";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.fsButton.Location = new System.Drawing.Point(10, 9);
+            this.fsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fsButton.Name = "fsButton";
+            this.fsButton.Size = new System.Drawing.Size(82, 22);
+            this.fsButton.TabIndex = 0;
+            this.fsButton.Text = "Forces";
+            this.fsButton.UseVisualStyleBackColor = true;
+            this.fsButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // prButton
+            // 
+            this.prButton.Location = new System.Drawing.Point(10, 35);
+            this.prButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.prButton.Name = "prButton";
+            this.prButton.Size = new System.Drawing.Size(82, 22);
+            this.prButton.TabIndex = 1;
+            this.prButton.Text = "Projectiles";
+            this.prButton.UseVisualStyleBackColor = true;
+            this.prButton.Click += new System.EventHandler(this.prButton_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 450);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(561, 338);
+            this.Controls.Add(this.prButton);
+            this.Controls.Add(this.fsButton);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -58,8 +73,9 @@ namespace Mechanics_Sim
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button fsButton;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button prButton;
     }
 }
 

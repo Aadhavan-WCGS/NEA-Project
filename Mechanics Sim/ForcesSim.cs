@@ -12,13 +12,12 @@ namespace Mechanics_Sim
     {
         bool start = false;
         particle p;
-        double forceX;
-        double forceY;
-        double mass;
         double timeNum = 0;
         public ForcesSim()
         {
             InitializeComponent();
+            statsPanel.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
+            controlPanel.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
             reset();
         }
 
@@ -26,23 +25,25 @@ namespace Mechanics_Sim
         {
             ball.Left = this.Width / 2;
             ball.Top = this.Height / 2;
+            timeNum = 0;
+            timeTxt.Text = "Time elapsed: ";
+            rfTxt.Text = "Resultant Force: ";
+            accTxt.Text = "Acceleration: ";
+            speedTxt.Text = "Speed: ";
+            start = false;
+            forceTimer.Stop();
+
         }
     
-
-
         private void Switch_Click(object sender, EventArgs e)
         {
             if (!start)
             {
-                sim x = new sim();
-                mass = Convert.ToDouble(massBox.Text);
-                forceX = Convert.ToDouble(xfBox.Text);
-                forceY = Convert.ToDouble(yfBox.Text);
-                p = x.forces(mass, forceX, forceY);
+                forces sim = new forces();
+                p = sim.forcesSetup(Convert.ToDouble(massBox.Text), Convert.ToDouble(xfBox.Text), Convert.ToDouble(yfBox.Text));
                 start = true;
-                double resForce = Math.Sqrt(forceX * forceX + forceY * forceY);
-                rfBox.Text = "Resultant Force: " + resForce + "N";
-                accBox.Text = "Acceleration: " + resForce / mass;
+                rfTxt.Text = "Resultant Force: " + sim.getrF() + " N";
+                accTxt.Text = "Acceleration: " + sim.getAcc() + " ms\u207b\xB2";
                 forceTimer.Start();
             }
             else
@@ -55,15 +56,16 @@ namespace Mechanics_Sim
 
         private void forceTimer_Tick(object sender, EventArgs e)
         {
+            timeNum += forceTimer.Interval;
             p.move(ball);
-            speedBox.Text = "Speed: " + p.getSpeed().ToString() + "m/s";
-            
-            time.Text = "Time Elapsed: " + timeNum/1000 + " seconds";
+            speedTxt.Text = "Speed: " + p.getSpeed().ToString() + " ms\u207b\xB9"; 
+            timeTxt.Text = "Time Elapsed: " + timeNum/1000 + " s";
         }
 
-        private void mass_TextChanged(object sender, EventArgs e)
-        {
 
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            reset();
         }
     }
 }
