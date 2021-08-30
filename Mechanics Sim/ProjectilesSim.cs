@@ -11,26 +11,24 @@ namespace Mechanics_Sim
     public partial class ProjectilesSim : Form
     {
         bool start = false;
-        particle p; //Particle instantiation
+        particle p; //Particle instantiation.
         int startX;
         int startY;
         double timeNum = 0;
         public ProjectilesSim()
         {
             InitializeComponent();
-            proj.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);  // Initially keeps particle in bottom left of screen.
             controlPanel.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
             statsPanel.Anchor = (AnchorStyles.Top| AnchorStyles.Right); //Keeps Stats panel at top right of screen.
-            startX = proj.Left;
-            startY = proj.Top;
+            startX = proj.Width;
+            startY = this.Height - 40;
             reset();
         }
 
         public void reset()
         {
-            proj.Left = startX;
+            proj.Left = startX; // Keeps particle in appropriate starting position.
             proj.Top = startY;
-            proj.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             timeNum = 0;
             timeTxt.Text = "Time elapsed: ";
             rangeTxt.Text = "Range: ";

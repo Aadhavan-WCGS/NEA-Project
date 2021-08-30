@@ -112,7 +112,7 @@ namespace Mechanics_Sim
             this.ball.Location = new System.Drawing.Point(687, 210);
             this.ball.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ball.Name = "ball";
-            this.ball.Size = new System.Drawing.Size(86, 85);
+            this.ball.Size = new System.Drawing.Size(60, 60);
             this.ball.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ball.TabIndex = 1;
             this.ball.TabStop = false;

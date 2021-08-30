@@ -37,30 +37,35 @@ namespace Mechanics_Sim
             // 
             // fsButton
             // 
+            this.fsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.fsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fsButton.Location = new System.Drawing.Point(10, 9);
             this.fsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fsButton.Name = "fsButton";
             this.fsButton.Size = new System.Drawing.Size(82, 22);
             this.fsButton.TabIndex = 0;
             this.fsButton.Text = "Forces";
-            this.fsButton.UseVisualStyleBackColor = true;
+            this.fsButton.UseVisualStyleBackColor = false;
             this.fsButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // prButton
             // 
+            this.prButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.prButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prButton.Location = new System.Drawing.Point(10, 35);
             this.prButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.prButton.Name = "prButton";
             this.prButton.Size = new System.Drawing.Size(82, 22);
             this.prButton.TabIndex = 1;
             this.prButton.Text = "Projectiles";
-            this.prButton.UseVisualStyleBackColor = true;
+            this.prButton.UseVisualStyleBackColor = false;
             this.prButton.Click += new System.EventHandler(this.prButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(561, 338);
             this.Controls.Add(this.prButton);
             this.Controls.Add(this.fsButton);

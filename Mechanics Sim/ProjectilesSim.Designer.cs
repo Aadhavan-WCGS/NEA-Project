@@ -46,8 +46,8 @@ namespace Mechanics_Sim
             this.switchBtn = new System.Windows.Forms.Button();
             this.projTimer = new System.Windows.Forms.Timer(this.components);
             this.controlPanel = new System.Windows.Forms.Panel();
-            this.statsPanel = new System.Windows.Forms.Panel();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.statsPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.proj)).BeginInit();
             this.controlPanel.SuspendLayout();
             this.statsPanel.SuspendLayout();
@@ -59,7 +59,7 @@ namespace Mechanics_Sim
             this.proj.Location = new System.Drawing.Point(12, 593);
             this.proj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.proj.Name = "proj";
-            this.proj.Size = new System.Drawing.Size(59, 63);
+            this.proj.Size = new System.Drawing.Size(60, 60);
             this.proj.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.proj.TabIndex = 2;
             this.proj.TabStop = false;
@@ -143,14 +143,14 @@ namespace Mechanics_Sim
             // 
             // angleBox
             // 
-            this.angleBox.Location = new System.Drawing.Point(358, 25);
+            this.angleBox.Location = new System.Drawing.Point(365, 2);
             this.angleBox.Name = "angleBox";
             this.angleBox.Size = new System.Drawing.Size(100, 23);
             this.angleBox.TabIndex = 22;
             // 
             // uBox
             // 
-            this.uBox.Location = new System.Drawing.Point(358, 54);
+            this.uBox.Location = new System.Drawing.Point(365, 31);
             this.uBox.Name = "uBox";
             this.uBox.Size = new System.Drawing.Size(100, 23);
             this.uBox.TabIndex = 23;
@@ -160,7 +160,7 @@ namespace Mechanics_Sim
             this.uTxt.AutoSize = true;
             this.uTxt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uTxt.ForeColor = System.Drawing.Color.White;
-            this.uTxt.Location = new System.Drawing.Point(229, 50);
+            this.uTxt.Location = new System.Drawing.Point(236, 27);
             this.uTxt.Name = "uTxt";
             this.uTxt.Size = new System.Drawing.Size(123, 25);
             this.uTxt.TabIndex = 24;
@@ -171,7 +171,7 @@ namespace Mechanics_Sim
             this.aopTxt.AutoSize = true;
             this.aopTxt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.aopTxt.ForeColor = System.Drawing.Color.White;
-            this.aopTxt.Location = new System.Drawing.Point(169, 25);
+            this.aopTxt.Location = new System.Drawing.Point(176, 2);
             this.aopTxt.Name = "aopTxt";
             this.aopTxt.Size = new System.Drawing.Size(183, 25);
             this.aopTxt.TabIndex = 25;
@@ -183,7 +183,7 @@ namespace Mechanics_Sim
             this.switchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.switchBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.switchBtn.ForeColor = System.Drawing.Color.Black;
-            this.switchBtn.Location = new System.Drawing.Point(464, 25);
+            this.switchBtn.Location = new System.Drawing.Point(471, 2);
             this.switchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.switchBtn.Name = "switchBtn";
             this.switchBtn.Size = new System.Drawing.Size(230, 52);
@@ -205,10 +205,25 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.uBox);
             this.controlPanel.Controls.Add(this.aopTxt);
             this.controlPanel.Controls.Add(this.uTxt);
-            this.controlPanel.Location = new System.Drawing.Point(432, 625);
+            this.controlPanel.Location = new System.Drawing.Point(113, 685);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(996, 173);
+            this.controlPanel.Size = new System.Drawing.Size(996, 113);
             this.controlPanel.TabIndex = 27;
+            // 
+            // resetBtn
+            // 
+            this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resetBtn.ForeColor = System.Drawing.Color.Black;
+            this.resetBtn.Location = new System.Drawing.Point(707, 2);
+            this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(230, 52);
+            this.resetBtn.TabIndex = 30;
+            this.resetBtn.Text = "Reset";
+            this.resetBtn.UseVisualStyleBackColor = false;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // statsPanel
             // 
@@ -223,21 +238,6 @@ namespace Mechanics_Sim
             this.statsPanel.Name = "statsPanel";
             this.statsPanel.Size = new System.Drawing.Size(374, 242);
             this.statsPanel.TabIndex = 29;
-            // 
-            // resetBtn
-            // 
-            this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
-            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.resetBtn.ForeColor = System.Drawing.Color.Black;
-            this.resetBtn.Location = new System.Drawing.Point(700, 25);
-            this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.resetBtn.Name = "resetBtn";
-            this.resetBtn.Size = new System.Drawing.Size(230, 52);
-            this.resetBtn.TabIndex = 30;
-            this.resetBtn.Text = "Reset";
-            this.resetBtn.UseVisualStyleBackColor = false;
-            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // ProjectilesSim
             // 
