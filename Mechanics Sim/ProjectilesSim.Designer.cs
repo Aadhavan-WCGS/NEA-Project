@@ -30,8 +30,6 @@ namespace Mechanics_Sim
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectilesSim));
-            this.proj = new System.Windows.Forms.PictureBox();
             this.timeTxt = new System.Windows.Forms.Label();
             this.rangeTxt = new System.Windows.Forms.Label();
             this.Stats = new System.Windows.Forms.Label();
@@ -48,21 +46,9 @@ namespace Mechanics_Sim
             this.controlPanel = new System.Windows.Forms.Panel();
             this.resetBtn = new System.Windows.Forms.Button();
             this.statsPanel = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.proj)).BeginInit();
             this.controlPanel.SuspendLayout();
             this.statsPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // proj
-            // 
-            this.proj.Image = ((System.Drawing.Image)(resources.GetObject("proj.Image")));
-            this.proj.Location = new System.Drawing.Point(12, 593);
-            this.proj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.proj.Name = "proj";
-            this.proj.Size = new System.Drawing.Size(60, 60);
-            this.proj.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.proj.TabIndex = 2;
-            this.proj.TabStop = false;
             // 
             // timeTxt
             // 
@@ -247,12 +233,10 @@ namespace Mechanics_Sim
             this.ClientSize = new System.Drawing.Size(1475, 810);
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.controlPanel);
-            this.Controls.Add(this.proj);
             this.MaximizeBox = false;
             this.Name = "ProjectilesSim";
             this.Text = "Projectiles Simulator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.proj)).EndInit();
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
             this.statsPanel.ResumeLayout(false);
@@ -263,7 +247,6 @@ namespace Mechanics_Sim
 
         #endregion
 
-        private System.Windows.Forms.PictureBox proj;
         private System.Windows.Forms.Label timeTxt;
         private System.Windows.Forms.Label rangeTxt;
         private System.Windows.Forms.Label Stats;

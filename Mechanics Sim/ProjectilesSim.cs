@@ -10,25 +10,34 @@ namespace Mechanics_Sim
 {
     public partial class ProjectilesSim : Form
     {
+        PictureBox proj;
         bool start = false;
         particle p; //Particle instantiation.
+        double timeNum = 0;
         int startX;
         int startY;
-        double timeNum = 0;
         public ProjectilesSim()
         {
             InitializeComponent();
             controlPanel.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
             statsPanel.Anchor = (AnchorStyles.Top| AnchorStyles.Right); //Keeps Stats panel at top right of screen.
-            startX = proj.Width;
+            startX = 60;
             startY = this.Height - 40;
+            proj = new PictureBox
+            {
+                Name = "Ball",
+                Size = new Size(60, 60),
+                Location = new Point(startX, startY),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Image = Properties.Resources.Ball,
+            };
+            Controls.Add(proj);
             reset();
         }
 
         public void reset()
         {
-            proj.Left = startX; // Keeps particle in appropriate starting position.
-            proj.Top = startY;
+            proj.Location = new Point(startX, startY);
             timeNum = 0;
             timeTxt.Text = "Time elapsed: ";
             rangeTxt.Text = "Range: ";

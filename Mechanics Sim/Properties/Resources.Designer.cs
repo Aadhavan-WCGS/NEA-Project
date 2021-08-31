@@ -63,9 +63,9 @@ namespace Mechanics_Sim.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cxvxcvxcvxvxc {
+        internal static System.Drawing.Bitmap Ball {
             get {
-                object obj = ResourceManager.GetObject("cxvxcvxcvxvxc", resourceCulture);
+                object obj = ResourceManager.GetObject("Ball", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

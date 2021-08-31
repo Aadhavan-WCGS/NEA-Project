@@ -30,14 +30,12 @@ namespace Mechanics_Sim
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForcesSim));
             this.switchBtn = new System.Windows.Forms.Button();
             this.forceTimer = new System.Windows.Forms.Timer(this.components);
             this.xforceLabel = new System.Windows.Forms.Label();
             this.massBox = new System.Windows.Forms.TextBox();
             this.xfBox = new System.Windows.Forms.TextBox();
             this.yfBox = new System.Windows.Forms.TextBox();
-            this.ball = new System.Windows.Forms.PictureBox();
             this.speedTxt = new System.Windows.Forms.Label();
             this.yforceLabel = new System.Windows.Forms.Label();
             this.StatsTxt = new System.Windows.Forms.Label();
@@ -48,7 +46,6 @@ namespace Mechanics_Sim
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.resetBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             this.SuspendLayout();
@@ -105,17 +102,6 @@ namespace Mechanics_Sim
             this.yfBox.Name = "yfBox";
             this.yfBox.Size = new System.Drawing.Size(100, 23);
             this.yfBox.TabIndex = 5;
-            // 
-            // ball
-            // 
-            this.ball.Image = ((System.Drawing.Image)(resources.GetObject("ball.Image")));
-            this.ball.Location = new System.Drawing.Point(687, 210);
-            this.ball.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ball.Name = "ball";
-            this.ball.Size = new System.Drawing.Size(60, 60);
-            this.ball.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ball.TabIndex = 1;
-            this.ball.TabStop = false;
             // 
             // speedTxt
             // 
@@ -243,14 +229,12 @@ namespace Mechanics_Sim
             this.ClientSize = new System.Drawing.Size(1313, 749);
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.statsPanel);
-            this.Controls.Add(this.ball);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimizeBox = false;
             this.Name = "ForcesSim";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Forces Simulator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.ball)).EndInit();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
             this.controlPanel.ResumeLayout(false);
@@ -267,7 +251,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.TextBox massBox;
         private System.Windows.Forms.TextBox xfBox;
         private System.Windows.Forms.TextBox yfBox;
-        private System.Windows.Forms.PictureBox ball;
         private System.Windows.Forms.Label speedTxt;
         private System.Windows.Forms.Label yforceLabel;
         private System.Windows.Forms.Label StatsTxt;
