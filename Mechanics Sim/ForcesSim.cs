@@ -19,15 +19,13 @@ namespace Mechanics_Sim
         public ForcesSim()
         {
             InitializeComponent();
-            statsPanel.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
-            controlPanel.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
+            simForms.initiate(statsPanel, controlPanel, this);
             startX = this.Width / 2; ;
             startY = this.Height / 2;
             ball = new PictureBox
             {
                 Name = "Ball",
                 Size = new Size(60, 60),
-                Location = new Point(startX, startY),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Image = Properties.Resources.Ball,
             };
@@ -52,10 +50,11 @@ namespace Mechanics_Sim
         {
             if (!start)
             {
+
                 forces sim = new forces();
                 p = sim.forcesSetup(Convert.ToDouble(massBox.Text), Convert.ToDouble(xfBox.Text), Convert.ToDouble(yfBox.Text));
                 start = true;
-                rfTxt.Text = "Resultant Force: " + sim.getrF() + " N";
+                rfTxt.Text = "Resultant Force: " + sim.getRf() + " N";
                 accTxt.Text = "Acceleration: " + sim.getAcc() + " ms\u207b\xB2";
                 forceTimer.Start();
             }
@@ -75,10 +74,14 @@ namespace Mechanics_Sim
             timeTxt.Text = "Time Elapsed: " + timeNum/1000 + " s";
         }
 
-
         private void resetBtn_Click(object sender, EventArgs e)
         {
             reset();
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

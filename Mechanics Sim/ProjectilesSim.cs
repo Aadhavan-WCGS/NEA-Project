@@ -19,8 +19,7 @@ namespace Mechanics_Sim
         public ProjectilesSim()
         {
             InitializeComponent();
-            controlPanel.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
-            statsPanel.Anchor = (AnchorStyles.Top| AnchorStyles.Right); //Keeps Stats panel at top right of screen.
+            simForms.initiate(statsPanel, controlPanel, this);
             startX = 60;
             startY = this.Height - 40;
             proj = new PictureBox
@@ -87,6 +86,11 @@ namespace Mechanics_Sim
         private void resetBtn_Click(object sender, EventArgs e)
         {
             reset();
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

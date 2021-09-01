@@ -46,6 +46,7 @@ namespace Mechanics_Sim
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.exitBtn = new System.Windows.Forms.Button();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             this.SuspendLayout();
@@ -192,6 +193,7 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.exitBtn);
             this.controlPanel.Controls.Add(this.resetBtn);
             this.controlPanel.Controls.Add(this.massLabel);
             this.controlPanel.Controls.Add(this.yforceLabel);
@@ -200,9 +202,9 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.massBox);
             this.controlPanel.Controls.Add(this.xforceLabel);
             this.controlPanel.Controls.Add(this.switchBtn);
-            this.controlPanel.Location = new System.Drawing.Point(467, 598);
+            this.controlPanel.Location = new System.Drawing.Point(296, 598);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(833, 138);
+            this.controlPanel.Size = new System.Drawing.Size(1004, 138);
             this.controlPanel.TabIndex = 16;
             // 
             // resetBtn
@@ -219,6 +221,21 @@ namespace Mechanics_Sim
             this.resetBtn.Text = "Reset";
             this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
+            // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.exitBtn.ForeColor = System.Drawing.Color.Black;
+            this.exitBtn.Location = new System.Drawing.Point(787, 51);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(196, 52);
+            this.exitBtn.TabIndex = 33;
+            this.exitBtn.Text = "Exit";
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // ForcesSim
             // 
@@ -261,5 +278,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Panel statsPanel;
         private System.Windows.Forms.Panel controlPanel;
         private System.Windows.Forms.Button resetBtn;
+        private System.Windows.Forms.Button exitBtn;
     }
 }

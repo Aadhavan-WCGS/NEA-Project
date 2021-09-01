@@ -8,8 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//SUPERSCRIPT CODES = \u207b\xB9 = ^-1, \u207b\xB2 = ^-2
 namespace Mechanics_Sim
 {
+
+    public static class simForms
+    {
+        public static void initiate(Panel stats, Panel control, Form inp) //Simulation forms call this method to be in the correct window format.
+        {
+            stats.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
+            control.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
+            inp.FormBorderStyle = FormBorderStyle.None; //Removes borders.
+            inp.WindowState = FormWindowState.Maximized; //Puts window in fullscreen.
+
+        }
+    }
     public partial class Form1 : Form
     {
         public Form1()
@@ -27,11 +41,17 @@ namespace Mechanics_Sim
             ProjectilesSim f = new ProjectilesSim();
             f.Show();
         }
+
+        private void pullBtn_Click(object sender, EventArgs e)
+        {
+            onePulleySim f = new onePulleySim();
+            f.Show();
+        }
     }
 
     public class particle
     {
-        private double maxSpeed = 100000;
+        private double maxSpeed = 100000; //Is this needed? OR can validation be used elsewhere to check max speed isn't reached.
         private double c = 1;
         private double d = 50;
         private double mass;
@@ -108,41 +128,71 @@ namespace Mechanics_Sim
 
     public class forces // Class for the forces simulation.
     {
-        private double acceleration;
-        private double rF;
+        private double acc;
+        private double rf;
 
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle forcesSetup(double m, double fx, double fy) 
         {
             particle p = new particle(m);
             p.setForce(fx, fy);
-            rF = Math.Sqrt(fx * fx + fy * fy);
-            acceleration = rF / m;
+            rf = Math.Sqrt(fx * fx + fy * fy);
+            acc = rf / m;
             return p;
         }
 
-        public double getrF() //Returns resultant force of particle.
+        public double getRf() //Returns resultant force of particle.
         {
-            return rF;
+            return rf;
         }
 
-        public double getAcc() // Returns acceleration of particle.
+        public double getAcc() // Returns acc of particle.
         {
-            return acceleration;
+            return acc;
+        }
+    }
+
+
+    public class onePulley // Class for the pulley simulation.
+    {
+        private double acc; //Acceleration
+        private double t; //Tension
+        private double g = 9.81; 
+
+        //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
+        public particle[] pulleySetup(double m1, double m2)
+        {
+            t = (2 * m1 * m2 * g) / (m1 + m2);
+            particle p1 = new particle(m1);
+            particle p2 = new particle(m2);
+            p1.setForce(0, t - g * m1);
+            p2.setForce(0, t - g * m2);
+            acc = (g * (m2 - m1)) / (m1 + m2);
+            particle[] px = {p1, p2}; //Creates array for 2 particles then returns it.
+            return px;
+        }
+
+        public double getT() //Returns resultant force of particle.
+        {
+            return t;
+        }
+
+        public double getAcc() // Returns acc of particle.
+        {
+            return acc;
         }
     }
 
     public class projectiles
     {
-        public double range;
-        public double maxH;
-        public double tof;
-
+        private double range;
+        private double maxH;
+        private double tof;
+        private double g = 9.81;
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle projectilesSetup(double u, double theta)
         {
             double rad = theta * Math.PI / 180; //Convert input angle from degrees to radians. Mechanics uses degrees only but c sharp works in radians.
-            double g = 9.81;
             particle p = new particle(1);
             p.setForce(0, -g);
             p.setVel(u * Math.Cos(rad), u * Math.Sin(rad));

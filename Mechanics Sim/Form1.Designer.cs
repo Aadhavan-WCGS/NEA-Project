@@ -33,16 +33,17 @@ namespace Mechanics_Sim
             this.fsButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.prButton = new System.Windows.Forms.Button();
+            this.pullBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // fsButton
             // 
             this.fsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.fsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fsButton.Location = new System.Drawing.Point(12, 20);
+            this.fsButton.Location = new System.Drawing.Point(10, 20);
             this.fsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fsButton.Name = "fsButton";
-            this.fsButton.Size = new System.Drawing.Size(82, 27);
+            this.fsButton.Size = new System.Drawing.Size(122, 27);
             this.fsButton.TabIndex = 0;
             this.fsButton.Text = "Forces";
             this.fsButton.UseVisualStyleBackColor = false;
@@ -55,11 +56,24 @@ namespace Mechanics_Sim
             this.prButton.Location = new System.Drawing.Point(10, 51);
             this.prButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.prButton.Name = "prButton";
-            this.prButton.Size = new System.Drawing.Size(82, 27);
+            this.prButton.Size = new System.Drawing.Size(122, 27);
             this.prButton.TabIndex = 1;
             this.prButton.Text = "Projectiles";
             this.prButton.UseVisualStyleBackColor = false;
             this.prButton.Click += new System.EventHandler(this.prButton_Click);
+            // 
+            // pullBtn
+            // 
+            this.pullBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.pullBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pullBtn.Location = new System.Drawing.Point(10, 82);
+            this.pullBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pullBtn.Name = "pullBtn";
+            this.pullBtn.Size = new System.Drawing.Size(122, 27);
+            this.pullBtn.TabIndex = 2;
+            this.pullBtn.Text = "Single Pulley";
+            this.pullBtn.UseVisualStyleBackColor = false;
+            this.pullBtn.Click += new System.EventHandler(this.pullBtn_Click);
             // 
             // Form1
             // 
@@ -67,6 +81,7 @@ namespace Mechanics_Sim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(561, 338);
+            this.Controls.Add(this.pullBtn);
             this.Controls.Add(this.prButton);
             this.Controls.Add(this.fsButton);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -81,6 +96,7 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Button fsButton;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button prButton;
+        private System.Windows.Forms.Button pullBtn;
     }
 }
 
