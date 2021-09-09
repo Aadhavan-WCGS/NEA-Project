@@ -18,10 +18,11 @@ namespace Mechanics_Sim
         int startY;
         public ProjectilesSim()
         {
-            InitializeComponent();
-            simForms.initiate(statsPanel, controlPanel, this);
+            InitializeComponent();  
+            simForms.initiate(statsPanel, controlPanel, this); //Initialise ui elements.
             startX = 60;
             startY = this.Height - 40;
+            //Appropriate pictureboxes are defined below.
             proj = new PictureBox
             {
                 Name = "Ball",
@@ -34,7 +35,7 @@ namespace Mechanics_Sim
             reset();
         }
 
-        public void reset()
+        public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
             proj.Location = new Point(startX, startY);
             timeNum = 0;
@@ -52,7 +53,6 @@ namespace Mechanics_Sim
         {
             if (!start)
             {
-                proj.Anchor = (AnchorStyles.None); //Unlocks particle's position allowing it to be moved.
                 //Following lines instantiate simulation and appropriately configure the particle.
                 projectiles sim = new projectiles();
                 p = sim.projectilesSetup(Convert.ToDouble(uBox.Text), Convert.ToDouble(angleBox.Text));
@@ -72,15 +72,11 @@ namespace Mechanics_Sim
 
         private void projTimer_Tick(object sender, EventArgs e)
         {
-            timeNum += projTimer.Interval;
+            simForms.time(ref timeNum, ref start, (proj.Top > startY), projTimer); //Projectile  should stop when it reaches its initial height.
+            //Call move method for pictureboxes, update stats.
             p.move(proj);
             speedTxt.Text = "Speed: " + p.getSpeed() + " ms\u207b\xB9";
             timeTxt.Text = "Time elapsed: " + timeNum / 1000 + " s";
-            if(proj.Top > startY) //Projectile  should stop when it reaches its initial height.
-            {
-                projTimer.Stop();
-
-            }
         }
 
         private void resetBtn_Click(object sender, EventArgs e)

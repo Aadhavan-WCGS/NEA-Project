@@ -19,9 +19,10 @@ namespace Mechanics_Sim
         public ForcesSim()
         {
             InitializeComponent();
-            simForms.initiate(statsPanel, controlPanel, this);
+            simForms.initiate(statsPanel, controlPanel, this); //Initialise ui elements.
             startX = this.Width / 2; ;
             startY = this.Height / 2;
+            //Appropriate pictureboxes are defined below.
             ball = new PictureBox
             {
                 Name = "Ball",
@@ -33,7 +34,7 @@ namespace Mechanics_Sim
             reset();
         }
 
-        public void reset()
+        public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
             ball.Location = new Point(startX, startY);
             timeNum = 0;
@@ -43,16 +44,15 @@ namespace Mechanics_Sim
             speedTxt.Text = "Speed: ";
             start = false;
             forceTimer.Stop();
-
         }
     
         private void Switch_Click(object sender, EventArgs e)
         {
             if (!start)
             {
-
+                //Following lines instantiate simulation and appropriately configure the particle.
                 forces sim = new forces();
-                p = sim.forcesSetup(Convert.ToDouble(massBox.Text), Convert.ToDouble(xfBox.Text), Convert.ToDouble(yfBox.Text));
+                p = sim.forcesSetup(Convert.ToDouble(massBox.Text), Convert.ToDouble(xfBox.Text), Convert.ToDouble(yfBox.Text)); 
                 start = true;
                 rfTxt.Text = "Resultant Force: " + sim.getRf() + " N";
                 accTxt.Text = "Acceleration: " + sim.getAcc() + " ms\u207b\xB2";
@@ -68,7 +68,8 @@ namespace Mechanics_Sim
 
         private void forceTimer_Tick(object sender, EventArgs e)
         {
-            timeNum += forceTimer.Interval;
+            simForms.time(ref timeNum, ref start, (false), forceTimer);
+            //Call move method for pictureboxes, update stats.
             p.move(ball);
             speedTxt.Text = "Speed: " + p.getSpeed().ToString() + " ms\u207b\xB9"; 
             timeTxt.Text = "Time Elapsed: " + timeNum/1000 + " s";

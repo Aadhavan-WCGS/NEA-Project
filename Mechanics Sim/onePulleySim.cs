@@ -21,10 +21,10 @@ namespace Mechanics_Sim
         public onePulleySim()
         {
             InitializeComponent();
-            simForms.initiate(statsPanel, controlPanel, this);
+            simForms.initiate(statsPanel, controlPanel, this); //Initialise ui elements.
             startX = this.Width / 2; ;
             startY = 100;
-
+            //Appropriate pictureboxes are defined below.
             pulley = new PictureBox
             {
                 Name = "pulley",
@@ -48,13 +48,13 @@ namespace Mechanics_Sim
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Image = Properties.Resources.Square,
             };
-            Controls.Add(pulley);
+            Controls.Add(pulley); //Adds pictureboxes to forms.
             Controls.Add(p1);
             Controls.Add(p2);
             reset();
         }
 
-        public void reset()
+        public void reset()  //Resets displayed stats, picturebox locations, time and also stops timer.
         {
             pulley.Location = new Point(startX, startY);
             p1.Location = new Point(startX - pulley.Width / 2 - 20, startY + gap);
@@ -81,16 +81,18 @@ namespace Mechanics_Sim
 
         private void onePulleySim_Paint(object sender, PaintEventArgs e)
         {
-
+            //Adding string for pulley code goes here.
         }
 
         private void switchBtn_Click(object sender, EventArgs e)
         {
             if (!start)
             {
+                //Following lines instantiate simulation and appropriately configure the particle.
                 onePulley sim = new onePulley();
-                masses = sim.pulleySetup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text));
+                masses = sim.pulleySetup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text)); //Passes mass inputs into pulleySetup function, returns array of 2 particles
                 start = true;
+                // Following lines display relevant stats by calling the getters for the simulation.
                 tnTxt.Text = "Tension: " + sim.getT() + " N";
                 accTxt.Text = "Acceleration: " + sim.getAcc() + " ms\u207b\xB2";
                 pullTimer.Start();
@@ -103,16 +105,12 @@ namespace Mechanics_Sim
 
         private void pullTimer_Tick(object sender, EventArgs e)
         {
-            timeNum += pullTimer.Interval;
-            masses[0].move(p1);
+            simForms.time(ref timeNum, ref start, (p1.Top <= pulley.Top + pulley.Height || p2.Top <= pulley.Top + pulley.Height || p2.Top >= this.Height || p1.Top >= this.Height), pullTimer);
+            //Call move method for pictureboxes, update stats.
+            masses[0].move(p1); 
             masses[1].move(p2);
             speedTxt.Text = "Speed: " + masses[0].getSpeed().ToString() + " ms\u207b\xB9";
             timeTxt.Text = "Time Elapsed: " + timeNum / 1000 + " s";
-            if(p1.Top <= pulley.Top + pulley.Height || p2.Top <= pulley.Top + pulley.Height || p2.Top >= this.Height || p1.Top >= this.Height)
-            {
-                pullTimer.Stop();
-                start = false;
-            }
         }
     }
 }

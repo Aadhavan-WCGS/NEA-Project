@@ -12,20 +12,9 @@ using System.Windows.Forms;
 //SUPERSCRIPT CODES = \u207b\xB9 = ^-1, \u207b\xB2 = ^-2
 namespace Mechanics_Sim
 {
-
-    public static class simForms
-    {
-        public static void initiate(Panel stats, Panel control, Form inp) //Simulation forms call this method to be in the correct window format.
-        {
-            stats.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
-            control.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
-            inp.FormBorderStyle = FormBorderStyle.None; //Removes borders.
-            inp.WindowState = FormWindowState.Maximized; //Puts window in fullscreen.
-
-        }
-    }
     public partial class Form1 : Form
     {
+        //Basic form to open all simulations from.
         public Form1()
         {
             InitializeComponent();
@@ -47,13 +36,40 @@ namespace Mechanics_Sim
             onePulleySim f = new onePulleySim();
             f.Show();
         }
+
+        private void pullTblBtn_Click(object sender, EventArgs e)
+        {
+            onePulleyTableSim f = new onePulleyTableSim();
+            f.Show();
+        }
     }
+    public static class simForms
+    {
+        public static void initiate(Panel stats, Panel control, Form inp) //Simulation forms call this method to be in the correct window format.
+        {
+            stats.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
+            control.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
+            inp.FormBorderStyle = FormBorderStyle.None; //Removes borders.
+            inp.WindowState = FormWindowState.Maximized; //Puts window in fullscreen.
+        }
+
+        public static void time(ref double time, ref bool start, bool condition, Timer t) //Procedure to increment time, and stop timer if a condition is met. Used by all simulations.
+        {
+            time += t.Interval;
+            if (condition)
+            {
+                t.Stop();
+                start = false;
+            }
+        }
+    }
+    
 
     public class particle
     {
         private double maxSpeed = 100000; //Is this needed? OR can validation be used elsewhere to check max speed isn't reached.
-        private double c = 1;
-        private double d = 50;
+        private double c = 1; //Used to scale values if needed.
+        private double d = 50; // This value is equal to 1000/(Timer interval).
         private double mass;
         private double forceX = 0;
         private double forceY = 0;
@@ -69,7 +85,6 @@ namespace Mechanics_Sim
 
         public void move(PictureBox pic) // Applies motion to a picturebox passed into the procedure.
         {
-    
             velX += ((forceX / mass) / d);
             velY += ((forceY / mass) / d);
             speed = Math.Sqrt(velY * velY + velX * velX);
@@ -202,19 +217,17 @@ namespace Mechanics_Sim
             return p;
         }
 
-
-        //Getters to return approprate stats for the projectile.
-        public double getRange()
+        public double getRange() // Returns range of projectile.
         {
             return Math.Round(range, 2);
         }
 
-        public double getMaxH()
+        public double getMaxH() // Returns max height of projectile.
         {
             return Math.Round(maxH, 2);
         }
 
-        public double getTof()
+        public double getTof() //Returns time of flight of projectile.
         {
             return Math.Round(tof, 2);
         }
