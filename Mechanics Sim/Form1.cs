@@ -187,6 +187,17 @@ namespace Mechanics_Sim
             return px;
         }
 
+        public particle[] pulleyTblSetup(double m1, double m2, double mu)
+        {
+            t = ((m1 * m2 * 9.81) * (1 + mu)) / (m1 + m2);
+            particle p1 = new particle(m1);
+            particle p2 = new particle(m2);
+            p1.setForce(t - mu * m1 * g, 0);
+            p2.setForce(0, t - g * m2);
+            acc = (g * (m2 - mu * m1)) / (m1 + m2);
+            particle[] px = { p1, p2 }; //Creates array for 2 particles then returns it.
+            return px;
+        }
         public double getT() //Returns resultant force of particle.
         {
             return t;
