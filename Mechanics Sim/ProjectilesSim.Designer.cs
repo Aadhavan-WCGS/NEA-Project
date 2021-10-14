@@ -37,18 +37,20 @@ namespace Mechanics_Sim
             this.accTxt = new System.Windows.Forms.Label();
             this.maxhTxt = new System.Windows.Forms.Label();
             this.tofTxt = new System.Windows.Forms.Label();
-            this.angleBox = new System.Windows.Forms.TextBox();
-            this.uBox = new System.Windows.Forms.TextBox();
             this.uTxt = new System.Windows.Forms.Label();
             this.aopTxt = new System.Windows.Forms.Label();
             this.switchBtn = new System.Windows.Forms.Button();
             this.projTimer = new System.Windows.Forms.Timer(this.components);
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.angleBox = new System.Windows.Forms.NumericUpDown();
+            this.exitBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
             this.statsPanel = new System.Windows.Forms.Panel();
-            this.exitBtn = new System.Windows.Forms.Button();
+            this.uBox = new System.Windows.Forms.NumericUpDown();
             this.controlPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.angleBox)).BeginInit();
             this.statsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uBox)).BeginInit();
             this.SuspendLayout();
             // 
             // timeTxt
@@ -128,20 +130,6 @@ namespace Mechanics_Sim
             this.tofTxt.TabIndex = 21;
             this.tofTxt.Text = "Time of flight: ";
             // 
-            // angleBox
-            // 
-            this.angleBox.Location = new System.Drawing.Point(365, 2);
-            this.angleBox.Name = "angleBox";
-            this.angleBox.Size = new System.Drawing.Size(100, 23);
-            this.angleBox.TabIndex = 22;
-            // 
-            // uBox
-            // 
-            this.uBox.Location = new System.Drawing.Point(365, 31);
-            this.uBox.Name = "uBox";
-            this.uBox.Size = new System.Drawing.Size(100, 23);
-            this.uBox.TabIndex = 23;
-            // 
             // uTxt
             // 
             this.uTxt.AutoSize = true;
@@ -186,17 +174,39 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.uBox);
+            this.controlPanel.Controls.Add(this.angleBox);
             this.controlPanel.Controls.Add(this.exitBtn);
             this.controlPanel.Controls.Add(this.resetBtn);
-            this.controlPanel.Controls.Add(this.angleBox);
             this.controlPanel.Controls.Add(this.switchBtn);
-            this.controlPanel.Controls.Add(this.uBox);
             this.controlPanel.Controls.Add(this.aopTxt);
             this.controlPanel.Controls.Add(this.uTxt);
             this.controlPanel.Location = new System.Drawing.Point(113, 685);
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(1186, 113);
             this.controlPanel.TabIndex = 27;
+            // 
+            // angleBox
+            // 
+            this.angleBox.Location = new System.Drawing.Point(365, 3);
+            this.angleBox.Name = "angleBox";
+            this.angleBox.Size = new System.Drawing.Size(100, 23);
+            this.angleBox.TabIndex = 30;
+            // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.exitBtn.ForeColor = System.Drawing.Color.Black;
+            this.exitBtn.Location = new System.Drawing.Point(943, 2);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(230, 52);
+            this.exitBtn.TabIndex = 31;
+            this.exitBtn.Text = "Exit";
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // resetBtn
             // 
@@ -227,20 +237,12 @@ namespace Mechanics_Sim
             this.statsPanel.Size = new System.Drawing.Size(374, 242);
             this.statsPanel.TabIndex = 29;
             // 
-            // exitBtn
+            // uBox
             // 
-            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
-            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(943, 2);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(230, 52);
-            this.exitBtn.TabIndex = 31;
-            this.exitBtn.Text = "Exit";
-            this.exitBtn.UseVisualStyleBackColor = false;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            this.uBox.Location = new System.Drawing.Point(365, 31);
+            this.uBox.Name = "uBox";
+            this.uBox.Size = new System.Drawing.Size(100, 23);
+            this.uBox.TabIndex = 32;
             // 
             // ProjectilesSim
             // 
@@ -256,8 +258,10 @@ namespace Mechanics_Sim
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.angleBox)).EndInit();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,8 +275,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Label accTxt;
         private System.Windows.Forms.Label maxhTxt;
         private System.Windows.Forms.Label tofTxt;
-        private System.Windows.Forms.TextBox angleBox;
-        private System.Windows.Forms.TextBox uBox;
         private System.Windows.Forms.Label uTxt;
         private System.Windows.Forms.Label aopTxt;
         private System.Windows.Forms.Button switchBtn;
@@ -281,5 +283,7 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Panel statsPanel;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.NumericUpDown angleBox;
+        private System.Windows.Forms.NumericUpDown uBox;
     }
 }

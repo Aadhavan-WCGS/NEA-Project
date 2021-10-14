@@ -36,12 +36,6 @@ namespace Mechanics_Sim
             onePulleySim f = new onePulleySim();
             f.Show();
         }
-
-        private void pullTblBtn_Click(object sender, EventArgs e)
-        {
-            onePulleyTableSim f = new onePulleyTableSim();
-            f.Show();
-        }
     }
     public static class simForms
     {
@@ -67,7 +61,7 @@ namespace Mechanics_Sim
 
     public class particle
     {
-        private double maxSpeed = 100000; //Is this needed? OR can validation be used elsewhere to check max speed isn't reached.
+        //Attributes
         private double c = 1; //Used to scale values if needed.
         private double d = 50; // This value is equal to 1000/(Timer interval).
         private double mass;
@@ -87,19 +81,15 @@ namespace Mechanics_Sim
         {
             velX += ((forceX / mass) / d);
             velY += ((forceY / mass) / d);
-            speed = Math.Sqrt(velY * velY + velX * velX);
+            speed = Math.Sqrt(velY * velY + velX * velX); //Gets speed by using pythagoras theorem on velocity components.
             pic.Left += Convert.ToInt32(velX * c);
             pic.Top -= Convert.ToInt32(velY * c);
             displacementY += velY / d;
             displacementX += velX / d;
-            if(speed >= maxSpeed)
-            {
-                forceX = 0;
-                forceY = 0;
-            }
         }
 
-        public void setForce(double newX, double newY)
+        //Setters
+        public void setForce(double newX, double newY) 
         {
             forceX = newX;
             forceY = newY;
@@ -110,14 +100,25 @@ namespace Mechanics_Sim
             velY = newSY;
         }
 
+        //Getters
         public double getVelX()
         {
-            return velX;
+            return Math.Round(velX, 2);
         }
 
+        public double getFx()
+        {
+            return Math.Round(forceX, 2);
+        }
+
+        public double getFy()
+        {
+            return Math.Round(forceY, 2);
+
+        }
         public double getVelY()
         {
-            return velY;
+            return Math.Round(velY, 2);
         }
 
         public double getSpeed()
@@ -130,14 +131,14 @@ namespace Mechanics_Sim
             displacementY = y;
         }
 
-        public double disX()
+        public double getDisX()
         {
-            return displacementX;
+            return Math.Round(displacementX, 2);
         }
 
-        public double disY()
+        public double getDisY()
         {
-            return displacementY;
+            return Math.Round(displacementY, 2);
         }
     }
 
@@ -171,17 +172,17 @@ namespace Mechanics_Sim
     public class onePulley // Class for the pulley simulation.
     {
         private double acc; //Acceleration
-        private double t; //Tension
+        private double t1, t2; //Tension
         private double g = 9.81; 
 
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle[] pulleySetup(double m1, double m2)
         {
-            t = (2 * m1 * m2 * g) / (m1 + m2);
+            t1 = (2 * m1 * m2 * g) / (m1 + m2);
             particle p1 = new particle(m1);
             particle p2 = new particle(m2);
-            p1.setForce(0, t - g * m1);
-            p2.setForce(0, t - g * m2);
+            p1.setForce(0, t1 - g * m1);
+            p2.setForce(0, t1 - g * m2);
             acc = (g * (m2 - m1)) / (m1 + m2);
             particle[] px = {p1, p2}; //Creates array for 2 particles then returns it.
             return px;
@@ -189,18 +190,38 @@ namespace Mechanics_Sim
 
         public particle[] pulleyTblSetup(double m1, double m2, double mu)
         {
-            t = ((m1 * m2 * 9.81) * (1 + mu)) / (m1 + m2);
+            t1 = ((m1 * m2 * 9.81) * (1 + mu)) / (m1 + m2);
             particle p1 = new particle(m1);
             particle p2 = new particle(m2);
-            p1.setForce(t - mu * m1 * g, 0);
-            p2.setForce(0, t - g * m2);
+            p1.setForce(t1 - mu * m1 * g, 0);
+            p2.setForce(0, t1 - g * m2);
             acc = (g * (m2 - mu * m1)) / (m1 + m2);
             particle[] px = { p1, p2 }; //Creates array for 2 particles then returns it.
             return px;
         }
-        public double getT() //Returns resultant force of particle.
+
+        public particle[] pulleyTbl2Setup(double m1, double m2, double m3, double mu)
         {
-            return t;
+            t1 = ((m1 *g) * (2 * m3 + m2 - mu * m2)) / (m1 + m2 + m3);
+            t2 = ((m3 * g) * (2 * m1 + m2 + mu * m2)) / (m1 + m2 + m3);
+            particle p1 = new particle(m1);
+            particle p2 = new particle(m2);
+            particle p3 = new particle(m3);
+            p1.setForce(0, t1 - m1 * g);
+            p2.setForce(t2 - t1 - mu * m2 * g,0);
+            p3.setForce(0, t2 - g * m3);
+            acc = (g * (m3 - m1 - mu * m2)) / (m1 + m2 + m3);
+            particle[] px = {p1, p2, p3}; //Creates array for 3 particles then returns it.
+            return px;
+        }
+        public double getT1() //Returns resultant force of particle.
+        {
+            return t1;
+        }
+
+        public double getT2() //Returns resultant force of particle.
+        {
+            return t2;
         }
 
         public double getAcc() // Returns acc of particle.

@@ -33,9 +33,6 @@ namespace Mechanics_Sim
             this.switchBtn = new System.Windows.Forms.Button();
             this.forceTimer = new System.Windows.Forms.Timer(this.components);
             this.xforceLabel = new System.Windows.Forms.Label();
-            this.massBox = new System.Windows.Forms.TextBox();
-            this.xfBox = new System.Windows.Forms.TextBox();
-            this.yfBox = new System.Windows.Forms.TextBox();
             this.speedTxt = new System.Windows.Forms.Label();
             this.yforceLabel = new System.Windows.Forms.Label();
             this.StatsTxt = new System.Windows.Forms.Label();
@@ -45,10 +42,16 @@ namespace Mechanics_Sim
             this.timeTxt = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
-            this.resetBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
+            this.massBox = new System.Windows.Forms.NumericUpDown();
+            this.yfBox = new System.Windows.Forms.NumericUpDown();
+            this.xfBox = new System.Windows.Forms.NumericUpDown();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.massBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yfBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xfBox)).BeginInit();
             this.SuspendLayout();
             // 
             // switchBtn
@@ -80,29 +83,6 @@ namespace Mechanics_Sim
             this.xforceLabel.Size = new System.Drawing.Size(94, 15);
             this.xforceLabel.TabIndex = 2;
             this.xforceLabel.Text = "Horizontal Force";
-            // 
-            // massBox
-            // 
-            this.massBox.BackColor = System.Drawing.Color.White;
-            this.massBox.ForeColor = System.Drawing.Color.Black;
-            this.massBox.Location = new System.Drawing.Point(72, 51);
-            this.massBox.Name = "massBox";
-            this.massBox.Size = new System.Drawing.Size(56, 23);
-            this.massBox.TabIndex = 3;
-            // 
-            // xfBox
-            // 
-            this.xfBox.Location = new System.Drawing.Point(245, 51);
-            this.xfBox.Name = "xfBox";
-            this.xfBox.Size = new System.Drawing.Size(100, 23);
-            this.xfBox.TabIndex = 4;
-            // 
-            // yfBox
-            // 
-            this.yfBox.Location = new System.Drawing.Point(245, 80);
-            this.yfBox.Name = "yfBox";
-            this.yfBox.Size = new System.Drawing.Size(100, 23);
-            this.yfBox.TabIndex = 5;
             // 
             // speedTxt
             // 
@@ -193,19 +173,34 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.xfBox);
+            this.controlPanel.Controls.Add(this.yfBox);
+            this.controlPanel.Controls.Add(this.massBox);
             this.controlPanel.Controls.Add(this.exitBtn);
             this.controlPanel.Controls.Add(this.resetBtn);
             this.controlPanel.Controls.Add(this.massLabel);
             this.controlPanel.Controls.Add(this.yforceLabel);
-            this.controlPanel.Controls.Add(this.yfBox);
-            this.controlPanel.Controls.Add(this.xfBox);
-            this.controlPanel.Controls.Add(this.massBox);
             this.controlPanel.Controls.Add(this.xforceLabel);
             this.controlPanel.Controls.Add(this.switchBtn);
             this.controlPanel.Location = new System.Drawing.Point(296, 598);
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(1004, 138);
             this.controlPanel.TabIndex = 16;
+            // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.exitBtn.ForeColor = System.Drawing.Color.Black;
+            this.exitBtn.Location = new System.Drawing.Point(787, 51);
+            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(196, 52);
+            this.exitBtn.TabIndex = 33;
+            this.exitBtn.Text = "Exit";
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
             // resetBtn
             // 
@@ -222,20 +217,26 @@ namespace Mechanics_Sim
             this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
-            // exitBtn
+            // massBox
             // 
-            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
-            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(787, 51);
-            this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(196, 52);
-            this.exitBtn.TabIndex = 33;
-            this.exitBtn.Text = "Exit";
-            this.exitBtn.UseVisualStyleBackColor = false;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            this.massBox.Location = new System.Drawing.Point(72, 52);
+            this.massBox.Name = "massBox";
+            this.massBox.Size = new System.Drawing.Size(56, 23);
+            this.massBox.TabIndex = 34;
+            // 
+            // yfBox
+            // 
+            this.yfBox.Location = new System.Drawing.Point(259, 86);
+            this.yfBox.Name = "yfBox";
+            this.yfBox.Size = new System.Drawing.Size(56, 23);
+            this.yfBox.TabIndex = 35;
+            // 
+            // xfBox
+            // 
+            this.xfBox.Location = new System.Drawing.Point(259, 57);
+            this.xfBox.Name = "xfBox";
+            this.xfBox.Size = new System.Drawing.Size(56, 23);
+            this.xfBox.TabIndex = 36;
             // 
             // ForcesSim
             // 
@@ -256,6 +257,9 @@ namespace Mechanics_Sim
             this.statsPanel.PerformLayout();
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.massBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yfBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xfBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,9 +269,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Button switchBtn;
         public System.Windows.Forms.Timer forceTimer;
         private System.Windows.Forms.Label xforceLabel;
-        private System.Windows.Forms.TextBox massBox;
-        private System.Windows.Forms.TextBox xfBox;
-        private System.Windows.Forms.TextBox yfBox;
         private System.Windows.Forms.Label speedTxt;
         private System.Windows.Forms.Label yforceLabel;
         private System.Windows.Forms.Label StatsTxt;
@@ -279,5 +280,8 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Panel controlPanel;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.NumericUpDown xfBox;
+        private System.Windows.Forms.NumericUpDown yfBox;
+        private System.Windows.Forms.NumericUpDown massBox;
     }
 }

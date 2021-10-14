@@ -31,13 +31,15 @@ namespace Mechanics_Sim
         {
             this.components = new System.ComponentModel.Container();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.checkBoxPulley = new System.Windows.Forms.CheckBox();
+            this.mass3Label = new System.Windows.Forms.Label();
+            this.checkBoxTable = new System.Windows.Forms.CheckBox();
+            this.fricCoeffLabel = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
-            this.mass2Box = new System.Windows.Forms.TextBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.mass2Label = new System.Windows.Forms.Label();
             this.switchBtn = new System.Windows.Forms.Button();
             this.mass1Label = new System.Windows.Forms.Label();
-            this.mass1Box = new System.Windows.Forms.TextBox();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.timeTxt = new System.Windows.Forms.Label();
             this.tnTxt = new System.Windows.Forms.Label();
@@ -45,28 +47,83 @@ namespace Mechanics_Sim
             this.StatsTxt = new System.Windows.Forms.Label();
             this.speedTxt = new System.Windows.Forms.Label();
             this.pullTimer = new System.Windows.Forms.Timer(this.components);
-            this.checkBoxTable = new System.Windows.Forms.CheckBox();
-            this.fricCoeffLabel = new System.Windows.Forms.Label();
-            this.coeffBox = new System.Windows.Forms.TextBox();
+            this.mass1Box = new System.Windows.Forms.NumericUpDown();
+            this.coeffBox = new System.Windows.Forms.NumericUpDown();
+            this.mass3Box = new System.Windows.Forms.NumericUpDown();
+            this.mass2Box = new System.Windows.Forms.NumericUpDown();
             this.controlPanel.SuspendLayout();
             this.statsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mass1Box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coeffBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mass3Box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mass2Box)).BeginInit();
             this.SuspendLayout();
             // 
             // controlPanel
             // 
             this.controlPanel.Controls.Add(this.coeffBox);
+            this.controlPanel.Controls.Add(this.mass3Box);
+            this.controlPanel.Controls.Add(this.mass2Box);
+            this.controlPanel.Controls.Add(this.checkBoxPulley);
+            this.controlPanel.Controls.Add(this.mass3Label);
+            this.controlPanel.Controls.Add(this.mass1Box);
+            this.controlPanel.Controls.Add(this.checkBoxTable);
             this.controlPanel.Controls.Add(this.fricCoeffLabel);
             this.controlPanel.Controls.Add(this.exitBtn);
-            this.controlPanel.Controls.Add(this.mass2Box);
             this.controlPanel.Controls.Add(this.resetBtn);
             this.controlPanel.Controls.Add(this.mass2Label);
             this.controlPanel.Controls.Add(this.switchBtn);
             this.controlPanel.Controls.Add(this.mass1Label);
-            this.controlPanel.Controls.Add(this.mass1Box);
             this.controlPanel.Location = new System.Drawing.Point(222, 470);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(932, 117);
+            this.controlPanel.Size = new System.Drawing.Size(932, 125);
             this.controlPanel.TabIndex = 17;
+            // 
+            // checkBoxPulley
+            // 
+            this.checkBoxPulley.AutoSize = true;
+            this.checkBoxPulley.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxPulley.ForeColor = System.Drawing.Color.White;
+            this.checkBoxPulley.Location = new System.Drawing.Point(123, 86);
+            this.checkBoxPulley.Name = "checkBoxPulley";
+            this.checkBoxPulley.Size = new System.Drawing.Size(72, 19);
+            this.checkBoxPulley.TabIndex = 37;
+            this.checkBoxPulley.Text = "2 pulleys";
+            this.checkBoxPulley.UseVisualStyleBackColor = true;
+            this.checkBoxPulley.CheckedChanged += new System.EventHandler(this.checkBoxPulley_CheckedChanged);
+            // 
+            // mass3Label
+            // 
+            this.mass3Label.AutoSize = true;
+            this.mass3Label.ForeColor = System.Drawing.Color.White;
+            this.mass3Label.Location = new System.Drawing.Point(214, 95);
+            this.mass3Label.Name = "mass3Label";
+            this.mass3Label.Size = new System.Drawing.Size(46, 15);
+            this.mass3Label.TabIndex = 36;
+            this.mass3Label.Text = "Mass 3:";
+            // 
+            // checkBoxTable
+            // 
+            this.checkBoxTable.AutoSize = true;
+            this.checkBoxTable.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxTable.ForeColor = System.Drawing.Color.White;
+            this.checkBoxTable.Location = new System.Drawing.Point(123, 61);
+            this.checkBoxTable.Name = "checkBoxTable";
+            this.checkBoxTable.Size = new System.Drawing.Size(74, 19);
+            this.checkBoxTable.TabIndex = 21;
+            this.checkBoxTable.Text = "Use table";
+            this.checkBoxTable.UseVisualStyleBackColor = true;
+            this.checkBoxTable.CheckedChanged += new System.EventHandler(this.checkBoxTable_CheckedChanged);
+            // 
+            // fricCoeffLabel
+            // 
+            this.fricCoeffLabel.AutoSize = true;
+            this.fricCoeffLabel.ForeColor = System.Drawing.Color.White;
+            this.fricCoeffLabel.Location = new System.Drawing.Point(3, 33);
+            this.fricCoeffLabel.Name = "fricCoeffLabel";
+            this.fricCoeffLabel.Size = new System.Drawing.Size(132, 15);
+            this.fricCoeffLabel.TabIndex = 33;
+            this.fricCoeffLabel.Text = "Friction Coefficient (μ): ";
             // 
             // exitBtn
             // 
@@ -82,15 +139,6 @@ namespace Mechanics_Sim
             this.exitBtn.Text = "Exit";
             this.exitBtn.UseVisualStyleBackColor = false;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
-            // 
-            // mass2Box
-            // 
-            this.mass2Box.BackColor = System.Drawing.Color.White;
-            this.mass2Box.ForeColor = System.Drawing.Color.Black;
-            this.mass2Box.Location = new System.Drawing.Point(266, 59);
-            this.mass2Box.Name = "mass2Box";
-            this.mass2Box.Size = new System.Drawing.Size(56, 23);
-            this.mass2Box.TabIndex = 13;
             // 
             // resetBtn
             // 
@@ -141,15 +189,6 @@ namespace Mechanics_Sim
             this.mass1Label.Size = new System.Drawing.Size(46, 15);
             this.mass1Label.TabIndex = 11;
             this.mass1Label.Text = "Mass 1:";
-            // 
-            // mass1Box
-            // 
-            this.mass1Box.BackColor = System.Drawing.Color.White;
-            this.mass1Box.ForeColor = System.Drawing.Color.Black;
-            this.mass1Box.Location = new System.Drawing.Point(266, 30);
-            this.mass1Box.Name = "mass1Box";
-            this.mass1Box.Size = new System.Drawing.Size(56, 23);
-            this.mass1Box.TabIndex = 3;
             // 
             // statsPanel
             // 
@@ -223,37 +262,33 @@ namespace Mechanics_Sim
             this.pullTimer.Interval = 20;
             this.pullTimer.Tick += new System.EventHandler(this.pullTimer_Tick);
             // 
-            // checkBoxTable
+            // mass1Box
             // 
-            this.checkBoxTable.AutoSize = true;
-            this.checkBoxTable.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxTable.ForeColor = System.Drawing.Color.White;
-            this.checkBoxTable.Location = new System.Drawing.Point(988, 174);
-            this.checkBoxTable.Name = "checkBoxTable";
-            this.checkBoxTable.Size = new System.Drawing.Size(109, 29);
-            this.checkBoxTable.TabIndex = 21;
-            this.checkBoxTable.Text = "Use table";
-            this.checkBoxTable.UseVisualStyleBackColor = true;
-            this.checkBoxTable.CheckedChanged += new System.EventHandler(this.checkBoxTable_CheckedChanged);
-            // 
-            // fricCoeffLabel
-            // 
-            this.fricCoeffLabel.AutoSize = true;
-            this.fricCoeffLabel.ForeColor = System.Drawing.Color.White;
-            this.fricCoeffLabel.Location = new System.Drawing.Point(3, 33);
-            this.fricCoeffLabel.Name = "fricCoeffLabel";
-            this.fricCoeffLabel.Size = new System.Drawing.Size(132, 15);
-            this.fricCoeffLabel.TabIndex = 33;
-            this.fricCoeffLabel.Text = "Friction Coefficient (μ): ";
+            this.mass1Box.Location = new System.Drawing.Point(266, 31);
+            this.mass1Box.Name = "mass1Box";
+            this.mass1Box.Size = new System.Drawing.Size(56, 23);
+            this.mass1Box.TabIndex = 19;
             // 
             // coeffBox
             // 
-            this.coeffBox.BackColor = System.Drawing.Color.White;
-            this.coeffBox.ForeColor = System.Drawing.Color.Black;
-            this.coeffBox.Location = new System.Drawing.Point(141, 30);
+            this.coeffBox.Location = new System.Drawing.Point(135, 30);
             this.coeffBox.Name = "coeffBox";
-            this.coeffBox.Size = new System.Drawing.Size(56, 23);
-            this.coeffBox.TabIndex = 34;
+            this.coeffBox.Size = new System.Drawing.Size(73, 23);
+            this.coeffBox.TabIndex = 20;
+            // 
+            // mass3Box
+            // 
+            this.mass3Box.Location = new System.Drawing.Point(266, 93);
+            this.mass3Box.Name = "mass3Box";
+            this.mass3Box.Size = new System.Drawing.Size(56, 23);
+            this.mass3Box.TabIndex = 21;
+            // 
+            // mass2Box
+            // 
+            this.mass2Box.Location = new System.Drawing.Point(266, 63);
+            this.mass2Box.Name = "mass2Box";
+            this.mass2Box.Size = new System.Drawing.Size(56, 23);
+            this.mass2Box.TabIndex = 22;
             // 
             // onePulleySim
             // 
@@ -261,7 +296,6 @@ namespace Mechanics_Sim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(1249, 599);
-            this.Controls.Add(this.checkBoxTable);
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.controlPanel);
             this.Name = "onePulleySim";
@@ -271,8 +305,11 @@ namespace Mechanics_Sim
             this.controlPanel.PerformLayout();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mass1Box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coeffBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mass3Box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mass2Box)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -281,7 +318,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Panel controlPanel;
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Label mass1Label;
-        private System.Windows.Forms.TextBox mass1Box;
         private System.Windows.Forms.Button switchBtn;
         private System.Windows.Forms.Panel statsPanel;
         private System.Windows.Forms.Label timeTxt;
@@ -291,10 +327,14 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Label speedTxt;
         private System.Windows.Forms.Timer pullTimer;
         private System.Windows.Forms.Label mass2Label;
-        private System.Windows.Forms.TextBox mass2Box;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.CheckBox checkBoxTable;
-        private System.Windows.Forms.TextBox coeffBox;
         private System.Windows.Forms.Label fricCoeffLabel;
+        private System.Windows.Forms.Label mass3Label;
+        private System.Windows.Forms.CheckBox checkBoxPulley;
+        private System.Windows.Forms.NumericUpDown mass1Box;
+        private System.Windows.Forms.NumericUpDown coeffBox;
+        private System.Windows.Forms.NumericUpDown mass3Box;
+        private System.Windows.Forms.NumericUpDown mass2Box;
     }
 }
