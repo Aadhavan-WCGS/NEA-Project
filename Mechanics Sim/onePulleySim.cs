@@ -146,6 +146,7 @@ namespace Mechanics_Sim
             timeNum = 0;
             timeTxt.Text = "Time elapsed: ";
             tnTxt.Text = "Tension: ";
+            tn2Txt.Text = "Tension 2: ";
             accTxt.Text = "Acceleration: ";
             speedTxt.Text = "Speed: ";
             start = false;
