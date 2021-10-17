@@ -45,13 +45,13 @@ namespace Mechanics_Sim
             this.switchBtn = new System.Windows.Forms.Button();
             this.mass1Label = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
+            this.tn2Txt = new System.Windows.Forms.Label();
             this.timeTxt = new System.Windows.Forms.Label();
             this.tnTxt = new System.Windows.Forms.Label();
             this.accTxt = new System.Windows.Forms.Label();
             this.StatsTxt = new System.Windows.Forms.Label();
             this.speedTxt = new System.Windows.Forms.Label();
             this.pullTimer = new System.Windows.Forms.Timer(this.components);
-            this.tn2Txt = new System.Windows.Forms.Label();
             this.controlPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coeffBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass3Box)).BeginInit();
@@ -82,6 +82,7 @@ namespace Mechanics_Sim
             // 
             // coeffBox
             // 
+            this.coeffBox.DecimalPlaces = 2;
             this.coeffBox.Location = new System.Drawing.Point(135, 30);
             this.coeffBox.Name = "coeffBox";
             this.coeffBox.Size = new System.Drawing.Size(73, 23);
@@ -89,6 +90,7 @@ namespace Mechanics_Sim
             // 
             // mass3Box
             // 
+            this.mass3Box.DecimalPlaces = 2;
             this.mass3Box.Location = new System.Drawing.Point(266, 93);
             this.mass3Box.Name = "mass3Box";
             this.mass3Box.Size = new System.Drawing.Size(56, 23);
@@ -96,6 +98,7 @@ namespace Mechanics_Sim
             // 
             // mass2Box
             // 
+            this.mass2Box.DecimalPlaces = 2;
             this.mass2Box.Location = new System.Drawing.Point(266, 63);
             this.mass2Box.Name = "mass2Box";
             this.mass2Box.Size = new System.Drawing.Size(56, 23);
@@ -126,6 +129,7 @@ namespace Mechanics_Sim
             // 
             // mass1Box
             // 
+            this.mass1Box.DecimalPlaces = 2;
             this.mass1Box.Location = new System.Drawing.Point(266, 31);
             this.mass1Box.Name = "mass1Box";
             this.mass1Box.Size = new System.Drawing.Size(56, 23);
@@ -232,6 +236,17 @@ namespace Mechanics_Sim
             this.statsPanel.Size = new System.Drawing.Size(331, 200);
             this.statsPanel.TabIndex = 18;
             // 
+            // tn2Txt
+            // 
+            this.tn2Txt.AutoSize = true;
+            this.tn2Txt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tn2Txt.ForeColor = System.Drawing.Color.White;
+            this.tn2Txt.Location = new System.Drawing.Point(61, 141);
+            this.tn2Txt.Name = "tn2Txt";
+            this.tn2Txt.Size = new System.Drawing.Size(100, 25);
+            this.tn2Txt.TabIndex = 15;
+            this.tn2Txt.Text = "Tension 2: ";
+            // 
             // timeTxt
             // 
             this.timeTxt.AutoSize = true;
@@ -291,17 +306,6 @@ namespace Mechanics_Sim
             // 
             this.pullTimer.Interval = 20;
             this.pullTimer.Tick += new System.EventHandler(this.pullTimer_Tick);
-            // 
-            // tn2Txt
-            // 
-            this.tn2Txt.AutoSize = true;
-            this.tn2Txt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tn2Txt.ForeColor = System.Drawing.Color.White;
-            this.tn2Txt.Location = new System.Drawing.Point(61, 141);
-            this.tn2Txt.Name = "tn2Txt";
-            this.tn2Txt.Size = new System.Drawing.Size(100, 25);
-            this.tn2Txt.TabIndex = 15;
-            this.tn2Txt.Text = "Tension 2: ";
             // 
             // onePulleySim
             // 

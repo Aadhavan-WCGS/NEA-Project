@@ -42,15 +42,15 @@ namespace Mechanics_Sim
             this.switchBtn = new System.Windows.Forms.Button();
             this.projTimer = new System.Windows.Forms.Timer(this.components);
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.uBox = new System.Windows.Forms.NumericUpDown();
             this.angleBox = new System.Windows.Forms.NumericUpDown();
             this.exitBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
             this.statsPanel = new System.Windows.Forms.Panel();
-            this.uBox = new System.Windows.Forms.NumericUpDown();
             this.controlPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.angleBox)).BeginInit();
             this.statsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uBox)).BeginInit();
             this.SuspendLayout();
             // 
             // timeTxt
@@ -186,8 +186,17 @@ namespace Mechanics_Sim
             this.controlPanel.Size = new System.Drawing.Size(1186, 113);
             this.controlPanel.TabIndex = 27;
             // 
+            // uBox
+            // 
+            this.uBox.DecimalPlaces = 2;
+            this.uBox.Location = new System.Drawing.Point(365, 31);
+            this.uBox.Name = "uBox";
+            this.uBox.Size = new System.Drawing.Size(100, 23);
+            this.uBox.TabIndex = 32;
+            // 
             // angleBox
             // 
+            this.angleBox.DecimalPlaces = 2;
             this.angleBox.Location = new System.Drawing.Point(365, 3);
             this.angleBox.Name = "angleBox";
             this.angleBox.Size = new System.Drawing.Size(100, 23);
@@ -237,13 +246,6 @@ namespace Mechanics_Sim
             this.statsPanel.Size = new System.Drawing.Size(374, 242);
             this.statsPanel.TabIndex = 29;
             // 
-            // uBox
-            // 
-            this.uBox.Location = new System.Drawing.Point(365, 31);
-            this.uBox.Name = "uBox";
-            this.uBox.Size = new System.Drawing.Size(100, 23);
-            this.uBox.TabIndex = 32;
-            // 
             // ProjectilesSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -258,10 +260,10 @@ namespace Mechanics_Sim
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.angleBox)).EndInit();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uBox)).EndInit();
             this.ResumeLayout(false);
 
         }

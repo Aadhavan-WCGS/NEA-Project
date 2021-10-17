@@ -42,16 +42,16 @@ namespace Mechanics_Sim
             this.timeTxt = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.xfBox = new System.Windows.Forms.NumericUpDown();
+            this.yfBox = new System.Windows.Forms.NumericUpDown();
+            this.massBox = new System.Windows.Forms.NumericUpDown();
             this.exitBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
-            this.massBox = new System.Windows.Forms.NumericUpDown();
-            this.yfBox = new System.Windows.Forms.NumericUpDown();
-            this.xfBox = new System.Windows.Forms.NumericUpDown();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.massBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yfBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xfBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yfBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.massBox)).BeginInit();
             this.SuspendLayout();
             // 
             // switchBtn
@@ -187,6 +187,30 @@ namespace Mechanics_Sim
             this.controlPanel.Size = new System.Drawing.Size(1004, 138);
             this.controlPanel.TabIndex = 16;
             // 
+            // xfBox
+            // 
+            this.xfBox.DecimalPlaces = 2;
+            this.xfBox.Location = new System.Drawing.Point(259, 57);
+            this.xfBox.Name = "xfBox";
+            this.xfBox.Size = new System.Drawing.Size(56, 23);
+            this.xfBox.TabIndex = 36;
+            // 
+            // yfBox
+            // 
+            this.yfBox.DecimalPlaces = 2;
+            this.yfBox.Location = new System.Drawing.Point(259, 86);
+            this.yfBox.Name = "yfBox";
+            this.yfBox.Size = new System.Drawing.Size(56, 23);
+            this.yfBox.TabIndex = 35;
+            // 
+            // massBox
+            // 
+            this.massBox.DecimalPlaces = 2;
+            this.massBox.Location = new System.Drawing.Point(72, 52);
+            this.massBox.Name = "massBox";
+            this.massBox.Size = new System.Drawing.Size(56, 23);
+            this.massBox.TabIndex = 34;
+            // 
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
@@ -217,27 +241,6 @@ namespace Mechanics_Sim
             this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
-            // massBox
-            // 
-            this.massBox.Location = new System.Drawing.Point(72, 52);
-            this.massBox.Name = "massBox";
-            this.massBox.Size = new System.Drawing.Size(56, 23);
-            this.massBox.TabIndex = 34;
-            // 
-            // yfBox
-            // 
-            this.yfBox.Location = new System.Drawing.Point(259, 86);
-            this.yfBox.Name = "yfBox";
-            this.yfBox.Size = new System.Drawing.Size(56, 23);
-            this.yfBox.TabIndex = 35;
-            // 
-            // xfBox
-            // 
-            this.xfBox.Location = new System.Drawing.Point(259, 57);
-            this.xfBox.Name = "xfBox";
-            this.xfBox.Size = new System.Drawing.Size(56, 23);
-            this.xfBox.TabIndex = 36;
-            // 
             // ForcesSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -257,9 +260,9 @@ namespace Mechanics_Sim
             this.statsPanel.PerformLayout();
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.massBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yfBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xfBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yfBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.massBox)).EndInit();
             this.ResumeLayout(false);
 
         }
