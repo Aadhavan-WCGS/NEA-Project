@@ -26,6 +26,7 @@ namespace Mechanics_Sim
             InitializeComponent();
             fricCoeffLabel.Hide();
             coeffBox.Hide();
+            
             simForms.initiate(statsPanel, controlPanel, this); //Initialise UI elements.
             startX = this.Width * 7/8; ;
             startY = this.Height/2 ;
@@ -46,7 +47,7 @@ namespace Mechanics_Sim
                 Image = Properties.Resources.Ball,
             };
 
-            p1 = new PictureBox
+            p1 = new PictureBox //3rd particle only used in configuration with 2 pulleys and 3 masses
             {
                 Name = "p1",
                 Size = new Size(40, 40),
@@ -62,7 +63,7 @@ namespace Mechanics_Sim
                 Image = Properties.Resources.Square,
             };
 
-            p3 = new PictureBox   //3rd particle only used in configuration with 2 pulleys and 3 masses
+            p3 = new PictureBox   
             {
                 Name = "p3",
                 Size = new Size(40, 40),
@@ -116,6 +117,7 @@ namespace Mechanics_Sim
                     mass3Label.Show();
                     p1.Show();
                     p1.Location = new Point(table.Left - p1.Width, startY + gap);
+                    tn2Txt.Show();
                 }
                 else
                 {
@@ -123,6 +125,7 @@ namespace Mechanics_Sim
                     mass3Box.Hide();
                     mass3Label.Hide();
                     p1.Hide();
+                    tn2Txt.Hide();
                 }
             }
             else
@@ -135,6 +138,7 @@ namespace Mechanics_Sim
                 p1.Hide();
                 mass3Box.Hide();
                 mass3Label.Hide();
+                tn2Txt.Hide();
                 p2.Location = new Point(startX - pulley.Width / 2 - 20, startY + gap);
                 p3.Location = new Point(startX + pulley.Width / 2 + 20, startY + gap);
             }
@@ -196,6 +200,7 @@ namespace Mechanics_Sim
                 start = true;
                 // Following lines display relevant stats by calling the getters for the simulation.
                 tnTxt.Text = "Tension: " + sim.getT1() + " N";
+                tn2Txt.Text = "Tension 2: " + sim.getT2() + " N";
                 accTxt.Text = "Acceleration: " + sim.getAcc() + " ms\u207b\xB2";
                 pullTimer.Start();
             }

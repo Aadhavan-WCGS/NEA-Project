@@ -31,8 +31,12 @@ namespace Mechanics_Sim
         {
             this.components = new System.ComponentModel.Container();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.coeffBox = new System.Windows.Forms.NumericUpDown();
+            this.mass3Box = new System.Windows.Forms.NumericUpDown();
+            this.mass2Box = new System.Windows.Forms.NumericUpDown();
             this.checkBoxPulley = new System.Windows.Forms.CheckBox();
             this.mass3Label = new System.Windows.Forms.Label();
+            this.mass1Box = new System.Windows.Forms.NumericUpDown();
             this.checkBoxTable = new System.Windows.Forms.CheckBox();
             this.fricCoeffLabel = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
@@ -47,16 +51,13 @@ namespace Mechanics_Sim
             this.StatsTxt = new System.Windows.Forms.Label();
             this.speedTxt = new System.Windows.Forms.Label();
             this.pullTimer = new System.Windows.Forms.Timer(this.components);
-            this.mass1Box = new System.Windows.Forms.NumericUpDown();
-            this.coeffBox = new System.Windows.Forms.NumericUpDown();
-            this.mass3Box = new System.Windows.Forms.NumericUpDown();
-            this.mass2Box = new System.Windows.Forms.NumericUpDown();
+            this.tn2Txt = new System.Windows.Forms.Label();
             this.controlPanel.SuspendLayout();
-            this.statsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mass1Box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coeffBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass3Box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass2Box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mass1Box)).BeginInit();
+            this.statsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // controlPanel
@@ -78,6 +79,27 @@ namespace Mechanics_Sim
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(932, 125);
             this.controlPanel.TabIndex = 17;
+            // 
+            // coeffBox
+            // 
+            this.coeffBox.Location = new System.Drawing.Point(135, 30);
+            this.coeffBox.Name = "coeffBox";
+            this.coeffBox.Size = new System.Drawing.Size(73, 23);
+            this.coeffBox.TabIndex = 20;
+            // 
+            // mass3Box
+            // 
+            this.mass3Box.Location = new System.Drawing.Point(266, 93);
+            this.mass3Box.Name = "mass3Box";
+            this.mass3Box.Size = new System.Drawing.Size(56, 23);
+            this.mass3Box.TabIndex = 21;
+            // 
+            // mass2Box
+            // 
+            this.mass2Box.Location = new System.Drawing.Point(266, 63);
+            this.mass2Box.Name = "mass2Box";
+            this.mass2Box.Size = new System.Drawing.Size(56, 23);
+            this.mass2Box.TabIndex = 22;
             // 
             // checkBoxPulley
             // 
@@ -101,6 +123,13 @@ namespace Mechanics_Sim
             this.mass3Label.Size = new System.Drawing.Size(46, 15);
             this.mass3Label.TabIndex = 36;
             this.mass3Label.Text = "Mass 3:";
+            // 
+            // mass1Box
+            // 
+            this.mass1Box.Location = new System.Drawing.Point(266, 31);
+            this.mass1Box.Name = "mass1Box";
+            this.mass1Box.Size = new System.Drawing.Size(56, 23);
+            this.mass1Box.TabIndex = 19;
             // 
             // checkBoxTable
             // 
@@ -192,6 +221,7 @@ namespace Mechanics_Sim
             // 
             // statsPanel
             // 
+            this.statsPanel.Controls.Add(this.tn2Txt);
             this.statsPanel.Controls.Add(this.timeTxt);
             this.statsPanel.Controls.Add(this.tnTxt);
             this.statsPanel.Controls.Add(this.accTxt);
@@ -199,7 +229,7 @@ namespace Mechanics_Sim
             this.statsPanel.Controls.Add(this.speedTxt);
             this.statsPanel.Location = new System.Drawing.Point(906, 12);
             this.statsPanel.Name = "statsPanel";
-            this.statsPanel.Size = new System.Drawing.Size(331, 156);
+            this.statsPanel.Size = new System.Drawing.Size(331, 200);
             this.statsPanel.TabIndex = 18;
             // 
             // timeTxt
@@ -207,7 +237,7 @@ namespace Mechanics_Sim
             this.timeTxt.AutoSize = true;
             this.timeTxt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.timeTxt.ForeColor = System.Drawing.Color.White;
-            this.timeTxt.Location = new System.Drawing.Point(23, 106);
+            this.timeTxt.Location = new System.Drawing.Point(29, 91);
             this.timeTxt.Name = "timeTxt";
             this.timeTxt.Size = new System.Drawing.Size(132, 25);
             this.timeTxt.TabIndex = 14;
@@ -218,7 +248,7 @@ namespace Mechanics_Sim
             this.tnTxt.AutoSize = true;
             this.tnTxt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tnTxt.ForeColor = System.Drawing.Color.White;
-            this.tnTxt.Location = new System.Drawing.Point(70, 81);
+            this.tnTxt.Location = new System.Drawing.Point(76, 116);
             this.tnTxt.Name = "tnTxt";
             this.tnTxt.Size = new System.Drawing.Size(85, 25);
             this.tnTxt.TabIndex = 13;
@@ -262,33 +292,16 @@ namespace Mechanics_Sim
             this.pullTimer.Interval = 20;
             this.pullTimer.Tick += new System.EventHandler(this.pullTimer_Tick);
             // 
-            // mass1Box
+            // tn2Txt
             // 
-            this.mass1Box.Location = new System.Drawing.Point(266, 31);
-            this.mass1Box.Name = "mass1Box";
-            this.mass1Box.Size = new System.Drawing.Size(56, 23);
-            this.mass1Box.TabIndex = 19;
-            // 
-            // coeffBox
-            // 
-            this.coeffBox.Location = new System.Drawing.Point(135, 30);
-            this.coeffBox.Name = "coeffBox";
-            this.coeffBox.Size = new System.Drawing.Size(73, 23);
-            this.coeffBox.TabIndex = 20;
-            // 
-            // mass3Box
-            // 
-            this.mass3Box.Location = new System.Drawing.Point(266, 93);
-            this.mass3Box.Name = "mass3Box";
-            this.mass3Box.Size = new System.Drawing.Size(56, 23);
-            this.mass3Box.TabIndex = 21;
-            // 
-            // mass2Box
-            // 
-            this.mass2Box.Location = new System.Drawing.Point(266, 63);
-            this.mass2Box.Name = "mass2Box";
-            this.mass2Box.Size = new System.Drawing.Size(56, 23);
-            this.mass2Box.TabIndex = 22;
+            this.tn2Txt.AutoSize = true;
+            this.tn2Txt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tn2Txt.ForeColor = System.Drawing.Color.White;
+            this.tn2Txt.Location = new System.Drawing.Point(61, 141);
+            this.tn2Txt.Name = "tn2Txt";
+            this.tn2Txt.Size = new System.Drawing.Size(100, 25);
+            this.tn2Txt.TabIndex = 15;
+            this.tn2Txt.Text = "Tension 2: ";
             // 
             // onePulleySim
             // 
@@ -303,12 +316,12 @@ namespace Mechanics_Sim
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.onePulleySim_Paint);
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
-            this.statsPanel.ResumeLayout(false);
-            this.statsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mass1Box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coeffBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass3Box)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass2Box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mass1Box)).EndInit();
+            this.statsPanel.ResumeLayout(false);
+            this.statsPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -336,5 +349,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.NumericUpDown coeffBox;
         private System.Windows.Forms.NumericUpDown mass3Box;
         private System.Windows.Forms.NumericUpDown mass2Box;
+        private System.Windows.Forms.Label tn2Txt;
     }
 }
