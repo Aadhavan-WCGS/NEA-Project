@@ -36,6 +36,12 @@ namespace Mechanics_Sim
             onePulleySim f = new onePulleySim();
             f.Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            varAccSim f = new varAccSim();
+            f.Show();
+        }
     }
     public static class simForms
     {
@@ -266,4 +272,63 @@ namespace Mechanics_Sim
 
     }
 
+    public class varAcc
+    {
+        private double[] vel;
+        private double[] acc;
+        private particle p;
+        public particle varAccSetup(double[] disp)
+        {
+            double[] vel = derivative(disp);
+            double[] acc = derivative(vel);
+            particle p = new particle(1);
+            return p;
+        }
+
+        public double[] derivative(double[] coeff) // Computes derivative of a polynomial within the form of an array.
+        {
+            double[] diffCoeff = coeff;
+            for(int x = 0; x < coeff.Length - 2; x++)
+            {
+                diffCoeff[x] = coeff[x + 1] * x;
+            }
+            diffCoeff[diffCoeff.Length - 1] = 0;
+            return diffCoeff;
+        }
+
+        public double sub(double[] eqn, double x) // Returns output of a value inputted into polynomial.
+        {
+            double y = 0;
+            for (int i = 0; i < eqn.Length; i++){
+                y += eqn[i] * (Math.Pow(x, i));
+            }
+            return y;
+        }
+
+        public double[] sub2D(double[,] eqn, double[] values) // Returns output of a value inputted into 2D polynomial.
+        {
+            double[] output = { 0, 0 };
+            for (int z = 0; z < 2; z++)
+            {
+                for (int i = 0; i < eqn.Length; i++)
+                {
+                    output[z] += eqn[z, i] * Math.Pow(values[z], i);
+                }
+            }
+            return output;
+        }
+        public double[,] derivative2D(double[,] coeff) // Computes derivative of a 2D polynomial within the form of a 2D array.
+        {
+            double[,] diffCoeff = coeff;
+            for (int z = 0; z < 2; z++)
+            {
+                for (int x = 0; x < coeff.Length - 2; x++)
+                {
+                    diffCoeff[z, x] = coeff[z, x + 1] * x;
+                }
+                diffCoeff[z, diffCoeff.Length - 1] = 0;
+            }
+            return diffCoeff;
+        }
+    }
 }
