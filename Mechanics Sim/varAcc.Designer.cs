@@ -331,6 +331,7 @@ namespace Mechanics_Sim
             this.Controls.Add(this.statsPanel);
             this.Name = "varAccSim";
             this.Text = "Variable Acceleration Sim";
+            this.Load += new System.EventHandler(this.varAccSim_Load);
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
             this.controlPanel.ResumeLayout(false);

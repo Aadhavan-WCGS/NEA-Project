@@ -330,5 +330,16 @@ namespace Mechanics_Sim
             }
             return diffCoeff;
         }
+
+        public double[] getVel()
+        {
+            return vel;
+        }
+
+        public double[] getAcc()
+        {
+            return acc;
+        }
+
     }
 }

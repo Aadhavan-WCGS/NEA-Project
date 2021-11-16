@@ -16,6 +16,7 @@ namespace Mechanics_Sim
         double timeNum = 0;
         int startX;
         int startY;
+        varAcc sim = new varAcc();
         public varAccSim()
         {
             InitializeComponent();
@@ -64,7 +65,6 @@ namespace Mechanics_Sim
             if (!start)
             {
                 //Following lines instantiate simulation and appropriately configure the particle.
-                varAcc sim = new varAcc();
                 double[] coefficients = {Convert.ToDouble(x0Box.Text), Convert.ToDouble(x1Box.Text), Convert.ToDouble(x2Box.Text), Convert.ToDouble(x1Box.Text)};
                 p = sim.varAccSetup(coefficients);
                 start = true;
@@ -86,7 +86,13 @@ namespace Mechanics_Sim
         private void varAccTimer_Tick(object sender, EventArgs e)
         {
             simForms.time(ref timeNum, ref start, (false), varAccTimer);
-            p.move(ball);
+            p.setForce(sim.sub(sim.getAcc(), timeNum), 0);
+            p.move(ball); 
+        }
+
+        private void varAccSim_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
