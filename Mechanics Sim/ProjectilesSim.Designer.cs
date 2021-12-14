@@ -198,9 +198,24 @@ namespace Mechanics_Sim
             // 
             this.angleBox.DecimalPlaces = 2;
             this.angleBox.Location = new System.Drawing.Point(365, 3);
+            this.angleBox.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.angleBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.angleBox.Name = "angleBox";
             this.angleBox.Size = new System.Drawing.Size(100, 23);
             this.angleBox.TabIndex = 30;
+            this.angleBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // exitBtn
             // 

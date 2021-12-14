@@ -65,7 +65,7 @@ namespace Mechanics_Sim
             if (!start)
             {
                 //Following lines instantiate simulation and appropriately configure the particle.
-                double[] coefficients = {Convert.ToDouble(x0Box.Text), Convert.ToDouble(x1Box.Text), Convert.ToDouble(x2Box.Text), Convert.ToDouble(x1Box.Text)};
+                double[] coefficients = {Convert.ToDouble(x0Box.Text), Convert.ToDouble(x1Box.Text), Convert.ToDouble(x2Box.Text), Convert.ToDouble(x3Box.Text)};
                 p = sim.varAccSetup(coefficients);
                 start = true;
                 // Following lines display relevant stats by calling the getters for the simulation.

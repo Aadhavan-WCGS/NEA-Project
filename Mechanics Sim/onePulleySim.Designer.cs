@@ -92,17 +92,37 @@ namespace Mechanics_Sim
             // 
             this.mass3Box.DecimalPlaces = 2;
             this.mass3Box.Location = new System.Drawing.Point(266, 93);
+            this.mass3Box.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.mass3Box.Name = "mass3Box";
             this.mass3Box.Size = new System.Drawing.Size(56, 23);
             this.mass3Box.TabIndex = 21;
+            this.mass3Box.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // mass2Box
             // 
             this.mass2Box.DecimalPlaces = 2;
             this.mass2Box.Location = new System.Drawing.Point(266, 63);
+            this.mass2Box.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.mass2Box.Name = "mass2Box";
             this.mass2Box.Size = new System.Drawing.Size(56, 23);
             this.mass2Box.TabIndex = 22;
+            this.mass2Box.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // checkBoxPulley
             // 
@@ -131,9 +151,19 @@ namespace Mechanics_Sim
             // 
             this.mass1Box.DecimalPlaces = 2;
             this.mass1Box.Location = new System.Drawing.Point(266, 31);
+            this.mass1Box.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.mass1Box.Name = "mass1Box";
             this.mass1Box.Size = new System.Drawing.Size(56, 23);
             this.mass1Box.TabIndex = 19;
+            this.mass1Box.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // checkBoxTable
             // 

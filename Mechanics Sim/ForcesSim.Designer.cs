@@ -191,6 +191,11 @@ namespace Mechanics_Sim
             // 
             this.xfBox.DecimalPlaces = 2;
             this.xfBox.Location = new System.Drawing.Point(259, 57);
+            this.xfBox.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.xfBox.Name = "xfBox";
             this.xfBox.Size = new System.Drawing.Size(56, 23);
             this.xfBox.TabIndex = 36;
@@ -199,6 +204,11 @@ namespace Mechanics_Sim
             // 
             this.yfBox.DecimalPlaces = 2;
             this.yfBox.Location = new System.Drawing.Point(259, 86);
+            this.yfBox.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.yfBox.Name = "yfBox";
             this.yfBox.Size = new System.Drawing.Size(56, 23);
             this.yfBox.TabIndex = 35;
@@ -207,9 +217,19 @@ namespace Mechanics_Sim
             // 
             this.massBox.DecimalPlaces = 2;
             this.massBox.Location = new System.Drawing.Point(72, 52);
+            this.massBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.massBox.Name = "massBox";
             this.massBox.Size = new System.Drawing.Size(56, 23);
             this.massBox.TabIndex = 34;
+            this.massBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             // 
             // exitBtn
             // 

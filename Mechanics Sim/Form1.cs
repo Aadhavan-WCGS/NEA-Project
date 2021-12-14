@@ -165,12 +165,12 @@ namespace Mechanics_Sim
 
         public double getRf() //Returns resultant force of particle.
         {
-            return rf;
+            return Math.Round(rf, 2);
         }
 
         public double getAcc() // Returns acc of particle.
         {
-            return acc;
+            return Math.Round(acc, 2);
         }
     }
 
@@ -222,17 +222,17 @@ namespace Mechanics_Sim
         }
         public double getT1() //Returns resultant force of particle.
         {
-            return t1;
+            return Math.Round(t1, 2); 
         }
 
         public double getT2() //Returns resultant force of particle.
         {
-            return t2;
+            return Math.Round(t2, 2);
         }
 
         public double getAcc() // Returns acc of particle.
         {
-            return acc;
+            return Math.Round(Math.Abs(acc), 2);
         }
     }
 
@@ -279,8 +279,8 @@ namespace Mechanics_Sim
         private particle p;
         public particle varAccSetup(double[] disp)
         {
-            double[] vel = derivative(disp);
-            double[] acc = derivative(vel);
+            vel = derivative(disp);
+            acc = derivative(vel);
             particle p = new particle(1);
             return p;
         }
