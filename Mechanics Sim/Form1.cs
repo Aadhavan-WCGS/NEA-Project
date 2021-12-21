@@ -274,26 +274,26 @@ namespace Mechanics_Sim
 
     public class varAcc
     {
+        private double[] dis;
         private double[] vel;
         private double[] acc;
-        private particle p;
         public particle varAccSetup(double[] disp)
         {
-            vel = derivative(disp);
-            acc = derivative(vel);
+            acc = derivative(derivative((double[])disp.Clone()));
+            vel = derivative((double[])disp.Clone());
+            dis = (double[])disp.Clone();
             particle p = new particle(1);
-            return p;
+            return p;  
         }
 
         public double[] derivative(double[] coeff) // Computes derivative of a polynomial within the form of an array.
         {
-            double[] diffCoeff = coeff;
-            for(int x = 0; x < coeff.Length - 2; x++)
+            for(int x = 0; x < coeff.Length - 1; x++)
             {
-                diffCoeff[x] = coeff[x + 1] * x;
+                coeff[x] = coeff[x + 1] * (x+1);
             }
-            diffCoeff[diffCoeff.Length - 1] = 0;
-            return diffCoeff;
+            coeff[coeff.Length - 1] = 0;
+            return coeff;
         }
 
         public double sub(double[] eqn, double x) // Returns output of a value inputted into polynomial.
@@ -339,6 +339,11 @@ namespace Mechanics_Sim
         public double[] getAcc()
         {
             return acc;
+        }
+
+        public double[] getDis()
+        {
+            return dis;
         }
 
     }

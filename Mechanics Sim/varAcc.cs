@@ -16,6 +16,8 @@ namespace Mechanics_Sim
         double timeNum = 0;
         int startX;
         int startY;
+        double[] accEqn;
+        double[] velEqn;
         varAcc sim = new varAcc();
         public varAccSim()
         {
@@ -50,6 +52,7 @@ namespace Mechanics_Sim
             varAccTimer.Stop();
 
         }
+
         private void resetBtn_Click(object sender, EventArgs e)
         {
             reset();
@@ -68,14 +71,18 @@ namespace Mechanics_Sim
                 double[] coefficients = {Convert.ToDouble(x0Box.Text), Convert.ToDouble(x1Box.Text), Convert.ToDouble(x2Box.Text), Convert.ToDouble(x3Box.Text)};
                 p = sim.varAccSetup(coefficients);
                 start = true;
-                // Following lines display relevant stats by calling the getters for the simulation.
+                // Following lines display relevant stats by calling the getters for the simulation.      
+                velEqn = sim.getVel();
+                velEqnTxt.Text = "Velocity Equation: " + velEqn[0].ToString() + " + " + velEqn[1].ToString() + "t +" + velEqn[2].ToString() + "t\xB2 +" + velEqn[3].ToString() + "t\xB3";
+                accEqn = sim.getAcc();
                 timeTxt.Text = "Time elapsed: ";
                 accTxt.Text = "Acceleration: ";
                 speedTxt.Text = "Speed: ";
                 dispTxt.Text = "Displacement: ";
-                accEqnTxt.Text = "Acceleration Equation: ";
-                velEqnTxt.Text = "Velocity Equation: ";
+                accEqnTxt.Text = "Acceleration Equation: " + accEqn[0].ToString() + " + " + accEqn[1].ToString() + "t +" + accEqn[2].ToString() + "t\xB2 +" + accEqn[3].ToString() + "t\xB3"; ;
+                
                 varAccTimer.Start(); //Starts timer to begin simulation animation.
+                p.setVel(velEqn[0], 0); //Sets initial velocity.
             }
             else
             {
@@ -85,9 +92,19 @@ namespace Mechanics_Sim
 
         private void varAccTimer_Tick(object sender, EventArgs e)
         {
-            simForms.time(ref timeNum, ref start, (false), varAccTimer);
-            p.setForce(sim.sub(sim.getAcc(), timeNum), 0);
-            p.move(ball); 
+            simForms.time(ref timeNum, ref start, false, varAccTimer);
+            //Finds current value of acceleration, velocity, displacement.
+            double acc = sim.sub(accEqn, timeNum / 1000);
+            double vel = sim.sub(sim.getVel(), (timeNum / 1000));
+            double dis = sim.sub(sim.getDis(), (timeNum / 1000));
+            //Sets force as acceleration, as mass = 1kg.
+            p.setForce(acc, 0);
+            p.move(ball);
+            timeTxt.Text = "Time elapsed: " + timeNum / 1000 + "s";
+            speedTxt.Text = "Speed: " + Math.Round(vel, 2) + " ms\u207b\xB9";
+            accTxt.Text = "Acceleration: " + Math.Round(acc, 2) + "ms\u207b\xB2"; 
+            dispTxt.Text = "Displacement: " + Math.Round(dis, 2) + "m";
+
         }
 
         private void varAccSim_Load(object sender, EventArgs e)

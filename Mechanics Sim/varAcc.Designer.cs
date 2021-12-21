@@ -70,9 +70,9 @@ namespace Mechanics_Sim
             this.statsPanel.Controls.Add(this.accEqnTxt);
             this.statsPanel.Controls.Add(this.Stats);
             this.statsPanel.Controls.Add(this.speedTxt);
-            this.statsPanel.Location = new System.Drawing.Point(810, 12);
+            this.statsPanel.Location = new System.Drawing.Point(600, 11);
             this.statsPanel.Name = "statsPanel";
-            this.statsPanel.Size = new System.Drawing.Size(346, 262);
+            this.statsPanel.Size = new System.Drawing.Size(556, 262);
             this.statsPanel.TabIndex = 30;
             // 
             // accTxt
@@ -175,6 +175,11 @@ namespace Mechanics_Sim
             // 
             this.x3Box.DecimalPlaces = 2;
             this.x3Box.Location = new System.Drawing.Point(404, 62);
+            this.x3Box.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.x3Box.Name = "x3Box";
             this.x3Box.Size = new System.Drawing.Size(43, 23);
             this.x3Box.TabIndex = 34;
@@ -205,6 +210,11 @@ namespace Mechanics_Sim
             // 
             this.x2Box.DecimalPlaces = 2;
             this.x2Box.Location = new System.Drawing.Point(309, 62);
+            this.x2Box.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.x2Box.Name = "x2Box";
             this.x2Box.Size = new System.Drawing.Size(56, 23);
             this.x2Box.TabIndex = 36;
@@ -213,6 +223,11 @@ namespace Mechanics_Sim
             // 
             this.x1Box.DecimalPlaces = 2;
             this.x1Box.Location = new System.Drawing.Point(217, 63);
+            this.x1Box.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.x1Box.Name = "x1Box";
             this.x1Box.Size = new System.Drawing.Size(56, 23);
             this.x1Box.TabIndex = 35;
@@ -242,9 +257,14 @@ namespace Mechanics_Sim
             // x0Box
             // 
             this.x0Box.DecimalPlaces = 2;
-            this.x0Box.Location = new System.Drawing.Point(153, 62);
+            this.x0Box.Location = new System.Drawing.Point(144, 62);
+            this.x0Box.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.x0Box.Name = "x0Box";
-            this.x0Box.Size = new System.Drawing.Size(45, 23);
+            this.x0Box.Size = new System.Drawing.Size(54, 23);
             this.x0Box.TabIndex = 37;
             // 
             // exitBtn
@@ -318,6 +338,7 @@ namespace Mechanics_Sim
             // 
             // varAccTimer
             // 
+            this.varAccTimer.Interval = 20;
             this.varAccTimer.Tick += new System.EventHandler(this.varAccTimer_Tick);
             // 
             // varAccSim
