@@ -274,16 +274,21 @@ namespace Mechanics_Sim
 
     public class varAcc
     {
-        private double[] dis;
-        private double[] vel;
-        private double[] acc;
+        private double[] dis, disY, vel, velY, acc, accY;
         public particle varAccSetup(double[] disp)
         {
             acc = derivative(derivative((double[])disp.Clone()));
             vel = derivative((double[])disp.Clone());
             dis = (double[])disp.Clone();
             particle p = new particle(1);
-            return p;  
+            return p;
+        }
+
+        public void varAccSetupY(double[] dispY)
+        {
+            accY = derivative(derivative((double[])dispY.Clone()));
+            velY = derivative((double[])dispY.Clone());
+            disY = (double[])dispY.Clone();
         }
 
         public double[] derivative(double[] coeff) // Computes derivative of a polynomial within the form of an array.
@@ -305,32 +310,6 @@ namespace Mechanics_Sim
             return y;
         }
 
-        public double[] sub2D(double[,] eqn, double[] values) // Returns output of a value inputted into 2D polynomial.
-        {
-            double[] output = { 0, 0 };
-            for (int z = 0; z < 2; z++)
-            {
-                for (int i = 0; i < eqn.Length; i++)
-                {
-                    output[z] += eqn[z, i] * Math.Pow(values[z], i);
-                }
-            }
-            return output;
-        }
-        public double[,] derivative2D(double[,] coeff) // Computes derivative of a 2D polynomial within the form of a 2D array.
-        {
-            double[,] diffCoeff = coeff;
-            for (int z = 0; z < 2; z++)
-            {
-                for (int x = 0; x < coeff.Length - 2; x++)
-                {
-                    diffCoeff[z, x] = coeff[z, x + 1] * x;
-                }
-                diffCoeff[z, diffCoeff.Length - 1] = 0;
-            }
-            return diffCoeff;
-        }
-
         public double[] getVel()
         {
             return vel;
@@ -344,6 +323,21 @@ namespace Mechanics_Sim
         public double[] getDis()
         {
             return dis;
+        }
+
+        public double[] getVelY()
+        {
+            return velY;
+        }
+
+        public double[] getAccY()
+        {
+            return accY;
+        }
+
+        public double[] getDisY()
+        {
+            return disY;
         }
 
     }
