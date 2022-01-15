@@ -60,4 +60,21 @@
   <metadata name="varAccTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="assumptions.Text" xml:space="preserve">
+    <value>Important information
+
+Variable acceleration is when acceleration is constantly changing with time. We cannot use SUVAT here.
+
+The displacement equation shows how the position of a particle varies with time. 
+As differentiating an equation gives rate of change, we can differentiate displacement to get velocity, 
+and doing so once more leads to acceleration. 
+
+This simulator also shows variable acceleration in 2D. (Click the button in the top left corner).
+It works in exactly the same way although now we have motion in two different components.
+
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>

@@ -27,7 +27,7 @@ namespace Mechanics_Sim
 
         private void prButton_Click(object sender, EventArgs e)
         {
-            ProjectilesSim f = new ProjectilesSim();
+            LearnCheckBox f = new LearnCheckBox();
             f.Show();
         }
 
@@ -184,7 +184,7 @@ namespace Mechanics_Sim
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle[] pulleySetup(double m1, double m2)
         {
-            t1 = (2 * m1 * m2 * g) / (m1 + m2);
+            t1 = (2 * m1 * m2 * g) / (m1 + m2); //Finds tension.
             particle p1 = new particle(m1);
             particle p2 = new particle(m2);
             p1.setForce(0, t1 - g * m1);
@@ -196,27 +196,28 @@ namespace Mechanics_Sim
 
         public particle[] pulleyTblSetup(double m1, double m2, double mu)
         {
-            t1 = ((m1 * m2 * 9.81) * (1 + mu)) / (m1 + m2);
+            t1 = ((m1 * m2 * g) * (1 + mu)) / (m1 + m2); //Finds tension.
             particle p1 = new particle(m1);
             particle p2 = new particle(m2);
             p1.setForce(t1 - mu * m1 * g, 0);
             p2.setForce(0, t1 - g * m2);
             acc = (g * (m2 - mu * m1)) / (m1 + m2);
+            if (mu * m1 >= m2) { acc = 0;p1.setForce(0, 0);p2.setForce(0, 0); t1 = m2 * g; } //Check for friction exceeding weight of second mass.
             particle[] px = { p1, p2 }; //Creates array for 2 particles then returns it.
             return px;
         }
 
         public particle[] pulleyTbl2Setup(double m1, double m2, double m3, double mu)
         {
-            t1 = ((m1 *g) * (2 * m3 + m2 - mu * m2)) / (m1 + m2 + m3);
-            t2 = ((m3 * g) * (2 * m1 + m2 + mu * m2)) / (m1 + m2 + m3);
+            t1 = ((m1 *g) * (2 * m3 + m2 - mu * m2)) / (m1 + m2 + m3); //Finds tension 1 (in first string on left).
+            t2 = ((m3 * g) * (2 * m1 + m2 + mu * m2)) / (m1 + m2 + m3);//Finds tension 2 (in second string on right).
             particle p1 = new particle(m1);
             particle p2 = new particle(m2);
             particle p3 = new particle(m3);
             p1.setForce(0, t1 - m1 * g);
             p2.setForce(t2 - t1 - mu * m2 * g,0);
             p3.setForce(0, t2 - g * m3);
-            acc = (g * (m3 - m1 - mu * m2)) / (m1 + m2 + m3);
+            acc = (g * (m3 - m1 - mu * m2)) / (m1 + m2 + m3);       
             particle[] px = {p1, p2, p3}; //Creates array for 3 particles then returns it.
             return px;
         }

@@ -60,6 +60,16 @@
   <metadata name="forceTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="assumptions.Text" xml:space="preserve">
+    <value>Important information
+
+A force is an action causing an object to accelerate in a certain direction, 
+As shown by Newton's Second Law (F = ma). This program allows you to apply forces on a particle
+in two components (horizontal and vertical) and observe the motion of a particle with those forces applied. 
+As the forces applied are constant, the acceleration of the object is constant.
+
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>77</value>
   </metadata>

@@ -60,4 +60,19 @@
   <metadata name="projTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="assumptions.Text" xml:space="preserve">
+    <value>Important information
+
+No air resistance is taken into account as we model the projectile as a particle.
+
+The only force acting on the particle is its own weight (mg) due to gravity in the vertical direction, 
+Using newton's second law (F=ma), mg = ma hence a = g in the downwards direction for any projectile.
+
+Horizontal acceleration is zero as no forces act horizontally. This is why overall acceleration is 9.8ms¯² as shown.
+
+As acceleration is constant in the vertical direction, 
+we can use SUVAT equations to model the vertical motion.
+In horizontal direction we can simply use speed = distance/time due to constant velocity.
+</value>
+  </data>
 </root>

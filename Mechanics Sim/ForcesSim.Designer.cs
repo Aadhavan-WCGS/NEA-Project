@@ -30,6 +30,7 @@ namespace Mechanics_Sim
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForcesSim));
             this.switchBtn = new System.Windows.Forms.Button();
             this.forceTimer = new System.Windows.Forms.Timer(this.components);
             this.xforceLabel = new System.Windows.Forms.Label();
@@ -42,11 +43,16 @@ namespace Mechanics_Sim
             this.timeTxt = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.learnBox = new System.Windows.Forms.CheckBox();
             this.xfBox = new System.Windows.Forms.NumericUpDown();
             this.yfBox = new System.Windows.Forms.NumericUpDown();
             this.massBox = new System.Windows.Forms.NumericUpDown();
             this.exitBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.assumptions = new System.Windows.Forms.Label();
+            this.massUnitLabel = new System.Windows.Forms.Label();
+            this.xfUnitLabel = new System.Windows.Forms.Label();
+            this.yfUnitLabel = new System.Windows.Forms.Label();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xfBox)).BeginInit();
@@ -120,7 +126,7 @@ namespace Mechanics_Sim
             // 
             this.massLabel.AutoSize = true;
             this.massLabel.ForeColor = System.Drawing.Color.White;
-            this.massLabel.Location = new System.Drawing.Point(29, 54);
+            this.massLabel.Location = new System.Drawing.Point(6, 59);
             this.massLabel.Name = "massLabel";
             this.massLabel.Size = new System.Drawing.Size(37, 15);
             this.massLabel.TabIndex = 11;
@@ -173,6 +179,9 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.yfUnitLabel);
+            this.controlPanel.Controls.Add(this.xfUnitLabel);
+            this.controlPanel.Controls.Add(this.learnBox);
             this.controlPanel.Controls.Add(this.xfBox);
             this.controlPanel.Controls.Add(this.yfBox);
             this.controlPanel.Controls.Add(this.massBox);
@@ -182,10 +191,24 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.yforceLabel);
             this.controlPanel.Controls.Add(this.xforceLabel);
             this.controlPanel.Controls.Add(this.switchBtn);
-            this.controlPanel.Location = new System.Drawing.Point(296, 598);
+            this.controlPanel.Controls.Add(this.massUnitLabel);
+            this.controlPanel.Location = new System.Drawing.Point(22, 599);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1004, 138);
+            this.controlPanel.Size = new System.Drawing.Size(1227, 138);
             this.controlPanel.TabIndex = 16;
+            // 
+            // learnBox
+            // 
+            this.learnBox.AutoSize = true;
+            this.learnBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.learnBox.ForeColor = System.Drawing.Color.White;
+            this.learnBox.Location = new System.Drawing.Point(1008, 57);
+            this.learnBox.Name = "learnBox";
+            this.learnBox.Size = new System.Drawing.Size(127, 29);
+            this.learnBox.TabIndex = 53;
+            this.learnBox.Text = "Learn more";
+            this.learnBox.UseVisualStyleBackColor = true;
+            this.learnBox.CheckedChanged += new System.EventHandler(this.learnBox_CheckedChanged);
             // 
             // xfBox
             // 
@@ -216,7 +239,7 @@ namespace Mechanics_Sim
             // massBox
             // 
             this.massBox.DecimalPlaces = 2;
-            this.massBox.Location = new System.Drawing.Point(72, 52);
+            this.massBox.Location = new System.Drawing.Point(49, 57);
             this.massBox.Minimum = new decimal(new int[] {
             1,
             0,
@@ -261,6 +284,49 @@ namespace Mechanics_Sim
             this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
+            // assumptions
+            // 
+            this.assumptions.AutoSize = true;
+            this.assumptions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.assumptions.ForeColor = System.Drawing.Color.White;
+            this.assumptions.Location = new System.Drawing.Point(12, 9);
+            this.assumptions.Name = "assumptions";
+            this.assumptions.Size = new System.Drawing.Size(914, 175);
+            this.assumptions.TabIndex = 35;
+            this.assumptions.Text = resources.GetString("assumptions.Text");
+            this.assumptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.assumptions.Visible = false;
+            // 
+            // massUnitLabel
+            // 
+            this.massUnitLabel.AutoSize = true;
+            this.massUnitLabel.ForeColor = System.Drawing.Color.White;
+            this.massUnitLabel.Location = new System.Drawing.Point(111, 59);
+            this.massUnitLabel.Name = "massUnitLabel";
+            this.massUnitLabel.Size = new System.Drawing.Size(21, 15);
+            this.massUnitLabel.TabIndex = 54;
+            this.massUnitLabel.Text = "Kg";
+            // 
+            // xfUnitLabel
+            // 
+            this.xfUnitLabel.AutoSize = true;
+            this.xfUnitLabel.ForeColor = System.Drawing.Color.White;
+            this.xfUnitLabel.Location = new System.Drawing.Point(321, 59);
+            this.xfUnitLabel.Name = "xfUnitLabel";
+            this.xfUnitLabel.Size = new System.Drawing.Size(16, 15);
+            this.xfUnitLabel.TabIndex = 55;
+            this.xfUnitLabel.Text = "N";
+            // 
+            // yfUnitLabel
+            // 
+            this.yfUnitLabel.AutoSize = true;
+            this.yfUnitLabel.ForeColor = System.Drawing.Color.White;
+            this.yfUnitLabel.Location = new System.Drawing.Point(321, 88);
+            this.yfUnitLabel.Name = "yfUnitLabel";
+            this.yfUnitLabel.Size = new System.Drawing.Size(16, 15);
+            this.yfUnitLabel.TabIndex = 56;
+            this.yfUnitLabel.Text = "N";
+            // 
             // ForcesSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -268,6 +334,7 @@ namespace Mechanics_Sim
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(1313, 749);
+            this.Controls.Add(this.assumptions);
             this.Controls.Add(this.controlPanel);
             this.Controls.Add(this.statsPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -284,6 +351,7 @@ namespace Mechanics_Sim
             ((System.ComponentModel.ISupportInitialize)(this.yfBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.massBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -306,5 +374,10 @@ namespace Mechanics_Sim
         private System.Windows.Forms.NumericUpDown xfBox;
         private System.Windows.Forms.NumericUpDown yfBox;
         private System.Windows.Forms.NumericUpDown massBox;
+        private System.Windows.Forms.CheckBox learnBox;
+        private System.Windows.Forms.Label assumptions;
+        private System.Windows.Forms.Label yfUnitLabel;
+        private System.Windows.Forms.Label xfUnitLabel;
+        private System.Windows.Forms.Label massUnitLabel;
     }
 }

@@ -114,6 +114,7 @@ namespace Mechanics_Sim
                     pulleyOne.Location = new Point(startX - table.Width, startY);
                     pulleyOne.Show();
                     mass3Box.Show();
+                    massUnitLabel3.Show();
                     mass3Label.Show();
                     p1.Show();
                     p1.Location = new Point(table.Left - p1.Width, startY + gap);
@@ -123,6 +124,7 @@ namespace Mechanics_Sim
                 {
                     pulleyOne.Hide();
                     mass3Box.Hide();
+                    massUnitLabel3.Hide();
                     mass3Label.Hide();
                     p1.Hide();
                     tn2Txt.Hide();
@@ -137,6 +139,7 @@ namespace Mechanics_Sim
                 checkBoxPulley.Hide();
                 p1.Hide();
                 mass3Box.Hide();
+                massUnitLabel3.Hide();
                 mass3Label.Hide();
                 tn2Txt.Hide();
                 p2.Location = new Point(startX - pulley.Width / 2 - 20, startY + gap);

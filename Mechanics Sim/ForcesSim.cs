@@ -84,5 +84,10 @@ namespace Mechanics_Sim
         {
             this.Close();
         }
+
+        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        {
+            assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
+        }
     }
 }

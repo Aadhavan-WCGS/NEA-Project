@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Mechanics_Sim
 {
-    public partial class ProjectilesSim : Form
+    public partial class LearnCheckBox : Form
     {
         PictureBox proj;
         bool start = false;
@@ -16,10 +16,11 @@ namespace Mechanics_Sim
         double timeNum = 0;
         int startX;
         int startY;
-        public ProjectilesSim()
+        public LearnCheckBox()
         {
             InitializeComponent();  
             simForms.initiate(statsPanel, controlPanel, this); //Initialise ui elements.
+            assumptions.Anchor = (AnchorStyles.Top | AnchorStyles.Left); //Keeps Assumptions label at top right of screen.
             startX = 60;
             startY = this.Height - 40;
             //Appropriate pictureboxes are defined below.
@@ -84,9 +85,16 @@ namespace Mechanics_Sim
             reset();
         }
 
+
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        {
+            assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
     }
 }

@@ -54,6 +54,13 @@ namespace Mechanics_Sim
 
         }
 
+
+
+        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        {
+            assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
+        }
+
         private void resetBtn_Click(object sender, EventArgs e)
         {
             reset();
@@ -108,7 +115,7 @@ namespace Mechanics_Sim
             double acc = sim.sub(accEqn, timeNum / 1000);
             double vel = sim.sub(velEqn, (timeNum / 1000));
             double dis = sim.sub(disEqn, (timeNum / 1000));
-            if (!oneD)
+            if (!oneD) //Initialises y component of motion if the 2D case is enabled.
             {
                 double accY = sim.sub(accEqnY, timeNum / 1000);
                 double velY = sim.sub(velEqnY, (timeNum / 1000));
@@ -122,6 +129,7 @@ namespace Mechanics_Sim
             else
             {
                 p.setForce(acc, 0); //Sets force as acceleration, as mass = 1kg.
+                //Updates statistics.
                 speedTxt.Text = "Speed: " + Math.Round(vel, 2) + " ms\u207b\xB9";
                 accTxt.Text = "Acceleration: " + Math.Round(acc, 2) + "ms\u207b\xB2";
                 dispTxt.Text = "Displacement: " + Math.Round(dis, 2) + "m";
