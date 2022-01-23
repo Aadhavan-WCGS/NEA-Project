@@ -10,12 +10,13 @@ namespace Mechanics_Sim
 {
     public partial class varAccSim : Form
     {
-        PictureBox ball;
+        //Declaring variables with scope of the simulation form.
+        PictureBox ball; //Initialise all pictureboxes to be used.
         bool oneD = true;
         bool start = false;
         particle p; //Particle instantiation.
-        double timeNum = 0;
-        int startX, startY;
+        double timeNum = 0; //Variable to store time elapsed, set to zero initially.
+        int startX, startY; //Starting coordinates of particle.
         double[] disEqn, disEqnY, accEqn, velEqn, accEqnY, velEqnY;  //Global variables to store equations.
         varAcc sim = new varAcc();
         public varAccSim()
@@ -39,8 +40,9 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
-            ball.Location = new Point(startX, startY);
-            timeNum = 0;
+            ball.Location = new Point(startX, startY); //Set particle picturebox to initial position.
+            timeNum = 0; //Reset time elapsed to zero,
+            //Below code resets text in relevant labels for simulation.
             timeTxt.Text = "Time elapsed: ";
             accTxt.Text = "Acceleration: ";
             speedTxt.Text = "Speed: ";
@@ -62,13 +64,13 @@ namespace Mechanics_Sim
         }
 
         private void resetBtn_Click(object sender, EventArgs e)
-        {
-            reset();
+        { 
+            reset(); //Call reset routine on button click.
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //Close window when exit button clicked.
         }
 
         private void switchBtn_Click(object sender, EventArgs e)
@@ -78,11 +80,12 @@ namespace Mechanics_Sim
                 //Following lines instantiate simulation and appropriately configure the particle.
                 double[] coefficients = {Convert.ToDouble(x0Box.Text), Convert.ToDouble(x1Box.Text), Convert.ToDouble(x2Box.Text), Convert.ToDouble(x3Box.Text)};
                 disEqn = coefficients;
-                p = sim.varAccSetup(disEqn);
-                if (!oneD)
+                p = sim.varAccSetup(disEqn); //Calls routine to setup simulation, returning a configured particle.
+                if (!oneD) //If simulation is in 2D mode.
                 {
-                    double[] coefficientsY = { Convert.ToDouble(y0Box.Text), Convert.ToDouble(y1Box.Text), Convert.ToDouble(y2Box.Text), Convert.ToDouble(y3Box.Text) };
-                    sim.varAccSetupY(coefficientsY);
+                    double[] coefficientsY = { Convert.ToDouble(y0Box.Text), Convert.ToDouble(y1Box.Text), Convert.ToDouble(y2Box.Text), Convert.ToDouble(y3Box.Text) }; //Retieves coefficients of y component displacement and stores in an array.
+                    sim.varAccSetupY(coefficientsY); //Calls method to setup y component motion, by passing in the above array.
+                    //Retrieves equations needed for y component motion.
                     disEqnY = coefficientsY;
                     velEqnY = sim.getVelY();
                     accEqnY = sim.getAccY();
@@ -90,9 +93,10 @@ namespace Mechanics_Sim
                     accEqnYTxt.Text = "Acceleration equation Y:      " + accEqnY[0].ToString() + " + " + accEqnY[1].ToString() + "t +" + accEqnY[2].ToString() + "t\xB2 +" + accEqnY[3].ToString() + "t\xB3";
                 }
                 start = true;
-                // Following lines display relevant stats by calling the getters for the simulation.      
+                //Retrieves equations needed for x component motion.
                 velEqn = sim.getVel();
                 accEqn = sim.getAcc();
+                // Following lines display relevant stats.
                 velEqnTxt.Text = "Velocity equation X:      " + velEqn[0].ToString() + " + " + velEqn[1].ToString() + "t +" + velEqn[2].ToString() + "t\xB2 +" + velEqn[3].ToString() + "t\xB3";
                 timeTxt.Text = "Time elapsed: ";
                 accTxt.Text = "Acceleration : ";
@@ -108,7 +112,7 @@ namespace Mechanics_Sim
             }
         }
 
-        private void varAccTimer_Tick(object sender, EventArgs e)
+        private void varAccTimer_Tick(object sender, EventArgs e) //Timer function, responible for animation.
         {
             simForms.time(ref timeNum, ref start, false, varAccTimer);
             //Finds current value of acceleration, velocity, displacement.
@@ -143,13 +147,14 @@ namespace Mechanics_Sim
 
         }
 
-        private void dimensionSwitch_Click(object sender, EventArgs e)
+        private void dimensionSwitch_Click(object sender, EventArgs e) //Button to toggle between 1D and 2D.
         {
             oneD = !oneD; //Flips boolean used to check if 1D is used.
             velEqnYTxt.Visible = !velEqnYTxt.Visible;
             accEqnYTxt.Visible = !accEqnYTxt.Visible;
             string ybox = "y0Box"; //Creates string used to identify NumericUpDown controls.
             string ylabels = "t0LabelY"; //Creates string used to identify label controls.
+            //Below loop is used to toggle visibility all the required labels using their name.
             for (int i = 0; i < 4; i++){
                 Control boxy = controlPanel.Controls[ybox];
                 Control labely = controlPanel.Controls[ylabels];
@@ -158,7 +163,7 @@ namespace Mechanics_Sim
                 ybox = "y" + (i + 1) + "Box";
                 ylabels = "t" + (i + 1) + "LabelY";
             }
-            bracketL.Visible = !bracketL.Visible; bracketR.Visible = !bracketR.Visible;
+            bracketL.Visible = !bracketL.Visible; bracketR.Visible = !bracketR.Visible;  //Toggles visibility of the large pair of brackets (used in 2D only).
             if (dimensionSwitch.Text == "1D"){dimensionSwitch.Text = "2D";}else{dimensionSwitch.Text = "1D";}   //Changes text in dimension switch button to show what mode program is in.
             reset();
         }

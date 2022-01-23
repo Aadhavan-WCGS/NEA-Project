@@ -179,7 +179,7 @@ namespace Mechanics_Sim
     {
         private double acc; //Acceleration
         private double t1, t2; //Tension
-        private double g = 9.81; 
+        private double g = 9.8; 
 
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle[] pulleySetup(double m1, double m2)
@@ -242,7 +242,7 @@ namespace Mechanics_Sim
         private double range;
         private double maxH;
         private double tof;
-        private double g = 9.81;
+        private double g = 9.8;
         //This method instantiates a particle, setting appropriate forces and mass and then returning the configured particle for this simulation.
         public particle projectilesSetup(double u, double theta)
         {

@@ -43,18 +43,27 @@ namespace Mechanics_Sim
             this.switchBtn = new System.Windows.Forms.Button();
             this.projTimer = new System.Windows.Forms.Timer(this.components);
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.ansUnitsLabel = new System.Windows.Forms.Label();
+            this.checkBtn = new System.Windows.Forms.Button();
+            this.ansLabel = new System.Windows.Forms.Label();
+            this.ansBox = new System.Windows.Forms.NumericUpDown();
+            this.generateQuestion = new System.Windows.Forms.Button();
+            this.testMode = new System.Windows.Forms.Button();
+            this.uBox = new System.Windows.Forms.NumericUpDown();
             this.angleBox = new System.Windows.Forms.NumericUpDown();
             this.degreeLabel = new System.Windows.Forms.Label();
             this.learnBox = new System.Windows.Forms.CheckBox();
-            this.uBox = new System.Windows.Forms.NumericUpDown();
             this.exitBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.speedLabel = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.assumptions = new System.Windows.Forms.Label();
-            this.speedLabel = new System.Windows.Forms.Label();
+            this.questionLabel = new System.Windows.Forms.Label();
+            this.correctLabel = new System.Windows.Forms.Label();
             this.controlPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.angleBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ansBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angleBox)).BeginInit();
             this.statsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,7 +149,7 @@ namespace Mechanics_Sim
             this.uTxt.AutoSize = true;
             this.uTxt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uTxt.ForeColor = System.Drawing.Color.White;
-            this.uTxt.Location = new System.Drawing.Point(63, 25);
+            this.uTxt.Location = new System.Drawing.Point(75, 83);
             this.uTxt.Name = "uTxt";
             this.uTxt.Size = new System.Drawing.Size(123, 25);
             this.uTxt.TabIndex = 24;
@@ -151,7 +160,7 @@ namespace Mechanics_Sim
             this.aopTxt.AutoSize = true;
             this.aopTxt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.aopTxt.ForeColor = System.Drawing.Color.White;
-            this.aopTxt.Location = new System.Drawing.Point(3, 0);
+            this.aopTxt.Location = new System.Drawing.Point(15, 58);
             this.aopTxt.Name = "aopTxt";
             this.aopTxt.Size = new System.Drawing.Size(183, 25);
             this.aopTxt.TabIndex = 25;
@@ -163,7 +172,7 @@ namespace Mechanics_Sim
             this.switchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.switchBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.switchBtn.ForeColor = System.Drawing.Color.Black;
-            this.switchBtn.Location = new System.Drawing.Point(291, 0);
+            this.switchBtn.Location = new System.Drawing.Point(303, 58);
             this.switchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.switchBtn.Name = "switchBtn";
             this.switchBtn.Size = new System.Drawing.Size(230, 52);
@@ -179,6 +188,13 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.correctLabel);
+            this.controlPanel.Controls.Add(this.ansUnitsLabel);
+            this.controlPanel.Controls.Add(this.checkBtn);
+            this.controlPanel.Controls.Add(this.ansLabel);
+            this.controlPanel.Controls.Add(this.ansBox);
+            this.controlPanel.Controls.Add(this.generateQuestion);
+            this.controlPanel.Controls.Add(this.testMode);
             this.controlPanel.Controls.Add(this.uBox);
             this.controlPanel.Controls.Add(this.angleBox);
             this.controlPanel.Controls.Add(this.degreeLabel);
@@ -189,15 +205,110 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.aopTxt);
             this.controlPanel.Controls.Add(this.uTxt);
             this.controlPanel.Controls.Add(this.speedLabel);
-            this.controlPanel.Location = new System.Drawing.Point(12, 685);
+            this.controlPanel.Location = new System.Drawing.Point(12, 631);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1451, 113);
+            this.controlPanel.Size = new System.Drawing.Size(1451, 167);
             this.controlPanel.TabIndex = 27;
+            // 
+            // ansUnitsLabel
+            // 
+            this.ansUnitsLabel.AutoSize = true;
+            this.ansUnitsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ansUnitsLabel.ForeColor = System.Drawing.Color.White;
+            this.ansUnitsLabel.Location = new System.Drawing.Point(158, 22);
+            this.ansUnitsLabel.Name = "ansUnitsLabel";
+            this.ansUnitsLabel.Size = new System.Drawing.Size(53, 25);
+            this.ansUnitsLabel.TabIndex = 38;
+            this.ansUnitsLabel.Text = "units";
+            this.ansUnitsLabel.Visible = false;
+            // 
+            // checkBtn
+            // 
+            this.checkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.checkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBtn.ForeColor = System.Drawing.Color.Black;
+            this.checkBtn.Location = new System.Drawing.Point(303, 58);
+            this.checkBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBtn.Name = "checkBtn";
+            this.checkBtn.Size = new System.Drawing.Size(230, 52);
+            this.checkBtn.TabIndex = 37;
+            this.checkBtn.Text = "Check Answer";
+            this.checkBtn.UseMnemonic = false;
+            this.checkBtn.UseVisualStyleBackColor = false;
+            this.checkBtn.Visible = false;
+            this.checkBtn.Click += new System.EventHandler(this.checkBtn_Click);
+            // 
+            // ansLabel
+            // 
+            this.ansLabel.AutoSize = true;
+            this.ansLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ansLabel.ForeColor = System.Drawing.Color.White;
+            this.ansLabel.Location = new System.Drawing.Point(15, 22);
+            this.ansLabel.Name = "ansLabel";
+            this.ansLabel.Size = new System.Drawing.Size(78, 25);
+            this.ansLabel.TabIndex = 37;
+            this.ansLabel.Text = "Answer:";
+            this.ansLabel.Visible = false;
+            // 
+            // ansBox
+            // 
+            this.ansBox.DecimalPlaces = 2;
+            this.ansBox.Location = new System.Drawing.Point(99, 24);
+            this.ansBox.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.ansBox.Name = "ansBox";
+            this.ansBox.Size = new System.Drawing.Size(53, 23);
+            this.ansBox.TabIndex = 36;
+            this.ansBox.Visible = false;
+            // 
+            // generateQuestion
+            // 
+            this.generateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.generateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.generateQuestion.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.generateQuestion.ForeColor = System.Drawing.Color.Black;
+            this.generateQuestion.Location = new System.Drawing.Point(539, 58);
+            this.generateQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.generateQuestion.Name = "generateQuestion";
+            this.generateQuestion.Size = new System.Drawing.Size(230, 52);
+            this.generateQuestion.TabIndex = 36;
+            this.generateQuestion.Text = "Next Question";
+            this.generateQuestion.UseMnemonic = false;
+            this.generateQuestion.UseVisualStyleBackColor = false;
+            this.generateQuestion.Visible = false;
+            this.generateQuestion.Click += new System.EventHandler(this.generateQuestion_Click);
+            // 
+            // testMode
+            // 
+            this.testMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.testMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.testMode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.testMode.ForeColor = System.Drawing.Color.Black;
+            this.testMode.Location = new System.Drawing.Point(775, 58);
+            this.testMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.testMode.Name = "testMode";
+            this.testMode.Size = new System.Drawing.Size(230, 52);
+            this.testMode.TabIndex = 38;
+            this.testMode.Text = "Test yourself";
+            this.testMode.UseVisualStyleBackColor = false;
+            this.testMode.Click += new System.EventHandler(this.testMode_Click);
+            // 
+            // uBox
+            // 
+            this.uBox.DecimalPlaces = 2;
+            this.uBox.Location = new System.Drawing.Point(204, 87);
+            this.uBox.Name = "uBox";
+            this.uBox.Size = new System.Drawing.Size(53, 23);
+            this.uBox.TabIndex = 32;
             // 
             // angleBox
             // 
             this.angleBox.DecimalPlaces = 2;
-            this.angleBox.Location = new System.Drawing.Point(192, 1);
+            this.angleBox.Location = new System.Drawing.Point(204, 59);
             this.angleBox.Maximum = new decimal(new int[] {
             90,
             0,
@@ -222,7 +333,7 @@ namespace Mechanics_Sim
             this.degreeLabel.AutoSize = true;
             this.degreeLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.degreeLabel.ForeColor = System.Drawing.Color.White;
-            this.degreeLabel.Location = new System.Drawing.Point(242, -5);
+            this.degreeLabel.Location = new System.Drawing.Point(254, 53);
             this.degreeLabel.Name = "degreeLabel";
             this.degreeLabel.Size = new System.Drawing.Size(19, 25);
             this.degreeLabel.TabIndex = 36;
@@ -233,7 +344,7 @@ namespace Mechanics_Sim
             this.learnBox.AutoSize = true;
             this.learnBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.learnBox.ForeColor = System.Drawing.Color.White;
-            this.learnBox.Location = new System.Drawing.Point(1002, 12);
+            this.learnBox.Location = new System.Drawing.Point(1271, 72);
             this.learnBox.Name = "learnBox";
             this.learnBox.Size = new System.Drawing.Size(127, 29);
             this.learnBox.TabIndex = 35;
@@ -241,21 +352,13 @@ namespace Mechanics_Sim
             this.learnBox.UseVisualStyleBackColor = true;
             this.learnBox.CheckedChanged += new System.EventHandler(this.learnBox_CheckedChanged);
             // 
-            // uBox
-            // 
-            this.uBox.DecimalPlaces = 2;
-            this.uBox.Location = new System.Drawing.Point(192, 29);
-            this.uBox.Name = "uBox";
-            this.uBox.Size = new System.Drawing.Size(53, 23);
-            this.uBox.TabIndex = 32;
-            // 
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(763, 0);
+            this.exitBtn.Location = new System.Drawing.Point(1011, 58);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(230, 52);
@@ -270,7 +373,7 @@ namespace Mechanics_Sim
             this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetBtn.ForeColor = System.Drawing.Color.Black;
-            this.resetBtn.Location = new System.Drawing.Point(527, 0);
+            this.resetBtn.Location = new System.Drawing.Point(539, 58);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(230, 52);
@@ -278,6 +381,17 @@ namespace Mechanics_Sim
             this.resetBtn.Text = "Reset";
             this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
+            // 
+            // speedLabel
+            // 
+            this.speedLabel.AutoSize = true;
+            this.speedLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.speedLabel.ForeColor = System.Drawing.Color.White;
+            this.speedLabel.Location = new System.Drawing.Point(254, 85);
+            this.speedLabel.Name = "speedLabel";
+            this.speedLabel.Size = new System.Drawing.Size(51, 25);
+            this.speedLabel.TabIndex = 37;
+            this.speedLabel.Text = "ms¯¹";
             // 
             // statsPanel
             // 
@@ -306,16 +420,29 @@ namespace Mechanics_Sim
             this.assumptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.assumptions.Visible = false;
             // 
-            // speedLabel
+            // questionLabel
             // 
-            this.speedLabel.AutoSize = true;
-            this.speedLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.speedLabel.ForeColor = System.Drawing.Color.White;
-            this.speedLabel.Location = new System.Drawing.Point(242, 27);
-            this.speedLabel.Name = "speedLabel";
-            this.speedLabel.Size = new System.Drawing.Size(51, 25);
-            this.speedLabel.TabIndex = 37;
-            this.speedLabel.Text = "ms¯¹";
+            this.questionLabel.AutoSize = true;
+            this.questionLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.questionLabel.ForeColor = System.Drawing.Color.White;
+            this.questionLabel.Location = new System.Drawing.Point(12, 84);
+            this.questionLabel.Name = "questionLabel";
+            this.questionLabel.Size = new System.Drawing.Size(88, 25);
+            this.questionLabel.TabIndex = 35;
+            this.questionLabel.Text = "Question\r\n";
+            this.questionLabel.Visible = false;
+            // 
+            // correctLabel
+            // 
+            this.correctLabel.AutoSize = true;
+            this.correctLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.correctLabel.ForeColor = System.Drawing.Color.White;
+            this.correctLabel.Location = new System.Drawing.Point(217, 22);
+            this.correctLabel.Name = "correctLabel";
+            this.correctLabel.Size = new System.Drawing.Size(78, 25);
+            this.correctLabel.TabIndex = 39;
+            this.correctLabel.Text = "Answer:";
+            this.correctLabel.Visible = false;
             // 
             // LearnCheckBox
             // 
@@ -323,6 +450,7 @@ namespace Mechanics_Sim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(1508, 764);
+            this.Controls.Add(this.questionLabel);
             this.Controls.Add(this.assumptions);
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.controlPanel);
@@ -332,8 +460,9 @@ namespace Mechanics_Sim
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.angleBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ansBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.angleBox)).EndInit();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -364,5 +493,13 @@ namespace Mechanics_Sim
         private System.Windows.Forms.CheckBox learnBox;
         private System.Windows.Forms.Label degreeLabel;
         private System.Windows.Forms.Label speedLabel;
+        private System.Windows.Forms.Label questionLabel;
+        private System.Windows.Forms.Button testMode;
+        private System.Windows.Forms.Button generateQuestion;
+        private System.Windows.Forms.Button checkBtn;
+        private System.Windows.Forms.NumericUpDown ansBox;
+        private System.Windows.Forms.Label ansLabel;
+        private System.Windows.Forms.Label ansUnitsLabel;
+        private System.Windows.Forms.Label correctLabel;
     }
 }

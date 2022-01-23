@@ -30,7 +30,11 @@ namespace Mechanics_Sim
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(onePulleySim));
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.massUnitLabel3 = new System.Windows.Forms.Label();
+            this.massUnitLabel2 = new System.Windows.Forms.Label();
+            this.massUnitLabel1 = new System.Windows.Forms.Label();
             this.coeffBox = new System.Windows.Forms.NumericUpDown();
             this.mass3Box = new System.Windows.Forms.NumericUpDown();
             this.mass2Box = new System.Windows.Forms.NumericUpDown();
@@ -52,9 +56,8 @@ namespace Mechanics_Sim
             this.StatsTxt = new System.Windows.Forms.Label();
             this.speedTxt = new System.Windows.Forms.Label();
             this.pullTimer = new System.Windows.Forms.Timer(this.components);
-            this.massUnitLabel1 = new System.Windows.Forms.Label();
-            this.massUnitLabel2 = new System.Windows.Forms.Label();
-            this.massUnitLabel3 = new System.Windows.Forms.Label();
+            this.assumptions = new System.Windows.Forms.Label();
+            this.learnBox = new System.Windows.Forms.CheckBox();
             this.controlPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coeffBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass3Box)).BeginInit();
@@ -65,6 +68,7 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.learnBox);
             this.controlPanel.Controls.Add(this.massUnitLabel3);
             this.controlPanel.Controls.Add(this.massUnitLabel2);
             this.controlPanel.Controls.Add(this.massUnitLabel1);
@@ -85,6 +89,36 @@ namespace Mechanics_Sim
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(1142, 125);
             this.controlPanel.TabIndex = 17;
+            // 
+            // massUnitLabel3
+            // 
+            this.massUnitLabel3.AutoSize = true;
+            this.massUnitLabel3.ForeColor = System.Drawing.Color.White;
+            this.massUnitLabel3.Location = new System.Drawing.Point(328, 95);
+            this.massUnitLabel3.Name = "massUnitLabel3";
+            this.massUnitLabel3.Size = new System.Drawing.Size(21, 15);
+            this.massUnitLabel3.TabIndex = 57;
+            this.massUnitLabel3.Text = "Kg";
+            // 
+            // massUnitLabel2
+            // 
+            this.massUnitLabel2.AutoSize = true;
+            this.massUnitLabel2.ForeColor = System.Drawing.Color.White;
+            this.massUnitLabel2.Location = new System.Drawing.Point(328, 65);
+            this.massUnitLabel2.Name = "massUnitLabel2";
+            this.massUnitLabel2.Size = new System.Drawing.Size(21, 15);
+            this.massUnitLabel2.TabIndex = 56;
+            this.massUnitLabel2.Text = "Kg";
+            // 
+            // massUnitLabel1
+            // 
+            this.massUnitLabel1.AutoSize = true;
+            this.massUnitLabel1.ForeColor = System.Drawing.Color.White;
+            this.massUnitLabel1.Location = new System.Drawing.Point(328, 33);
+            this.massUnitLabel1.Name = "massUnitLabel1";
+            this.massUnitLabel1.Size = new System.Drawing.Size(21, 15);
+            this.massUnitLabel1.TabIndex = 55;
+            this.massUnitLabel1.Text = "Kg";
             // 
             // coeffBox
             // 
@@ -200,7 +234,7 @@ namespace Mechanics_Sim
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(913, 39);
+            this.exitBtn.Location = new System.Drawing.Point(771, 42);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(196, 52);
@@ -215,7 +249,7 @@ namespace Mechanics_Sim
             this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetBtn.ForeColor = System.Drawing.Color.Black;
-            this.resetBtn.Location = new System.Drawing.Point(711, 39);
+            this.resetBtn.Location = new System.Drawing.Point(569, 42);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(196, 52);
@@ -240,7 +274,7 @@ namespace Mechanics_Sim
             this.switchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.switchBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.switchBtn.ForeColor = System.Drawing.Color.Black;
-            this.switchBtn.Location = new System.Drawing.Point(509, 39);
+            this.switchBtn.Location = new System.Drawing.Point(367, 42);
             this.switchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.switchBtn.Name = "switchBtn";
             this.switchBtn.Size = new System.Drawing.Size(196, 52);
@@ -343,35 +377,31 @@ namespace Mechanics_Sim
             this.pullTimer.Interval = 20;
             this.pullTimer.Tick += new System.EventHandler(this.pullTimer_Tick);
             // 
-            // massUnitLabel1
+            // assumptions
             // 
-            this.massUnitLabel1.AutoSize = true;
-            this.massUnitLabel1.ForeColor = System.Drawing.Color.White;
-            this.massUnitLabel1.Location = new System.Drawing.Point(328, 33);
-            this.massUnitLabel1.Name = "massUnitLabel1";
-            this.massUnitLabel1.Size = new System.Drawing.Size(21, 15);
-            this.massUnitLabel1.TabIndex = 55;
-            this.massUnitLabel1.Text = "Kg";
+            this.assumptions.AutoSize = true;
+            this.assumptions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.assumptions.ForeColor = System.Drawing.Color.White;
+            this.assumptions.Location = new System.Drawing.Point(12, 9);
+            this.assumptions.Name = "assumptions";
+            this.assumptions.Size = new System.Drawing.Size(729, 300);
+            this.assumptions.TabIndex = 36;
+            this.assumptions.Text = resources.GetString("assumptions.Text");
+            this.assumptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.assumptions.Visible = false;
             // 
-            // massUnitLabel2
+            // learnBox
             // 
-            this.massUnitLabel2.AutoSize = true;
-            this.massUnitLabel2.ForeColor = System.Drawing.Color.White;
-            this.massUnitLabel2.Location = new System.Drawing.Point(328, 65);
-            this.massUnitLabel2.Name = "massUnitLabel2";
-            this.massUnitLabel2.Size = new System.Drawing.Size(21, 15);
-            this.massUnitLabel2.TabIndex = 56;
-            this.massUnitLabel2.Text = "Kg";
-            // 
-            // massUnitLabel3
-            // 
-            this.massUnitLabel3.AutoSize = true;
-            this.massUnitLabel3.ForeColor = System.Drawing.Color.White;
-            this.massUnitLabel3.Location = new System.Drawing.Point(328, 95);
-            this.massUnitLabel3.Name = "massUnitLabel3";
-            this.massUnitLabel3.Size = new System.Drawing.Size(21, 15);
-            this.massUnitLabel3.TabIndex = 57;
-            this.massUnitLabel3.Text = "Kg";
+            this.learnBox.AutoSize = true;
+            this.learnBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.learnBox.ForeColor = System.Drawing.Color.White;
+            this.learnBox.Location = new System.Drawing.Point(973, 53);
+            this.learnBox.Name = "learnBox";
+            this.learnBox.Size = new System.Drawing.Size(127, 29);
+            this.learnBox.TabIndex = 58;
+            this.learnBox.Text = "Learn more";
+            this.learnBox.UseVisualStyleBackColor = true;
+            this.learnBox.CheckedChanged += new System.EventHandler(this.learnBox_CheckedChanged);
             // 
             // onePulleySim
             // 
@@ -379,6 +409,7 @@ namespace Mechanics_Sim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(1249, 599);
+            this.Controls.Add(this.assumptions);
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.controlPanel);
             this.Name = "onePulleySim";
@@ -393,6 +424,7 @@ namespace Mechanics_Sim
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -423,5 +455,7 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Label massUnitLabel3;
         private System.Windows.Forms.Label massUnitLabel2;
         private System.Windows.Forms.Label massUnitLabel1;
+        private System.Windows.Forms.Label assumptions;
+        private System.Windows.Forms.CheckBox learnBox;
     }
 }

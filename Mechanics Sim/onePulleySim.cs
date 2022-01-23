@@ -10,13 +10,14 @@ namespace Mechanics_Sim
 {
     public partial class onePulleySim : Form
     {
+        //Declaring variables with scope of the simulation form.
         PictureBox pulley, pulleyOne, p1, p2, p3, table; //Initialise all pictureboxes to be used.
         bool useTable = false; //Used to check if simulation will use a pulley with a table, or just a standalone pulley.
         bool use2Pulley = false; //Used to check if simulation will use 2 pulleys with a table, or just a standalone pulley/ pulley with table.
         int tblH = 500; //Height of the table.
         int tblW = 1000; //Width of the table.
         bool start = false;
-        double timeNum = 0;
+        double timeNum = 0; //Variable to store time elapsed, set to zero initially.
         int startX; //Starting coordinates of pulley
         int startY;
         int gap = 300; //Initial length between pulley and mass.
@@ -94,7 +95,7 @@ namespace Mechanics_Sim
 
         public void reset()  //Resets displayed stats, picturebox locations, time and also stops timer.
         {
-            pulley.Location = new Point(startX, startY);
+            pulley.Location = new Point(startX, startY);  //Set pulley picturebox location to initial position.
             if (useTable)
             {
                 //Makes table appear if user ticked the table check box.
@@ -145,7 +146,7 @@ namespace Mechanics_Sim
                 p2.Location = new Point(startX - pulley.Width / 2 - 20, startY + gap);
                 p3.Location = new Point(startX + pulley.Width / 2 + 20, startY + gap);
             }
-            //Reset statistics.
+            //Below code resets text in relevant labels for simulation.
             timeNum = 0;
             timeTxt.Text = "Time elapsed: ";
             tnTxt.Text = "Tension: ";
@@ -159,7 +160,7 @@ namespace Mechanics_Sim
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
-            reset();
+            reset(); //Call reset routine on button click.
         }
 
         private void checkBoxPulley_CheckedChanged(object sender, EventArgs e)
@@ -168,9 +169,14 @@ namespace Mechanics_Sim
             reset();
         }
 
+        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        {
+            assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
+        }
+
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //Close window when exit button clicked.
         }
 
         private void onePulleySim_Paint(object sender, PaintEventArgs e)
@@ -192,14 +198,14 @@ namespace Mechanics_Sim
                 //Following lines instantiate simulation and appropriately configure the particle.
                 onePulley sim = new onePulley();
                 //Passes mass inputs into pulleySetup function, returns array of 2 particles configured for table or without table.
-                if (useTable)
+                if (useTable) //If statemtn to call routine to setup simulation depending on chosen pulley arrrangement, returning configured particles that are stored in an array.
                 {
-                    if (use2Pulley){masses = sim.pulleyTbl2Setup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text), Convert.ToDouble(mass3Box.Text), Convert.ToDouble(coeffBox.Text));}
+                    if (use2Pulley){masses = sim.pulleyTbl2Setup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text), Convert.ToDouble(mass3Box.Text), Convert.ToDouble(coeffBox.Text)); } 
                     else {masses = sim.pulleyTblSetup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text), Convert.ToDouble(coeffBox.Text));}
                 }
                 else
                 {
-                    masses = sim.pulleySetup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text));
+                    masses = sim.pulleySetup(Convert.ToDouble(mass1Box.Text), Convert.ToDouble(mass2Box.Text)); 
                 }
                 start = true;
                 // Following lines display relevant stats by calling the getters for the simulation.
@@ -214,10 +220,11 @@ namespace Mechanics_Sim
             }
         }
 
-        private void pullTimer_Tick(object sender, EventArgs e)
+        private void pullTimer_Tick(object sender, EventArgs e) //Timer function, responible for animation.
         {
             //Creates condition for which simulation must stop.
             bool condition;
+            //Sets appropriate boundary conditions depending on the pulley arrangement being used.
             if (useTable)
             {
                 if (use2Pulley)
@@ -234,8 +241,8 @@ namespace Mechanics_Sim
                 condition = (p2.Top <= pulley.Top + pulley.Height || p3.Top <= pulley.Top + pulley.Height || p3.Top >= this.Height || p2.Top >= this.Height);
             }
             simForms.time(ref timeNum, ref start, condition, pullTimer);
+
             //Call move method for pictureboxes, update stats.
-            
             if (use2Pulley) { masses[0].move(p1); masses[1].move(p2); masses[2].move(p3); }
             else
             {

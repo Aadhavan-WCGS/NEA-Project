@@ -10,11 +10,12 @@ namespace Mechanics_Sim
 {
     public partial class ForcesSim : Form
     {
-        PictureBox ball;
+        //Declaring variables with scope of the simulation form.
+        PictureBox ball; //Initialise all pictureboxes to be used.
         bool start = false;
-        particle p;
-        double timeNum = 0;
-        int startX;
+        particle p; //Particle instantiation.
+        double timeNum = 0; //Variable to store time elapsed, set to zero initially.
+        int startX; //Starting coordinates of particle.
         int startY;
         public ForcesSim()
         {
@@ -36,13 +37,13 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
-            ball.Location = new Point(startX, startY);
-            timeNum = 0;
-            timeTxt.Text = "Time elapsed: ";
+            ball.Location = new Point(startX, startY); //Sets particle picturebox location back to initial.
+            timeNum = 0; //Set time elapsed back to zero.
+            timeTxt.Text = "Time elapsed: "; //Following code resets text in all labels.
             rfTxt.Text = "Resultant Force: ";
             accTxt.Text = "Acceleration: ";
             speedTxt.Text = "Speed: ";
-            start = false;
+            start = false; //Sets start to false to indicate simulation is not running.
             forceTimer.Stop();
         }
     
@@ -52,7 +53,7 @@ namespace Mechanics_Sim
             {
                 //Following lines instantiate simulation and appropriately configure the particle.
                 forces sim = new forces();
-                p = sim.forcesSetup(Convert.ToDouble(massBox.Text), Convert.ToDouble(xfBox.Text), Convert.ToDouble(yfBox.Text)); 
+                p = sim.forcesSetup(Convert.ToDouble(massBox.Text), Convert.ToDouble(xfBox.Text), Convert.ToDouble(yfBox.Text)); //Calls routine to setup simulation, returning a configured particle.
                 start = true;
                 rfTxt.Text = "Resultant Force: " + sim.getRf() + " N";
                 accTxt.Text = "Acceleration: " + sim.getAcc() + " ms\u207b\xB2";
@@ -66,9 +67,9 @@ namespace Mechanics_Sim
             
         }
 
-        private void forceTimer_Tick(object sender, EventArgs e)
+        private void forceTimer_Tick(object sender, EventArgs e)  //Timer function, responible for animation.
         {
-            simForms.time(ref timeNum, ref start, (false), forceTimer);
+            simForms.time(ref timeNum, ref start, (false), forceTimer);  //Condition is simply false here as simulation continues indefinitely until user responds appropriately.
             //Call move method for pictureboxes, update stats.
             p.move(ball);
             speedTxt.Text = "Speed: " + p.getSpeed().ToString() + " ms\u207b\xB9"; 
@@ -77,12 +78,12 @@ namespace Mechanics_Sim
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
-            reset();
+            reset(); //Call reset routine on button click.
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //Close window when exit button clicked.
         }
 
         private void learnBox_CheckedChanged(object sender, EventArgs e)

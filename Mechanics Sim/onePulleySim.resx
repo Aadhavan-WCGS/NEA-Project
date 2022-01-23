@@ -60,4 +60,19 @@
   <metadata name="pullTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="assumptions.Text" xml:space="preserve">
+    <value>Important information
+
+Pulleys are smooth rotating discs on which a string passes over, 
+and objects can hang from this string. The weight of the masses can
+cause acceleration, and the tension in the strings are dependent on the 
+mass of the objects. Two important assumptions made are that the string is  
+inextensible (acceleration is the same throughout the string) and the pulley is smooth
+(tension is uniform within the string).
+
+
+
+
+</value>
+  </data>
 </root>
