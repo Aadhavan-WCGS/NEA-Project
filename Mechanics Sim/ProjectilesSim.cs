@@ -65,7 +65,6 @@ namespace Mechanics_Sim
                     ansUnitsLabel.Text = "s";
                     break;
             }
-            //correctLabel.Text = ans.ToString();
             info += " (g = 9.8, give answer to 2 decimal places)";
             questionLabel.Text=info;
 
@@ -73,6 +72,7 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            correctLabel.Text = "";
             proj.Location = new Point(startX, startY); //Sets particle picturebox location back to initial.
             timeNum = 0; //Set time elapsed back to zero.
             timeTxt.Text = "Time elapsed: "; //Following code resets text in all labels.
@@ -137,24 +137,16 @@ namespace Mechanics_Sim
         private void testMode_Click(object sender, EventArgs e)
         {
             reset();
-            foreach (Control x in controlPanel.Controls)
-            {
-                if(x.Name != "testMode" & x.Name != "exitBtn" & x.Name != "Ball") //Toggles visibility of elements.
-                {
-                    x.Visible = !x.Visible;
-                }
-            }
-            statsPanel.Visible = !statsPanel.Visible; //Toggles visibility of stats panel, as this is not needed in test mode. Is visible by default.
-            questionLabel.Visible = !questionLabel.Visible; //Toggles visibility of label containing questions, for test mode. Is invisible by default.
+            simForms.testSetup(statsPanel, controlPanel, questionLabel, learnBox);
             if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; projQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
             test = !test;
+
         }
 
         private void generateQuestion_Click(object sender, EventArgs e)
         {
             reset();
             projQuestion(); //Generates new question.
-            correctLabel.Text = "";
         }
 
         private void checkBtn_Click(object sender, EventArgs e)

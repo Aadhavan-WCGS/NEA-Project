@@ -53,6 +53,20 @@ namespace Mechanics_Sim
             inp.WindowState = FormWindowState.Maximized; //Puts window in fullscreen.
         }
 
+        public static void testSetup(Panel stats, Panel control, Label question, CheckBox learn)
+        {
+            learn.Checked = false; //Ensures learning text does not display.
+            foreach (Control x in control.Controls)
+            {
+                if (x.Name != "testMode" & x.Name != "exitBtn" & x.Name != "Ball") //Toggles visibility of elements.
+                {
+                    x.Visible = !x.Visible;
+                }
+            }
+            stats.Visible = !stats.Visible; //Toggles visibility of stats panel, as this is not needed in test mode. Is visible by default.
+            question.Visible = !question.Visible; //Toggles visibility of label containing questions, for test mode. Is invisible by default.  
+        }
+
         public static void time(ref double time, ref bool start, bool condition, Timer t) //Procedure to increment time, and stop timer if a condition is met. Used by all simulations.
         {
             time += t.Interval;

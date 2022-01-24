@@ -90,5 +90,10 @@ namespace Mechanics_Sim
         {
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
+
+        private void testMode_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

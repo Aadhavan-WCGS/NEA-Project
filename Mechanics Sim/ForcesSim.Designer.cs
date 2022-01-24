@@ -43,16 +43,17 @@ namespace Mechanics_Sim
             this.timeTxt = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.yfUnitLabel = new System.Windows.Forms.Label();
+            this.xfUnitLabel = new System.Windows.Forms.Label();
             this.learnBox = new System.Windows.Forms.CheckBox();
             this.xfBox = new System.Windows.Forms.NumericUpDown();
             this.yfBox = new System.Windows.Forms.NumericUpDown();
             this.massBox = new System.Windows.Forms.NumericUpDown();
             this.exitBtn = new System.Windows.Forms.Button();
             this.resetBtn = new System.Windows.Forms.Button();
-            this.assumptions = new System.Windows.Forms.Label();
             this.massUnitLabel = new System.Windows.Forms.Label();
-            this.xfUnitLabel = new System.Windows.Forms.Label();
-            this.yfUnitLabel = new System.Windows.Forms.Label();
+            this.assumptions = new System.Windows.Forms.Label();
+            this.testMode = new System.Windows.Forms.Button();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xfBox)).BeginInit();
@@ -66,7 +67,7 @@ namespace Mechanics_Sim
             this.switchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.switchBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.switchBtn.ForeColor = System.Drawing.Color.Black;
-            this.switchBtn.Location = new System.Drawing.Point(365, 51);
+            this.switchBtn.Location = new System.Drawing.Point(343, 51);
             this.switchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.switchBtn.Name = "switchBtn";
             this.switchBtn.Size = new System.Drawing.Size(196, 52);
@@ -179,6 +180,7 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.Controls.Add(this.testMode);
             this.controlPanel.Controls.Add(this.yfUnitLabel);
             this.controlPanel.Controls.Add(this.xfUnitLabel);
             this.controlPanel.Controls.Add(this.learnBox);
@@ -194,15 +196,35 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.massUnitLabel);
             this.controlPanel.Location = new System.Drawing.Point(22, 599);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1227, 138);
+            this.controlPanel.Size = new System.Drawing.Size(1279, 138);
             this.controlPanel.TabIndex = 16;
+            // 
+            // yfUnitLabel
+            // 
+            this.yfUnitLabel.AutoSize = true;
+            this.yfUnitLabel.ForeColor = System.Drawing.Color.White;
+            this.yfUnitLabel.Location = new System.Drawing.Point(321, 88);
+            this.yfUnitLabel.Name = "yfUnitLabel";
+            this.yfUnitLabel.Size = new System.Drawing.Size(16, 15);
+            this.yfUnitLabel.TabIndex = 56;
+            this.yfUnitLabel.Text = "N";
+            // 
+            // xfUnitLabel
+            // 
+            this.xfUnitLabel.AutoSize = true;
+            this.xfUnitLabel.ForeColor = System.Drawing.Color.White;
+            this.xfUnitLabel.Location = new System.Drawing.Point(321, 59);
+            this.xfUnitLabel.Name = "xfUnitLabel";
+            this.xfUnitLabel.Size = new System.Drawing.Size(16, 15);
+            this.xfUnitLabel.TabIndex = 55;
+            this.xfUnitLabel.Text = "N";
             // 
             // learnBox
             // 
             this.learnBox.AutoSize = true;
             this.learnBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.learnBox.ForeColor = System.Drawing.Color.White;
-            this.learnBox.Location = new System.Drawing.Point(1008, 57);
+            this.learnBox.Location = new System.Drawing.Point(1149, 57);
             this.learnBox.Name = "learnBox";
             this.learnBox.Size = new System.Drawing.Size(127, 29);
             this.learnBox.TabIndex = 53;
@@ -260,7 +282,7 @@ namespace Mechanics_Sim
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(787, 51);
+            this.exitBtn.Location = new System.Drawing.Point(947, 51);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(196, 52);
@@ -275,7 +297,7 @@ namespace Mechanics_Sim
             this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetBtn.ForeColor = System.Drawing.Color.Black;
-            this.resetBtn.Location = new System.Drawing.Point(585, 51);
+            this.resetBtn.Location = new System.Drawing.Point(545, 51);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(196, 52);
@@ -283,6 +305,16 @@ namespace Mechanics_Sim
             this.resetBtn.Text = "Reset";
             this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
+            // 
+            // massUnitLabel
+            // 
+            this.massUnitLabel.AutoSize = true;
+            this.massUnitLabel.ForeColor = System.Drawing.Color.White;
+            this.massUnitLabel.Location = new System.Drawing.Point(111, 59);
+            this.massUnitLabel.Name = "massUnitLabel";
+            this.massUnitLabel.Size = new System.Drawing.Size(21, 15);
+            this.massUnitLabel.TabIndex = 54;
+            this.massUnitLabel.Text = "Kg";
             // 
             // assumptions
             // 
@@ -297,35 +329,20 @@ namespace Mechanics_Sim
             this.assumptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.assumptions.Visible = false;
             // 
-            // massUnitLabel
+            // testMode
             // 
-            this.massUnitLabel.AutoSize = true;
-            this.massUnitLabel.ForeColor = System.Drawing.Color.White;
-            this.massUnitLabel.Location = new System.Drawing.Point(111, 59);
-            this.massUnitLabel.Name = "massUnitLabel";
-            this.massUnitLabel.Size = new System.Drawing.Size(21, 15);
-            this.massUnitLabel.TabIndex = 54;
-            this.massUnitLabel.Text = "Kg";
-            // 
-            // xfUnitLabel
-            // 
-            this.xfUnitLabel.AutoSize = true;
-            this.xfUnitLabel.ForeColor = System.Drawing.Color.White;
-            this.xfUnitLabel.Location = new System.Drawing.Point(321, 59);
-            this.xfUnitLabel.Name = "xfUnitLabel";
-            this.xfUnitLabel.Size = new System.Drawing.Size(16, 15);
-            this.xfUnitLabel.TabIndex = 55;
-            this.xfUnitLabel.Text = "N";
-            // 
-            // yfUnitLabel
-            // 
-            this.yfUnitLabel.AutoSize = true;
-            this.yfUnitLabel.ForeColor = System.Drawing.Color.White;
-            this.yfUnitLabel.Location = new System.Drawing.Point(321, 88);
-            this.yfUnitLabel.Name = "yfUnitLabel";
-            this.yfUnitLabel.Size = new System.Drawing.Size(16, 15);
-            this.yfUnitLabel.TabIndex = 56;
-            this.yfUnitLabel.Text = "N";
+            this.testMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.testMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.testMode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.testMode.ForeColor = System.Drawing.Color.Black;
+            this.testMode.Location = new System.Drawing.Point(747, 51);
+            this.testMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.testMode.Name = "testMode";
+            this.testMode.Size = new System.Drawing.Size(194, 52);
+            this.testMode.TabIndex = 57;
+            this.testMode.Text = "Test yourself";
+            this.testMode.UseVisualStyleBackColor = false;
+            this.testMode.Click += new System.EventHandler(this.testMode_Click);
             // 
             // ForcesSim
             // 
@@ -379,5 +396,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Label yfUnitLabel;
         private System.Windows.Forms.Label xfUnitLabel;
         private System.Windows.Forms.Label massUnitLabel;
+        private System.Windows.Forms.Button testMode;
     }
 }
