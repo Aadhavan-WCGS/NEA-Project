@@ -67,6 +67,25 @@ namespace Mechanics_Sim
             question.Visible = !question.Visible; //Toggles visibility of label containing questions, for test mode. Is invisible by default.  
         }
 
+        public static void check(NumericUpDown[] boxes, double[] data, double correctAns, string userAns, Button switchBtn, Label feedback)
+        {
+            if (correctAns.ToString() == userAns)
+            {
+                feedback.Text = "Correct. Well done!"; //Outputs appropriate message if user is correct.
+                for (int i = 0; i < boxes.Length; i++)
+                {
+                    boxes[i].Value = Convert.ToDecimal(data[i]); //Loops through each NumericUpDownBox, setting it to the required input before starting the animation.
+                }
+                switchBtn.Show(); 
+                switchBtn.PerformClick(); //Starts the simulatino by clicking the button.
+                switchBtn.Hide();
+            }
+            else
+            {
+                feedback.Text = "Incorrect. Try again."; //Outputs appropriate message if user is incorrect.
+            }
+        }
+
         public static void time(ref double time, ref bool start, bool condition, Timer t) //Procedure to increment time, and stop timer if a condition is met. Used by all simulations.
         {
             time += t.Interval;

@@ -12,7 +12,7 @@ namespace Mechanics_Sim
     {
         //Declaring variables with scope of the simulation form.
         PictureBox proj; //Initialise all pictureboxes to be used.
-        bool test;
+        bool test = false;
         double ans, speed, angle;
         bool start = false;
         particle p; //Particle instantiation.
@@ -72,7 +72,7 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
-            correctLabel.Text = "";
+            correctLabel.Text = "";  //Initialise question feedback label to blank.
             proj.Location = new Point(startX, startY); //Sets particle picturebox location back to initial.
             timeNum = 0; //Set time elapsed back to zero.
             timeTxt.Text = "Time elapsed: "; //Following code resets text in all labels.
@@ -134,13 +134,17 @@ namespace Mechanics_Sim
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
 
+        private void rangeTxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void testMode_Click(object sender, EventArgs e)
         {
             reset();
             simForms.testSetup(statsPanel, controlPanel, questionLabel, learnBox);
             if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; projQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
             test = !test;
-
         }
 
         private void generateQuestion_Click(object sender, EventArgs e)
@@ -151,19 +155,9 @@ namespace Mechanics_Sim
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            if (ans.ToString() == ansBox.Text){
-                correctLabel.Text = "Correct. Well done!";
-                uBox.Value = Convert.ToDecimal(speed);
-                angleBox.Value = Convert.ToDecimal(angle);
-                switchBtn.Show();
-                switchBtn.PerformClick();
-                switchBtn.Hide();
-
-            }
-            else
-            {
-                correctLabel.Text = "Incorrect. Try again.";
-            }
+            NumericUpDown[] boxes = { uBox, angleBox };
+            double[] data = { speed, angle };
+            simForms.check(boxes, data, ans, ansBox.Text, switchBtn, correctLabel);
         }
     }
 }

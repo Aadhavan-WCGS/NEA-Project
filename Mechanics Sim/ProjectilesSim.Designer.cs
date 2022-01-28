@@ -43,6 +43,7 @@ namespace Mechanics_Sim
             this.switchBtn = new System.Windows.Forms.Button();
             this.projTimer = new System.Windows.Forms.Timer(this.components);
             this.controlPanel = new System.Windows.Forms.Panel();
+            this.correctLabel = new System.Windows.Forms.Label();
             this.ansUnitsLabel = new System.Windows.Forms.Label();
             this.checkBtn = new System.Windows.Forms.Button();
             this.ansLabel = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@ namespace Mechanics_Sim
             this.statsPanel = new System.Windows.Forms.Panel();
             this.assumptions = new System.Windows.Forms.Label();
             this.questionLabel = new System.Windows.Forms.Label();
-            this.correctLabel = new System.Windows.Forms.Label();
             this.controlPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ansBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uBox)).BeginInit();
@@ -88,6 +88,7 @@ namespace Mechanics_Sim
             this.rangeTxt.Size = new System.Drawing.Size(74, 25);
             this.rangeTxt.TabIndex = 18;
             this.rangeTxt.Text = "Range: ";
+            this.rangeTxt.Click += new System.EventHandler(this.rangeTxt_Click);
             // 
             // Stats
             // 
@@ -209,6 +210,18 @@ namespace Mechanics_Sim
             this.controlPanel.Name = "controlPanel";
             this.controlPanel.Size = new System.Drawing.Size(1451, 167);
             this.controlPanel.TabIndex = 27;
+            // 
+            // correctLabel
+            // 
+            this.correctLabel.AutoSize = true;
+            this.correctLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.correctLabel.ForeColor = System.Drawing.Color.White;
+            this.correctLabel.Location = new System.Drawing.Point(217, 22);
+            this.correctLabel.Name = "correctLabel";
+            this.correctLabel.Size = new System.Drawing.Size(78, 25);
+            this.correctLabel.TabIndex = 39;
+            this.correctLabel.Text = "Answer:";
+            this.correctLabel.Visible = false;
             // 
             // ansUnitsLabel
             // 
@@ -431,18 +444,6 @@ namespace Mechanics_Sim
             this.questionLabel.TabIndex = 35;
             this.questionLabel.Text = "Question\r\n";
             this.questionLabel.Visible = false;
-            // 
-            // correctLabel
-            // 
-            this.correctLabel.AutoSize = true;
-            this.correctLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.correctLabel.ForeColor = System.Drawing.Color.White;
-            this.correctLabel.Location = new System.Drawing.Point(217, 22);
-            this.correctLabel.Name = "correctLabel";
-            this.correctLabel.Size = new System.Drawing.Size(78, 25);
-            this.correctLabel.TabIndex = 39;
-            this.correctLabel.Text = "Answer:";
-            this.correctLabel.Visible = false;
             // 
             // LearnCheckBox
             // 

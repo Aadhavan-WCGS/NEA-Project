@@ -12,7 +12,9 @@ namespace Mechanics_Sim
     {
         //Declaring variables with scope of the simulation form.
         PictureBox ball; //Initialise all pictureboxes to be used.
+        bool test = false;
         bool start = false;
+        double ans, mass, forceX, forceY;
         particle p; //Particle instantiation.
         double timeNum = 0; //Variable to store time elapsed, set to zero initially.
         int startX; //Starting coordinates of particle.
@@ -35,8 +37,36 @@ namespace Mechanics_Sim
             reset();
         }
 
+        public void forceQuestion()
+        {
+            Random rnd = new Random(); //Initialise random variable.
+            int choice = rnd.Next(1, 3); //Used to decide what question to give.
+            mass = rnd.Next(1, 5) * 5; //Generate a suitable mass.
+            forceX = rnd.Next(1, 5) * 5; //Generate a suitable horizontal force.
+            forceY = rnd.Next(1, 5) * 5; //Generate a suitable vertical force.
+            forces sim = new forces();
+            sim.forcesSetup(mass, forceX, forceY);
+            string info = "A particle of mass " + mass + "kg is given a horizontal component force of " + forceX + "N and a vertical component force of " + forceY + "N.";  //String containing question and relevant background information.
+
+            switch (choice)  //Adds a different question to the string depending on the number generated.
+            {
+                case 1:
+                    info += " What is the magnitude of the acceleration of the particle?";
+                    ans = sim.getAcc();
+                    ansUnitsLabel.Text = "ms\u207b\xB2";
+                    break;
+                case 2:
+                    info += " What is the magnitude of the resultant force on the particle?";
+                    ans = sim.getRf();
+                    ansUnitsLabel.Text = "N";
+                    break;
+            }
+            info += " (give answer to 2 decimal places)";
+            questionLabel.Text = info; 
+        }
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            correctLabel.Text = "";  //Initialise question feedback label to blank.
             ball.Location = new Point(startX, startY); //Sets particle picturebox location back to initial.
             timeNum = 0; //Set time elapsed back to zero.
             timeTxt.Text = "Time elapsed: "; //Following code resets text in all labels.
@@ -81,6 +111,19 @@ namespace Mechanics_Sim
             reset(); //Call reset routine on button click.
         }
 
+        private void checkBtn_Click(object sender, EventArgs e)
+        {
+            NumericUpDown[] boxes = { massBox, xfBox, yfBox };
+            double[] data = { mass, forceX, forceY};
+            simForms.check(boxes, data, ans, ansBox.Text, switchBtn, correctLabel); //Calles routine to check answer and run animation if correct.
+        }
+
+        private void generateQuestion_Click(object sender, EventArgs e)
+        {
+            reset();
+            forceQuestion(); //Generates new question.
+        }
+
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close(); //Close window when exit button clicked.
@@ -93,7 +136,10 @@ namespace Mechanics_Sim
 
         private void testMode_Click(object sender, EventArgs e)
         {
-
+            reset();
+            simForms.testSetup(statsPanel, controlPanel, questionLabel, learnBox);
+            if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; forceQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
+            test = !test;
         }
     }
 }
