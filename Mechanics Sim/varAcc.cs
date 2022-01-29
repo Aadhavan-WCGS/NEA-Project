@@ -14,6 +14,8 @@ namespace Mechanics_Sim
         PictureBox ball; //Initialise all pictureboxes to be used.
         bool oneD = true;
         bool start = false;
+        bool test = false;
+        double ans;
         particle p; //Particle instantiation.
         double timeNum = 0; //Variable to store time elapsed, set to zero initially.
         int startX, startY; //Starting coordinates of particle.
@@ -38,8 +40,52 @@ namespace Mechanics_Sim
             reset();
         }
 
+        public void varAccQuestion()
+        {
+            Random rnd = new Random(); //Initialise random variable.
+            int choice = rnd.Next(1, 3); //Used to decide what question to give.
+            double[] generatedCoeffsX = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) };  //Randomly generates expression for displacement equation.
+            disEqn = generatedCoeffsX;
+            int time = rnd.Next(2, 10); //Random value for time.
+            varAcc sim = new varAcc();
+            sim.varAccSetup(disEqn); //Instantiate simulation to compute answers.
+            velEqn = sim.getVel();
+            accEqn = sim.getAcc(); //Retrieving equations to find the answer.
+            string info = "A particle's displacement from the origin is given by: \n x = " + disEqn[0].ToString() + " + " + disEqn[1].ToString() + "t + " + disEqn[2].ToString() + "t\xB2 + " + disEqn[3].ToString() + "t\xB3";  //String containing question and relevant background information.
+            if (!oneD){
+                double[] generatedCoeffsY = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) };
+                disEqnY = generatedCoeffsY;
+                sim.varAccSetupY(disEqn);
+                velEqnY = sim.getVelY();
+                accEqnY = sim.getAccY();  //Retrieving equations to find the answer.
+                info += "\n y = " + disEqnY[0].ToString() + " + " + disEqnY[1].ToString() + "t + " + disEqnY[2].ToString() + "t\xB2 + " + disEqnY[3].ToString() + "t\xB3";  //String containing question and relevant background information.; //Start of question 
+            }
+            switch (choice){ //Adds a different question to the string depending on the number generated.
+                case 1:   
+                    info += "\n What is the speed at " + time.ToString() + " seconds?";
+                    if (oneD) //1D case
+                    {
+                        ans = Math.Abs(sim.sub(velEqn, time));  //Substitute time into equation to find answer.
+                    }
+                    ansUnitsLabel.Text = "ms\u207b\xB9"; 
+                    break;
+                case 2:
+                    info += "\n What is the magnitude of acceleration at " + time.ToString() + " seconds?";
+                    if (oneD) //1D case
+                    {
+                        ans = Math.Abs(sim.sub(accEqn, time)); //Substitute time into equation to find answer.
+                    }
+                    ansUnitsLabel.Text = "ms\u207b\xB2";
+                    break;
+            }
+            info += " (give answer to 2 decimal places)";
+            ansUnitsLabel.Text = ans.ToString();
+            questionLabel.Text = info;
+        }
+
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            correctLabel.Text = "";  //Initialise question feedback label to blank.
             ball.Location = new Point(startX, startY); //Set particle picturebox to initial position.
             timeNum = 0; //Reset time elapsed to zero,
             //Below code resets text in relevant labels for simulation.
@@ -61,6 +107,28 @@ namespace Mechanics_Sim
         private void learnBox_CheckedChanged(object sender, EventArgs e)
         {
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
+        }
+
+        private void testMode_Click(object sender, EventArgs e)
+        {
+            reset();
+            if (oneD) { toggle(); } //If in 1D, the 2D controls are made visible, so they are actually hidden when below routine called.
+            simForms.testSetup(statsPanel, controlPanel, questionLabel, learnBox);
+            if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; varAccQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
+            test = !test;
+            dimensionSwitch.Enabled = !dimensionSwitch.Enabled; //Locks dimension switch in test mode.
+        }
+
+        private void checkBtn_Click(object sender, EventArgs e)
+        {
+            NumericUpDown[] boxes = {x0Box, x1Box, x2Box, x3Box};
+            simForms.check(boxes, disEqn, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.
+        }
+
+        private void generateQuestion_Click(object sender, EventArgs e)
+        {
+            reset();
+            varAccQuestion(); //Generates new question.
         }
 
         private void resetBtn_Click(object sender, EventArgs e)
@@ -152,10 +220,18 @@ namespace Mechanics_Sim
             oneD = !oneD; //Flips boolean used to check if 1D is used.
             velEqnYTxt.Visible = !velEqnYTxt.Visible;
             accEqnYTxt.Visible = !accEqnYTxt.Visible;
+            toggle();
+            if (dimensionSwitch.Text == "1D"){dimensionSwitch.Text = "2D";}else{dimensionSwitch.Text = "1D";}   //Changes text in dimension switch button to show what mode program is in.
+            reset();
+        }
+
+        private void toggle() //Routine to toggle elements for 2D motion.
+        {
             string ybox = "y0Box"; //Creates string used to identify NumericUpDown controls.
             string ylabels = "t0LabelY"; //Creates string used to identify label controls.
             //Below loop is used to toggle visibility all the required labels using their name.
-            for (int i = 0; i < 4; i++){
+            for (int i = 0; i < 4; i++)
+            {
                 Control boxy = controlPanel.Controls[ybox];
                 Control labely = controlPanel.Controls[ylabels];
                 boxy.Visible = !boxy.Visible; //Makes invisible controls visible and vice versa.
@@ -164,9 +240,8 @@ namespace Mechanics_Sim
                 ylabels = "t" + (i + 1) + "LabelY";
             }
             bracketL.Visible = !bracketL.Visible; bracketR.Visible = !bracketR.Visible;  //Toggles visibility of the large pair of brackets (used in 2D only).
-            if (dimensionSwitch.Text == "1D"){dimensionSwitch.Text = "2D";}else{dimensionSwitch.Text = "1D";}   //Changes text in dimension switch button to show what mode program is in.
-            reset();
         }
+
 
       
     }

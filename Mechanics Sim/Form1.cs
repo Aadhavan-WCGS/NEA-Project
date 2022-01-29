@@ -27,7 +27,7 @@ namespace Mechanics_Sim
 
         private void prButton_Click(object sender, EventArgs e)
         {
-            LearnCheckBox f = new LearnCheckBox();
+            ProjectilesSim f = new ProjectilesSim();
             f.Show();
         }
 
@@ -69,7 +69,7 @@ namespace Mechanics_Sim
 
         public static void check(NumericUpDown[] boxes, double[] data, double correctAns, string userAns, Button switchBtn, Label feedback)
         {
-            if (correctAns.ToString() == userAns)
+            if (correctAns.ToString("0.00") == userAns) //Compares appropriately formatted answer to user input.
             {
                 feedback.Text = "Correct. Well done!"; //Outputs appropriate message if user is correct.
                 for (int i = 0; i < boxes.Length; i++)

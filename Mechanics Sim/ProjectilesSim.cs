@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Mechanics_Sim
 {
-    public partial class LearnCheckBox : Form
+    public partial class ProjectilesSim : Form
     {
         //Declaring variables with scope of the simulation form.
         PictureBox proj; //Initialise all pictureboxes to be used.
@@ -18,7 +18,7 @@ namespace Mechanics_Sim
         particle p; //Particle instantiation.
         double timeNum = 0; //Variable to store time elapsed, set to zero initially.
         int startX, startY; //Starting coordinates of projectile.
-        public LearnCheckBox()
+        public ProjectilesSim()
         {
             InitializeComponent();  
             simForms.initiate(statsPanel, controlPanel, this); //Initialise ui elements.
@@ -45,7 +45,7 @@ namespace Mechanics_Sim
             angle = rnd.Next(1, 5) * 15; //Generate a suitables angle.
             speed = rnd.Next(1, 5) * 5; //Generate a suitables speed.
             projectiles sim = new projectiles();
-            p = sim.projectilesSetup(Convert.ToDouble(speed), Convert.ToDouble(angle));
+            sim.projectilesSetup(Convert.ToDouble(speed), Convert.ToDouble(angle)); //Instantiate simulation to compute answers.
             string info = "A projectile is fired with an initial speed of " + speed + "ms\u207b\xB9 at an angle of " + angle + "° to the horizontal.";  //String containing question and relevant background information.
             switch (choice)  //Adds a different question to the string depending on the number generated.
             {
@@ -65,9 +65,8 @@ namespace Mechanics_Sim
                     ansUnitsLabel.Text = "s";
                     break;
             }
-            info += " (g = 9.8, give answer to 2 decimal places)";
-            questionLabel.Text=info;
-
+            info += " (g = 9.8, give answer to 2 decimal places)"; //Adds extra info to question.
+            questionLabel.Text=info; //Outputs question into a label.
         }
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.

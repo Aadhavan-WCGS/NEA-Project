@@ -288,7 +288,7 @@ namespace Mechanics_Sim
             this.ansBox.DecimalPlaces = 2;
             this.ansBox.Location = new System.Drawing.Point(90, 13);
             this.ansBox.Maximum = new decimal(new int[] {
-            90,
+            10000,
             0,
             0,
             0});

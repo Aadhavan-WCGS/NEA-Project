@@ -1,7 +1,7 @@
 ﻿
 namespace Mechanics_Sim
 {
-    partial class LearnCheckBox
+    partial class ProjectilesSim
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Mechanics_Sim
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LearnCheckBox));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectilesSim));
             this.timeTxt = new System.Windows.Forms.Label();
             this.rangeTxt = new System.Windows.Forms.Label();
             this.Stats = new System.Windows.Forms.Label();
@@ -269,7 +269,7 @@ namespace Mechanics_Sim
             this.ansBox.DecimalPlaces = 2;
             this.ansBox.Location = new System.Drawing.Point(99, 24);
             this.ansBox.Maximum = new decimal(new int[] {
-            90,
+            10000,
             0,
             0,
             0});
@@ -445,7 +445,7 @@ namespace Mechanics_Sim
             this.questionLabel.Text = "Question\r\n";
             this.questionLabel.Visible = false;
             // 
-            // LearnCheckBox
+            // ProjectilesSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -456,7 +456,7 @@ namespace Mechanics_Sim
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.controlPanel);
             this.MaximizeBox = false;
-            this.Name = "LearnCheckBox";
+            this.Name = "ProjectilesSim";
             this.Text = "Projectiles Simulator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.controlPanel.ResumeLayout(false);

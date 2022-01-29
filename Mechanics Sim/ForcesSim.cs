@@ -45,7 +45,7 @@ namespace Mechanics_Sim
             forceX = rnd.Next(1, 5) * 5; //Generate a suitable horizontal force.
             forceY = rnd.Next(1, 5) * 5; //Generate a suitable vertical force.
             forces sim = new forces();
-            sim.forcesSetup(mass, forceX, forceY);
+            sim.forcesSetup(mass, forceX, forceY); //Instantiate simulation to compute answers.
             string info = "A particle of mass " + mass + "kg is given a horizontal component force of " + forceX + "N and a vertical component force of " + forceY + "N.";  //String containing question and relevant background information.
 
             switch (choice)  //Adds a different question to the string depending on the number generated.
