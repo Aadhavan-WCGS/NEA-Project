@@ -44,8 +44,8 @@ namespace Mechanics_Sim
             int choice = rnd.Next(1, 4); //Used to decide what question to give.
             angle = rnd.Next(1, 5) * 15; //Generate a suitables angle.
             speed = rnd.Next(1, 5) * 5; //Generate a suitables speed.
-            projectiles sim = new projectiles();
-            sim.projectilesSetup(Convert.ToDouble(speed), Convert.ToDouble(angle)); //Instantiate simulation to compute answers.
+            projectiles sim = new projectiles(); //Instantiate simulation to compute answers.
+            sim.projectilesSetup(Convert.ToDouble(speed), Convert.ToDouble(angle)); 
             string info = "A projectile is fired with an initial speed of " + speed + "ms\u207b\xB9 at an angle of " + angle + "° to the horizontal.";  //String containing question and relevant background information.
             switch (choice)  //Adds a different question to the string depending on the number generated.
             {

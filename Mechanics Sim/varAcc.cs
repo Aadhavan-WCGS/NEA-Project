@@ -47,15 +47,16 @@ namespace Mechanics_Sim
             double[] generatedCoeffsX = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) };  //Randomly generates expression for displacement equation.
             disEqn = generatedCoeffsX;
             int time = rnd.Next(2, 10); //Random value for time.
-            varAcc sim = new varAcc();
-            sim.varAccSetup(disEqn); //Instantiate simulation to compute answers.
+            varAcc sim = new varAcc(); //Instantiate simulation to compute answers.
+            sim.varAccSetup(disEqn); 
             velEqn = sim.getVel();
             accEqn = sim.getAcc(); //Retrieving equations to find the answer.
             string info = "A particle's displacement from the origin is given by: \n x = " + disEqn[0].ToString() + " + " + disEqn[1].ToString() + "t + " + disEqn[2].ToString() + "t\xB2 + " + disEqn[3].ToString() + "t\xB3";  //String containing question and relevant background information.
             if (!oneD){
-                double[] generatedCoeffsY = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) };
+                double[] generatedCoeffsY = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) }; //Randomly generates expression for vertical displacement equation.
+                disEqn = generatedCoeffsX;
                 disEqnY = generatedCoeffsY;
-                sim.varAccSetupY(disEqn);
+                sim.varAccSetupY(disEqnY); //Passes y component displacement into setup method.
                 velEqnY = sim.getVelY();
                 accEqnY = sim.getAccY();  //Retrieving equations to find the answer.
                 info += "\n y = " + disEqnY[0].ToString() + " + " + disEqnY[1].ToString() + "t + " + disEqnY[2].ToString() + "t\xB2 + " + disEqnY[3].ToString() + "t\xB3";  //String containing question and relevant background information.; //Start of question 
@@ -66,6 +67,11 @@ namespace Mechanics_Sim
                     if (oneD) //1D case
                     {
                         ans = Math.Abs(sim.sub(velEqn, time));  //Substitute time into equation to find answer.
+                    }else
+                    {
+                        double compX = sim.sub(velEqn, time);
+                        double compY = sim.sub(velEqnY, time);
+                        ans = Math.Sqrt(compX * compX + compY * compY);
                     }
                     ansUnitsLabel.Text = "ms\u207b\xB9"; 
                     break;
@@ -74,12 +80,16 @@ namespace Mechanics_Sim
                     if (oneD) //1D case
                     {
                         ans = Math.Abs(sim.sub(accEqn, time)); //Substitute time into equation to find answer.
+                    }else
+                    {
+                        double compX = sim.sub(accEqn, time);
+                        double compY = sim.sub(accEqnY, time);
+                        ans = Math.Sqrt(compX * compX + compY * compY);
                     }
                     ansUnitsLabel.Text = "ms\u207b\xB2";
                     break;
             }
             info += " (give answer to 2 decimal places)";
-            ansUnitsLabel.Text = ans.ToString();
             questionLabel.Text = info;
         }
 
@@ -121,8 +131,17 @@ namespace Mechanics_Sim
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            NumericUpDown[] boxes = {x0Box, x1Box, x2Box, x3Box};
-            simForms.check(boxes, disEqn, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.
+            if (oneD){
+                NumericUpDown[] boxes = { x0Box, x1Box, x2Box, x3Box };
+                simForms.check(boxes, disEqn, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.
+            }
+            else{
+                NumericUpDown[] boxes = { x0Box, x1Box, x2Box, x3Box, y0Box, y1Box, y2Box, y3Box};
+                double[] combinedEqn = new double[8];
+                Array.Copy(disEqn, combinedEqn, 4);
+                Array.Copy(disEqnY, 0, combinedEqn, 4, 4);
+                simForms.check(boxes, combinedEqn, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.
+            }
         }
 
         private void generateQuestion_Click(object sender, EventArgs e)
