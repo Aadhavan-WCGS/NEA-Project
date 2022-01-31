@@ -53,34 +53,29 @@ namespace Mechanics_Sim
             inp.WindowState = FormWindowState.Maximized; //Puts window in fullscreen.
         }
 
-        public static void testSetup(Panel stats, Panel control, Label question, CheckBox learn)
-        {
+        public static void testSetup(Panel stats, Panel control, Panel cover, CheckBox learn, Label question){
             learn.Checked = false; //Ensures learning text does not display.
-            foreach (Control x in control.Controls)
-            {
-                if (x.Name != "testMode" & x.Name != "exitBtn" & x.Name != "Ball") //Toggles visibility of elements.
-                {
+            foreach (Control x in control.Controls){
+                if (x.Name != "testMode" & x.Name != "exitBtn" & x.Name != "Ball" & x is Button){ //Toggles visibility of elements.
                     x.Visible = !x.Visible;
                 }
             }
             stats.Visible = !stats.Visible; //Toggles visibility of stats panel, as this is not needed in test mode. Is visible by default.
-            question.Visible = !question.Visible; //Toggles visibility of label containing questions, for test mode. Is invisible by default.  
+            cover.Visible = !cover.Visible; //Toggles visibility of label containing questions, for test mode. Is invisible by default.
+            question.Visible = !question.Visible; //Toggles visibility of label containing questions, for test mode. Is invisible by default.
         }
 
         public static void check(NumericUpDown[] boxes, double[] data, double correctAns, string userAns, Button switchBtn, Label feedback)
         {
-            if (correctAns.ToString("0.00") == userAns) //Compares appropriately formatted answer to user input.
-            {
+            if (correctAns.ToString("0.00") == userAns){ //Compares appropriately formatted answer to user input.
                 feedback.Text = "Correct. Well done!"; //Outputs appropriate message if user is correct.
-                for (int i = 0; i < boxes.Length; i++)
-                {
+                for (int i = 0; i < boxes.Length; i++){
                     boxes[i].Value = Convert.ToDecimal(data[i]); //Loops through each NumericUpDownBox, setting it to the required input before starting the animation.
                 }
                 switchBtn.Show(); 
-                switchBtn.PerformClick(); //Starts the simulatino by clicking the button.
+                switchBtn.PerformClick(); //Starts the simulation by clicking the button.
                 switchBtn.Hide();
-            }
-            else
+            }else
             {
                 feedback.Text = "Incorrect. Try again."; //Outputs appropriate message if user is incorrect.
             }
@@ -89,8 +84,7 @@ namespace Mechanics_Sim
         public static void time(ref double time, ref bool start, bool condition, Timer t) //Procedure to increment time, and stop timer if a condition is met. Used by all simulations.
         {
             time += t.Interval;
-            if (condition)
-            {
+            if (condition){
                 t.Stop();
                 start = false;
             }

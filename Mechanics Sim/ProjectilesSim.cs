@@ -13,7 +13,7 @@ namespace Mechanics_Sim
         //Declaring variables with scope of the simulation form.
         PictureBox proj; //Initialise all pictureboxes to be used.
         bool test = false;
-        double ans, speed, angle;
+        double ans, speed, angle; //Variables for test mode.
         bool start = false;
         particle p; //Particle instantiation.
         double timeNum = 0; //Variable to store time elapsed, set to zero initially.
@@ -52,17 +52,17 @@ namespace Mechanics_Sim
                 case 1:
                     info += " What is the range (Total horizontal distance travelled)?";
                     ans = sim.getRange();
-                    ansUnitsLabel.Text = "m";
+                    ansUnitsLabel.Text = "m"; //Output units next to answer box.
                     break;
                 case 2:
                     info += " What is the maximum height reached?";
                     ans = sim.getMaxH();
-                    ansUnitsLabel.Text = "m";
+                    ansUnitsLabel.Text = "m"; //Output units next to answer box.
                     break;
                 case 3:
                     info += " What is the time of flight (Time taken to return to same height at which it was fired)?";
                     ans = sim.getTof();
-                    ansUnitsLabel.Text = "s";
+                    ansUnitsLabel.Text = "s"; //Output units next to answer box.
                     break;
             }
             info += " (g = 9.8, give answer to 2 decimal places)"; //Adds extra info to question.
@@ -141,7 +141,7 @@ namespace Mechanics_Sim
         private void testMode_Click(object sender, EventArgs e)
         {
             reset();
-            simForms.testSetup(statsPanel, controlPanel, questionLabel, learnBox);
+            simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);
             if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; projQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
             test = !test;
         }
@@ -154,9 +154,9 @@ namespace Mechanics_Sim
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
-            NumericUpDown[] boxes = { uBox, angleBox };
-            double[] data = { speed, angle };
-            simForms.check(boxes, data, ans, ansBox.Text, switchBtn, correctLabel);
+            NumericUpDown[] boxes = { uBox, angleBox }; //Array of input boxes.
+            double[] data = { speed, angle }; //Array of data to input.
+            simForms.check(boxes, data, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.
         }
     }
 }

@@ -43,12 +43,13 @@ namespace Mechanics_Sim
             this.timeTxt = new System.Windows.Forms.Label();
             this.statsPanel = new System.Windows.Forms.Panel();
             this.controlPanel = new System.Windows.Forms.Panel();
-            this.correctLabel = new System.Windows.Forms.Label();
-            this.generateQuestion = new System.Windows.Forms.Button();
-            this.ansUnitsLabel = new System.Windows.Forms.Label();
-            this.checkBtn = new System.Windows.Forms.Button();
+            this.coverPanel = new System.Windows.Forms.Panel();
             this.ansLabel = new System.Windows.Forms.Label();
+            this.ansUnitsLabel = new System.Windows.Forms.Label();
+            this.correctLabel = new System.Windows.Forms.Label();
             this.ansBox = new System.Windows.Forms.NumericUpDown();
+            this.generateQuestion = new System.Windows.Forms.Button();
+            this.checkBtn = new System.Windows.Forms.Button();
             this.testMode = new System.Windows.Forms.Button();
             this.yfUnitLabel = new System.Windows.Forms.Label();
             this.xfUnitLabel = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@ namespace Mechanics_Sim
             this.questionLabel = new System.Windows.Forms.Label();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
+            this.coverPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ansBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xfBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yfBox)).BeginInit();
@@ -188,12 +190,9 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
-            this.controlPanel.Controls.Add(this.correctLabel);
+            this.controlPanel.Controls.Add(this.coverPanel);
             this.controlPanel.Controls.Add(this.generateQuestion);
-            this.controlPanel.Controls.Add(this.ansUnitsLabel);
             this.controlPanel.Controls.Add(this.checkBtn);
-            this.controlPanel.Controls.Add(this.ansLabel);
-            this.controlPanel.Controls.Add(this.ansBox);
             this.controlPanel.Controls.Add(this.testMode);
             this.controlPanel.Controls.Add(this.yfUnitLabel);
             this.controlPanel.Controls.Add(this.xfUnitLabel);
@@ -213,17 +212,64 @@ namespace Mechanics_Sim
             this.controlPanel.Size = new System.Drawing.Size(1307, 138);
             this.controlPanel.TabIndex = 16;
             // 
+            // coverPanel
+            // 
+            this.coverPanel.Controls.Add(this.ansLabel);
+            this.coverPanel.Controls.Add(this.ansUnitsLabel);
+            this.coverPanel.Controls.Add(this.correctLabel);
+            this.coverPanel.Controls.Add(this.ansBox);
+            this.coverPanel.ForeColor = System.Drawing.Color.Black;
+            this.coverPanel.Location = new System.Drawing.Point(3, 42);
+            this.coverPanel.Name = "coverPanel";
+            this.coverPanel.Size = new System.Drawing.Size(334, 93);
+            this.coverPanel.TabIndex = 71;
+            this.coverPanel.Visible = false;
+            // 
+            // ansLabel
+            // 
+            this.ansLabel.AutoSize = true;
+            this.ansLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ansLabel.ForeColor = System.Drawing.Color.White;
+            this.ansLabel.Location = new System.Drawing.Point(24, 24);
+            this.ansLabel.Name = "ansLabel";
+            this.ansLabel.Size = new System.Drawing.Size(78, 25);
+            this.ansLabel.TabIndex = 41;
+            this.ansLabel.Text = "Answer:";
+            // 
+            // ansUnitsLabel
+            // 
+            this.ansUnitsLabel.AutoSize = true;
+            this.ansUnitsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ansUnitsLabel.ForeColor = System.Drawing.Color.White;
+            this.ansUnitsLabel.Location = new System.Drawing.Point(167, 24);
+            this.ansUnitsLabel.Name = "ansUnitsLabel";
+            this.ansUnitsLabel.Size = new System.Drawing.Size(53, 25);
+            this.ansUnitsLabel.TabIndex = 42;
+            this.ansUnitsLabel.Text = "units";
+            // 
             // correctLabel
             // 
             this.correctLabel.AutoSize = true;
             this.correctLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.correctLabel.ForeColor = System.Drawing.Color.White;
-            this.correctLabel.Location = new System.Drawing.Point(208, 11);
+            this.correctLabel.Location = new System.Drawing.Point(226, 24);
             this.correctLabel.Name = "correctLabel";
             this.correctLabel.Size = new System.Drawing.Size(78, 25);
             this.correctLabel.TabIndex = 43;
             this.correctLabel.Text = "Answer:";
-            this.correctLabel.Visible = false;
+            // 
+            // ansBox
+            // 
+            this.ansBox.DecimalPlaces = 2;
+            this.ansBox.Location = new System.Drawing.Point(108, 26);
+            this.ansBox.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.ansBox.Name = "ansBox";
+            this.ansBox.Size = new System.Drawing.Size(53, 23);
+            this.ansBox.TabIndex = 40;
             // 
             // generateQuestion
             // 
@@ -242,18 +288,6 @@ namespace Mechanics_Sim
             this.generateQuestion.Visible = false;
             this.generateQuestion.Click += new System.EventHandler(this.generateQuestion_Click);
             // 
-            // ansUnitsLabel
-            // 
-            this.ansUnitsLabel.AutoSize = true;
-            this.ansUnitsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ansUnitsLabel.ForeColor = System.Drawing.Color.White;
-            this.ansUnitsLabel.Location = new System.Drawing.Point(149, 11);
-            this.ansUnitsLabel.Name = "ansUnitsLabel";
-            this.ansUnitsLabel.Size = new System.Drawing.Size(53, 25);
-            this.ansUnitsLabel.TabIndex = 42;
-            this.ansUnitsLabel.Text = "units";
-            this.ansUnitsLabel.Visible = false;
-            // 
             // checkBtn
             // 
             this.checkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
@@ -270,32 +304,6 @@ namespace Mechanics_Sim
             this.checkBtn.UseVisualStyleBackColor = false;
             this.checkBtn.Visible = false;
             this.checkBtn.Click += new System.EventHandler(this.checkBtn_Click);
-            // 
-            // ansLabel
-            // 
-            this.ansLabel.AutoSize = true;
-            this.ansLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ansLabel.ForeColor = System.Drawing.Color.White;
-            this.ansLabel.Location = new System.Drawing.Point(6, 11);
-            this.ansLabel.Name = "ansLabel";
-            this.ansLabel.Size = new System.Drawing.Size(78, 25);
-            this.ansLabel.TabIndex = 41;
-            this.ansLabel.Text = "Answer:";
-            this.ansLabel.Visible = false;
-            // 
-            // ansBox
-            // 
-            this.ansBox.DecimalPlaces = 2;
-            this.ansBox.Location = new System.Drawing.Point(90, 13);
-            this.ansBox.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.ansBox.Name = "ansBox";
-            this.ansBox.Size = new System.Drawing.Size(53, 23);
-            this.ansBox.TabIndex = 40;
-            this.ansBox.Visible = false;
             // 
             // testMode
             // 
@@ -475,6 +483,8 @@ namespace Mechanics_Sim
             this.statsPanel.PerformLayout();
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
+            this.coverPanel.ResumeLayout(false);
+            this.coverPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ansBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xfBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yfBox)).EndInit();
@@ -516,5 +526,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.Label ansUnitsLabel;
         private System.Windows.Forms.Label ansLabel;
         private System.Windows.Forms.NumericUpDown ansBox;
+        private System.Windows.Forms.Panel coverPanel;
     }
 }

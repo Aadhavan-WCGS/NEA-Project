@@ -14,7 +14,7 @@ namespace Mechanics_Sim
         PictureBox ball; //Initialise all pictureboxes to be used.
         bool test = false;
         bool start = false;
-        double ans, mass, forceX, forceY;
+        double ans, mass, forceX, forceY; //Variables for test mode.
         particle p; //Particle instantiation.
         double timeNum = 0; //Variable to store time elapsed, set to zero initially.
         int startX; //Starting coordinates of particle.
@@ -53,12 +53,12 @@ namespace Mechanics_Sim
                 case 1:
                     info += " What is the magnitude of the acceleration of the particle?";
                     ans = sim.getAcc();
-                    ansUnitsLabel.Text = "ms\u207b\xB2";
+                    ansUnitsLabel.Text = "ms\u207b\xB2"; //Output units next to answer box.
                     break;
                 case 2:
                     info += " What is the magnitude of the resultant force on the particle?";
                     ans = sim.getRf();
-                    ansUnitsLabel.Text = "N";
+                    ansUnitsLabel.Text = "N"; //Output units next to answer box.
                     break;
             }
             info += " (give answer to 2 decimal places)";
@@ -137,7 +137,7 @@ namespace Mechanics_Sim
         private void testMode_Click(object sender, EventArgs e)
         {
             reset();
-            simForms.testSetup(statsPanel, controlPanel, questionLabel, learnBox);
+            simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);
             if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; forceQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
             test = !test;
         }
