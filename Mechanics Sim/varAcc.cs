@@ -40,23 +40,52 @@ namespace Mechanics_Sim
             reset();
         }
 
+        public static string format(string eqn){
+            String newstr = ""; //String to hold formatted equation.
+            string[] result = eqn.Split(' '); //Splits sections of string into list.
+            foreach (string x in result){ //Loops through each list item.
+                if (!(x.Contains("+0"))){ //Any terms with a zero can be omitted from the equation. ALSO FIX THIS AND EXPLAIN ERROR- EG IF COEFFICIENT IS 30 THEN ERROR FOUND.
+                    if (x.Contains("+-")){ //Changes +- to just - (slightly different if coefficient is -1)
+                        if (x.Contains("+-1t")){ //Checks for unnecessary 1s with a +-.
+                            newstr += "-" + x.Substring(3, x.Length - 3); //Adds minus sign followed by t and its power.
+                        }else{
+                            newstr += "-" + x.Substring(2, x.Length - 2); //Adds minus sign followed by coefficient, t and its power.
+                        }
+                    }else{
+                        if (x.Contains("+1t")){ //Checks for unnecessary 1s with a +.{ //Check if coefficient is 1 and not constant term.
+                            newstr += "+" + x.Substring(2, x.Length - 2); //Omits 1 in string.
+                        }else{
+                            newstr += x; //Adds term without modification as already in right format.
+                        }
+                    }
+                }
+            }
+            if (newstr[0] == '0'){ //Removes unnecessary '0' at start.
+                newstr = newstr.Substring(1, newstr.Length - 1);
+            }
+            if (newstr[0] == '+'){ //Removes unnecessary '+' at start.
+                newstr = newstr.Substring(1, newstr.Length - 1);
+            }
+            return newstr;
+        }
+
         public void varAccQuestion()
         {
             Random rnd = new Random(); //Initialise random variable.
             int choice = rnd.Next(1, 3); //Used to decide what question to give.
-            double[] generatedCoeffsX = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) };  //Randomly generates expression for displacement equation.
+            double[] generatedCoeffsX = { rnd.Next(-5, 5), rnd.Next(-5, 5), rnd.Next(-5, 5), rnd.Next(-5, 5) };  //Randomly generates expression for displacement equation.
             disEqn = generatedCoeffsX;
             int time = rnd.Next(2, 10); //Random value for time.
             varAcc sim = new varAcc(); //Instantiate simulation to compute answers.
             sim.varAccSetup(disEqn); 
             velEqn = sim.getVel(); accEqn = sim.getAcc(); //Retrieving equations to find the answer.
-            string info = "A particle's displacement from the origin is given by: \n x = " + disEqn[0].ToString() + " + " + disEqn[1].ToString() + "t + " + disEqn[2].ToString() + "t\xB2 + " + disEqn[3].ToString() + "t\xB3";  //String containing question and relevant background information.
+            string info = "A particle's displacement from the origin is given by: \n x = " + format(disEqn[0].ToString() + " +" + disEqn[1].ToString() + "t +" + disEqn[2].ToString() + "t\xB2 +" + disEqn[3].ToString() + "t\xB3"); ;  //String containing question and relevant background information, along with formatted equation.
             if (!oneD){
-                double[] generatedCoeffsY = { rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5), rnd.Next(1, 5) }; //Randomly generates expression for vertical displacement equation.
+                double[] generatedCoeffsY = { rnd.Next(-5, 5), rnd.Next(-5, 5), rnd.Next(-5, 5), rnd.Next(-5, 5) }; //Randomly generates expression for vertical displacement equation.
                 disEqn = generatedCoeffsX; disEqnY = generatedCoeffsY;
                 sim.varAccSetupY(disEqnY); //Passes y component displacement into setup method.
                 velEqnY = sim.getVelY(); accEqnY = sim.getAccY(); //Retrieving equations to find the answer.
-                info += "\n y = " + disEqnY[0].ToString() + " + " + disEqnY[1].ToString() + "t + " + disEqnY[2].ToString() + "t\xB2 + " + disEqnY[3].ToString() + "t\xB3";  //String containing question and relevant background information.; //Start of question 
+                info += "\n y = " + format(disEqnY[0].ToString() + " +" + disEqnY[1].ToString() + "t +" + disEqnY[2].ToString() + "t\xB2 +" + disEqnY[3].ToString() + "t\xB3");  //String containing question and relevant background information.; //Start of question 
             }
             switch (choice){ //Adds a different question to the string depending on the number generated.
                 case 1:   
@@ -166,20 +195,20 @@ namespace Mechanics_Sim
                     disEqnY = coefficientsY;
                     velEqnY = sim.getVelY();
                     accEqnY = sim.getAccY();
-                    velEqnYTxt.Text = "Velocity equation Y:      " + velEqnY[0].ToString() + " + " + velEqnY[1].ToString() + "t +" + velEqnY[2].ToString() + "t\xB2 +" + velEqnY[3].ToString() + "t\xB3";
-                    accEqnYTxt.Text = "Acceleration equation Y:      " + accEqnY[0].ToString() + " + " + accEqnY[1].ToString() + "t +" + accEqnY[2].ToString() + "t\xB2 +" + accEqnY[3].ToString() + "t\xB3";
+                    velEqnYTxt.Text = "Velocity equation Y: " + format(velEqnY[0].ToString() + " +" + velEqnY[1].ToString() + "t +" + velEqnY[2].ToString() + "t\xB2 +" + velEqnY[3].ToString() + "t\xB3");
+                    accEqnYTxt.Text = "Acceleration equation Y: " + format(accEqnY[0].ToString() + " +" + accEqnY[1].ToString() + "t +" + accEqnY[2].ToString() + "t\xB2 +" + accEqnY[3].ToString() + "t\xB3");
                 }
                 start = true;
                 //Retrieves equations needed for x component motion.
                 velEqn = sim.getVel();
                 accEqn = sim.getAcc();
                 // Following lines display relevant stats.
-                velEqnTxt.Text = "Velocity equation X:      " + velEqn[0].ToString() + " + " + velEqn[1].ToString() + "t +" + velEqn[2].ToString() + "t\xB2 +" + velEqn[3].ToString() + "t\xB3";
+                velEqnTxt.Text = "Velocity equation X: " + format(velEqn[0].ToString() + " +" + velEqn[1].ToString() + "t +" + velEqn[2].ToString() + "t\xB2 +" + velEqn[3].ToString() + "t\xB3");
                 timeTxt.Text = "Time elapsed: ";
                 accTxt.Text = "Acceleration : ";
                 speedTxt.Text = "Speed: ";
                 dispTxt.Text = "Displacement: ";
-                accEqnTxt.Text = "Acceleration equation X:      " + accEqn[0].ToString() + " + " + accEqn[1].ToString() + "t +" + accEqn[2].ToString() + "t\xB2 +" + accEqn[3].ToString() + "t\xB3";        
+                accEqnTxt.Text = "Acceleration equation X: " + format(accEqn[0].ToString() + " +" + accEqn[1].ToString() + "t +" + accEqn[2].ToString() + "t\xB2 +" + accEqn[3].ToString() + "t\xB3");        
                 varAccTimer.Start(); //Starts timer to begin simulation animation.
                 if (oneD) { p.setVel(velEqn[0], 0); } else { p.setVel(velEqn[0], velEqnY[0]);} //Sets initial velocity.      
             }
@@ -233,6 +262,7 @@ namespace Mechanics_Sim
             if (dimensionSwitch.Text == "1D"){dimensionSwitch.Text = "2D";}else{dimensionSwitch.Text = "1D";}   //Changes text in dimension switch button to show what mode program is in.
             reset();
         }
+
 
         private void toggle() //Routine to toggle elements for 2D motion.
         {

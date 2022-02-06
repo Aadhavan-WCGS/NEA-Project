@@ -99,7 +99,6 @@ namespace Mechanics_Sim
             info += "\n (g = 9.8, give answer to 2 decimal places)"; //Adds extra info to question.
             questionLabel.Text = info;  //Outputs question into a label.
         }
-
         public void reset(){  //Resets displayed stats, picturebox locations, time and also stops timer.
             correctLabel.Text = "";
             pulley.Location = new Point(startX, startY);  //Set pulley picturebox location to initial position.
@@ -162,7 +161,6 @@ namespace Mechanics_Sim
             reset();
             pulleyQuestion();
         }
-
         private void checkBtn_Click(object sender, EventArgs e){
             if (useTable){
                 if (use2Pulley){

@@ -79,6 +79,8 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.AutoScroll = true;
+            this.controlPanel.AutoSize = true;
             this.controlPanel.Controls.Add(this.coverPanel);
             this.controlPanel.Controls.Add(this.checkBtn);
             this.controlPanel.Controls.Add(this.learnBox);
@@ -100,21 +102,23 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.mass2Label);
             this.controlPanel.Controls.Add(this.switchBtn);
             this.controlPanel.Controls.Add(this.mass1Label);
-            this.controlPanel.Location = new System.Drawing.Point(8, 449);
+            this.controlPanel.Location = new System.Drawing.Point(0, 501);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1339, 138);
+            this.controlPanel.Size = new System.Drawing.Size(1461, 144);
             this.controlPanel.TabIndex = 17;
             // 
             // coverPanel
             // 
+            this.coverPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.coverPanel.AutoScroll = true;
             this.coverPanel.Controls.Add(this.ansLabel);
             this.coverPanel.Controls.Add(this.ansBox);
             this.coverPanel.Controls.Add(this.correctLabel);
             this.coverPanel.Controls.Add(this.ansUnitsLabel);
             this.coverPanel.ForeColor = System.Drawing.Color.Black;
-            this.coverPanel.Location = new System.Drawing.Point(0, 34);
+            this.coverPanel.Location = new System.Drawing.Point(7, 36);
             this.coverPanel.Name = "coverPanel";
-            this.coverPanel.Size = new System.Drawing.Size(361, 104);
+            this.coverPanel.Size = new System.Drawing.Size(418, 104);
             this.coverPanel.TabIndex = 70;
             this.coverPanel.Visible = false;
             // 
@@ -166,11 +170,12 @@ namespace Mechanics_Sim
             // 
             // checkBtn
             // 
+            this.checkBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.checkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBtn.ForeColor = System.Drawing.Color.Black;
-            this.checkBtn.Location = new System.Drawing.Point(367, 53);
+            this.checkBtn.Location = new System.Drawing.Point(453, 54);
             this.checkBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBtn.Name = "checkBtn";
             this.checkBtn.Size = new System.Drawing.Size(196, 52);
@@ -183,10 +188,11 @@ namespace Mechanics_Sim
             // 
             // learnBox
             // 
+            this.learnBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.learnBox.AutoSize = true;
             this.learnBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.learnBox.ForeColor = System.Drawing.Color.White;
-            this.learnBox.Location = new System.Drawing.Point(1206, 66);
+            this.learnBox.Location = new System.Drawing.Point(1321, 67);
             this.learnBox.Name = "learnBox";
             this.learnBox.Size = new System.Drawing.Size(127, 29);
             this.learnBox.TabIndex = 58;
@@ -196,11 +202,12 @@ namespace Mechanics_Sim
             // 
             // generateQuestion
             // 
+            this.generateQuestion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.generateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.generateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.generateQuestion.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.generateQuestion.ForeColor = System.Drawing.Color.Black;
-            this.generateQuestion.Location = new System.Drawing.Point(569, 53);
+            this.generateQuestion.Location = new System.Drawing.Point(655, 55);
             this.generateQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.generateQuestion.Name = "generateQuestion";
             this.generateQuestion.Size = new System.Drawing.Size(196, 52);
@@ -223,14 +230,15 @@ namespace Mechanics_Sim
             // 
             // testMode
             // 
+            this.testMode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.testMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.testMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.testMode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.testMode.ForeColor = System.Drawing.Color.Black;
-            this.testMode.Location = new System.Drawing.Point(771, 53);
+            this.testMode.Location = new System.Drawing.Point(857, 55);
             this.testMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.testMode.Name = "testMode";
-            this.testMode.Size = new System.Drawing.Size(229, 52);
+            this.testMode.Size = new System.Drawing.Size(196, 52);
             this.testMode.TabIndex = 63;
             this.testMode.Text = "Test yourself";
             this.testMode.UseVisualStyleBackColor = false;
@@ -366,11 +374,12 @@ namespace Mechanics_Sim
             // 
             // exitBtn
             // 
+            this.exitBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(1004, 54);
+            this.exitBtn.Location = new System.Drawing.Point(1059, 55);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(196, 52);
@@ -381,11 +390,12 @@ namespace Mechanics_Sim
             // 
             // resetBtn
             // 
+            this.resetBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetBtn.ForeColor = System.Drawing.Color.Black;
-            this.resetBtn.Location = new System.Drawing.Point(569, 53);
+            this.resetBtn.Location = new System.Drawing.Point(655, 55);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(196, 52);
@@ -406,11 +416,12 @@ namespace Mechanics_Sim
             // 
             // switchBtn
             // 
+            this.switchBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.switchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
             this.switchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.switchBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.switchBtn.ForeColor = System.Drawing.Color.Black;
-            this.switchBtn.Location = new System.Drawing.Point(367, 53);
+            this.switchBtn.Location = new System.Drawing.Point(453, 55);
             this.switchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.switchBtn.Name = "switchBtn";
             this.switchBtn.Size = new System.Drawing.Size(196, 52);
@@ -518,7 +529,7 @@ namespace Mechanics_Sim
             this.assumptions.AutoSize = true;
             this.assumptions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.assumptions.ForeColor = System.Drawing.Color.White;
-            this.assumptions.Location = new System.Drawing.Point(12, 9);
+            this.assumptions.Location = new System.Drawing.Point(6, 9);
             this.assumptions.Name = "assumptions";
             this.assumptions.Size = new System.Drawing.Size(729, 300);
             this.assumptions.TabIndex = 36;
@@ -543,11 +554,11 @@ namespace Mechanics_Sim
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
-            this.ClientSize = new System.Drawing.Size(1361, 599);
+            this.ClientSize = new System.Drawing.Size(1461, 645);
             this.Controls.Add(this.questionLabel);
-            this.Controls.Add(this.assumptions);
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.controlPanel);
+            this.Controls.Add(this.assumptions);
             this.Name = "onePulleySim";
             this.Text = "onePulleySim";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.onePulleySim_Paint);

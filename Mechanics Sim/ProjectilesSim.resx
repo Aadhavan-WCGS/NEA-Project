@@ -72,7 +72,6 @@ Horizontal acceleration is zero as no forces act horizontally. This is why overa
 
 As acceleration is constant in the vertical direction, 
 we can use SUVAT equations to model the vertical motion.
-In horizontal direction we can simply use speed = distance/time due to constant velocity.
-</value>
+In horizontal direction we can simply use speed = distance/time due to constant velocity.</value>
   </data>
 </root>

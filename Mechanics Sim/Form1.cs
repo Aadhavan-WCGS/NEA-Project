@@ -47,6 +47,15 @@ namespace Mechanics_Sim
     {
         public static void initiate(Panel stats, Panel control, Form inp) //Simulation forms call this method to be in the correct window format.
         {
+            stats.Width = Screen.PrimaryScreen.Bounds.Width;
+            Control learnLabel = inp.Controls["assumptions"];
+            learnLabel.Anchor = (AnchorStyles.Top | AnchorStyles.Left); //Anchor learning mode label. EXXXPLAAAAIN
+            int i = 1;
+            learnLabel.Font = new Font("Segoe UI", i, FontStyle.Regular); //EXXXPLAAAAIN  
+            while (learnLabel.Width < Screen.PrimaryScreen.Bounds.Width / 2 & learnLabel.Height < Screen.PrimaryScreen.Bounds.Height/4){
+                learnLabel.Font = stats.Font =  new Font("Segoe UI",i, FontStyle.Regular); //EXXXPLAAAAIN
+                i++;
+            }
             stats.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
             control.Anchor = (AnchorStyles.Bottom); //Keeps controls at bottom of screen.
             inp.FormBorderStyle = FormBorderStyle.None; //Removes borders.
@@ -55,6 +64,7 @@ namespace Mechanics_Sim
 
         public static void testSetup(Panel stats, Panel control, Panel cover, CheckBox learn, Label question){
             learn.Checked = false; //Ensures learning text does not display.
+            learn.Visible = !learn.Visible;
             foreach (Control x in control.Controls){
                 if (x.Name != "testMode" & x.Name != "exitBtn" & x.Name != "Ball" & x is Button){ //Toggles visibility of elements.
                     x.Visible = !x.Visible;
@@ -91,7 +101,6 @@ namespace Mechanics_Sim
         }
     }
     
-
     public class particle
     {
         //Attributes

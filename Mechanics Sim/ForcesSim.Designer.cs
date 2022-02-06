@@ -77,7 +77,7 @@ namespace Mechanics_Sim
             this.switchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.switchBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.switchBtn.ForeColor = System.Drawing.Color.Black;
-            this.switchBtn.Location = new System.Drawing.Point(343, 51);
+            this.switchBtn.Location = new System.Drawing.Point(437, 51);
             this.switchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.switchBtn.Name = "switchBtn";
             this.switchBtn.Size = new System.Drawing.Size(196, 52);
@@ -190,6 +190,7 @@ namespace Mechanics_Sim
             // 
             // controlPanel
             // 
+            this.controlPanel.AutoSize = true;
             this.controlPanel.Controls.Add(this.coverPanel);
             this.controlPanel.Controls.Add(this.generateQuestion);
             this.controlPanel.Controls.Add(this.checkBtn);
@@ -209,7 +210,7 @@ namespace Mechanics_Sim
             this.controlPanel.Controls.Add(this.massUnitLabel);
             this.controlPanel.Location = new System.Drawing.Point(3, 599);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.Size = new System.Drawing.Size(1307, 138);
+            this.controlPanel.Size = new System.Drawing.Size(1403, 142);
             this.controlPanel.TabIndex = 16;
             // 
             // coverPanel
@@ -221,7 +222,7 @@ namespace Mechanics_Sim
             this.coverPanel.ForeColor = System.Drawing.Color.Black;
             this.coverPanel.Location = new System.Drawing.Point(3, 42);
             this.coverPanel.Name = "coverPanel";
-            this.coverPanel.Size = new System.Drawing.Size(334, 93);
+            this.coverPanel.Size = new System.Drawing.Size(428, 93);
             this.coverPanel.TabIndex = 71;
             this.coverPanel.Visible = false;
             // 
@@ -277,7 +278,7 @@ namespace Mechanics_Sim
             this.generateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.generateQuestion.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.generateQuestion.ForeColor = System.Drawing.Color.Black;
-            this.generateQuestion.Location = new System.Drawing.Point(545, 51);
+            this.generateQuestion.Location = new System.Drawing.Point(639, 51);
             this.generateQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.generateQuestion.Name = "generateQuestion";
             this.generateQuestion.Size = new System.Drawing.Size(196, 52);
@@ -294,7 +295,7 @@ namespace Mechanics_Sim
             this.checkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBtn.ForeColor = System.Drawing.Color.Black;
-            this.checkBtn.Location = new System.Drawing.Point(343, 51);
+            this.checkBtn.Location = new System.Drawing.Point(437, 51);
             this.checkBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBtn.Name = "checkBtn";
             this.checkBtn.Size = new System.Drawing.Size(196, 52);
@@ -311,7 +312,7 @@ namespace Mechanics_Sim
             this.testMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.testMode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.testMode.ForeColor = System.Drawing.Color.Black;
-            this.testMode.Location = new System.Drawing.Point(747, 51);
+            this.testMode.Location = new System.Drawing.Point(841, 51);
             this.testMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.testMode.Name = "testMode";
             this.testMode.Size = new System.Drawing.Size(220, 52);
@@ -345,7 +346,7 @@ namespace Mechanics_Sim
             this.learnBox.AutoSize = true;
             this.learnBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.learnBox.ForeColor = System.Drawing.Color.White;
-            this.learnBox.Location = new System.Drawing.Point(1175, 57);
+            this.learnBox.Location = new System.Drawing.Point(1269, 57);
             this.learnBox.Name = "learnBox";
             this.learnBox.Size = new System.Drawing.Size(127, 29);
             this.learnBox.TabIndex = 53;
@@ -403,7 +404,7 @@ namespace Mechanics_Sim
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.exitBtn.ForeColor = System.Drawing.Color.Black;
-            this.exitBtn.Location = new System.Drawing.Point(973, 51);
+            this.exitBtn.Location = new System.Drawing.Point(1067, 51);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(196, 52);
@@ -418,7 +419,7 @@ namespace Mechanics_Sim
             this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resetBtn.ForeColor = System.Drawing.Color.Black;
-            this.resetBtn.Location = new System.Drawing.Point(545, 51);
+            this.resetBtn.Location = new System.Drawing.Point(639, 51);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(196, 52);
@@ -468,7 +469,7 @@ namespace Mechanics_Sim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(33)))), ((int)(((byte)(71)))));
-            this.ClientSize = new System.Drawing.Size(1313, 749);
+            this.ClientSize = new System.Drawing.Size(1417, 749);
             this.Controls.Add(this.questionLabel);
             this.Controls.Add(this.assumptions);
             this.Controls.Add(this.controlPanel);
