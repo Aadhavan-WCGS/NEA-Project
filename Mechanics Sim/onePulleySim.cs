@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Mechanics_Sim
@@ -100,6 +97,13 @@ namespace Mechanics_Sim
             questionLabel.Text = info;  //Outputs question into a label.
         }
         public void reset(){  //Resets displayed stats, picturebox locations, time and also stops timer.
+            foreach (Control x in controlPanel.Controls){
+                if(x is NumericUpDown) //Checks if control is NumericUpDown
+                {
+                    NumericUpDown y = x as NumericUpDown;
+                    y.Text = y.Value.ToString();  //Sets value to defaut/value before change.
+                }
+            }
             correctLabel.Text = "";
             pulley.Location = new Point(startX, startY);  //Set pulley picturebox location to initial position.
             if (useTable){
@@ -150,6 +154,23 @@ namespace Mechanics_Sim
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("Questions.txt")){ // If file does not exists
+                File.Create("Questions.txt").Close(); // Create file
+                using (StreamWriter sw = File.AppendText("Questions.txt")){
+                    sw.WriteLine(questionLabel.Text); // Write text to .txt file
+                    sw.WriteLine("Correct answer: " + ans.ToString());
+                }
+            }else{ // If file already exists  
+                using (StreamWriter sw = File.AppendText("Questions.txt")){
+                    sw.WriteLine("_______________________");
+                    sw.WriteLine(questionLabel.Text); // Write text to .txt file
+                    sw.WriteLine("Correct answer: " + ans.ToString());
+                }
+            }
+        }
+
         private void testMode_Click(object sender, EventArgs e){
             reset();
             simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);
@@ -162,6 +183,7 @@ namespace Mechanics_Sim
             pulleyQuestion();
         }
         private void checkBtn_Click(object sender, EventArgs e){
+            reset();
             if (useTable){
                 if (use2Pulley){
                     NumericUpDown[] boxes = { mass1Box, mass2Box, mass3Box, coeffBox}; //Array of input boxes.
@@ -197,6 +219,7 @@ namespace Mechanics_Sim
 
         private void switchBtn_Click(object sender, EventArgs e){
             if (!start){
+                reset();
                 //Following lines instantiate simulation and appropriately configure the particle.
                 onePulley sim = new onePulley();
                 //Passes mass inputs into pulleySetup function, returns array of 2 particles configured for table or without table.

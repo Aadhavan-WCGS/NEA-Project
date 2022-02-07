@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 //SUPERSCRIPT CODES = \u207b\xB9 = ^-1, \u207b\xB2 = ^-2
@@ -78,14 +79,15 @@ namespace Mechanics_Sim
         public static void check(NumericUpDown[] boxes, double[] data, double correctAns, string userAns, Button switchBtn, Label feedback)
         {
             if (correctAns.ToString("0.00") == userAns){ //Compares appropriately formatted answer to user input.
-                feedback.Text = "Correct. Well done!"; //Outputs appropriate message if user is correct.
                 for (int i = 0; i < boxes.Length; i++){
                     boxes[i].Value = Convert.ToDecimal(data[i]); //Loops through each NumericUpDownBox, setting it to the required input before starting the animation.
                 }
                 switchBtn.Show(); 
                 switchBtn.PerformClick(); //Starts the simulation by clicking the button.
                 switchBtn.Hide();
-            }else
+                feedback.Text = "Correct. Well done!"; //Outputs appropriate message if user is correct.
+            }
+            else
             {
                 feedback.Text = "Incorrect. Try again."; //Outputs appropriate message if user is incorrect.
             }

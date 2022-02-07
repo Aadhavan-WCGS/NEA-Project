@@ -71,6 +71,13 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            foreach (Control x in controlPanel.Controls){
+                if(x is NumericUpDown) //Checks if control is NumericUpDown
+                {
+                    NumericUpDown y = x as NumericUpDown;
+                    y.Text = y.Value.ToString();  //Sets value to defaut/value before change.
+                }
+            }
             correctLabel.Text = "";  //Initialise question feedback label to blank.
             proj.Location = new Point(startX, startY); //Sets particle picturebox location back to initial.
             timeNum = 0; //Set time elapsed back to zero.
@@ -88,6 +95,7 @@ namespace Mechanics_Sim
         {
             if (!start)
             {
+                reset();
                 //Following lines instantiate simulation and appropriately configure the particle.
                 projectiles sim = new projectiles();
                 p = sim.projectilesSetup(Convert.ToDouble(uBox.Text), Convert.ToDouble(angleBox.Text)); //Calls routine to setup simulation, returning a configured particle.
@@ -154,6 +162,7 @@ namespace Mechanics_Sim
 
         private void checkBtn_Click(object sender, EventArgs e)
         {
+            reset();
             NumericUpDown[] boxes = { uBox, angleBox }; //Array of input boxes.
             double[] data = { speed, angle }; //Array of data to input.
             simForms.check(boxes, data, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.

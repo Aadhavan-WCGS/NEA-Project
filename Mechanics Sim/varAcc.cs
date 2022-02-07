@@ -115,6 +115,12 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            foreach (Control x in controlPanel.Controls){
+                if (x is NumericUpDown){ //Checks if control is NumericUpDown
+                    NumericUpDown y = x as NumericUpDown;
+                    y.Text = y.Value.ToString();  //Sets value to defaut/value before change.
+                }
+            }
             correctLabel.Text = "";  //Initialise question feedback label to blank.
             ball.Location = new Point(startX, startY); //Set particle picturebox to initial position.
             timeNum = 0; //Reset time elapsed to zero,
@@ -148,8 +154,8 @@ namespace Mechanics_Sim
             dimensionSwitch.Enabled = !dimensionSwitch.Enabled; //Locks dimension switch in test mode.
         }
 
-        private void checkBtn_Click(object sender, EventArgs e)
-        {
+        private void checkBtn_Click(object sender, EventArgs e){
+            reset();
             if (oneD){
                 NumericUpDown[] boxes = { x0Box, x1Box, x2Box, x3Box };
                 simForms.check(boxes, disEqn, ans, ansBox.Text, switchBtn, correctLabel); //Calls routine to check answer and run animation if correct.
@@ -183,6 +189,7 @@ namespace Mechanics_Sim
         {
             if (!start)
             {
+                reset();
                 //Following lines instantiate simulation and appropriately configure the particle.
                 double[] coefficients = {Convert.ToDouble(x0Box.Text), Convert.ToDouble(x1Box.Text), Convert.ToDouble(x2Box.Text), Convert.ToDouble(x3Box.Text)};
                 disEqn = coefficients;
