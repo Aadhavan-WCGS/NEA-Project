@@ -63,6 +63,27 @@ namespace Mechanics_Sim
             inp.WindowState = FormWindowState.Maximized; //Puts window in fullscreen.
         }
 
+        public static void questionSave(String question, double answer, String units, ref bool saved){
+            if (!saved){
+                if (!File.Exists("Questions.txt")){ // If file does not exists
+                    File.Create("Questions.txt").Close(); // Create file
+                    using (StreamWriter sw = File.AppendText("Questions.txt")){
+                        sw.WriteLine(question); // Write text to .txt file
+                        sw.WriteLine("Correct answer: " + Math.Round(answer, 2).ToString() + units);
+                    }
+                }else{ // If file already exists  
+                    using (StreamWriter sw = File.AppendText("Questions.txt")){
+                        sw.WriteLine("____________________________");
+                        sw.WriteLine(question); // Write text to .txt file
+                        sw.WriteLine("Correct answer: " + Math.Round(answer, 2).ToString() + units);
+                    }
+                }
+                System.Windows.Forms.MessageBox.Show("Question has been saved. To see this question, open the text file saved in the folder of this program.");
+                saved = true;
+            }
+            else{System.Windows.Forms.MessageBox.Show("Question has already been saved.");}
+        }
+
         public static void testSetup(Panel stats, Panel control, Panel cover, CheckBox learn, Label question){
             learn.Checked = false; //Ensures learning text does not display.
             learn.Visible = !learn.Visible;

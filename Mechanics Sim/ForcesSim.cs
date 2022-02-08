@@ -13,6 +13,7 @@ namespace Mechanics_Sim
         //Declaring variables with scope of the simulation form.
         PictureBox ball; //Initialise all pictureboxes to be used.
         bool test = false;
+        bool saved = false;
         bool start = false;
         double ans, mass, forceX, forceY; //Variables for test mode.
         particle p; //Particle instantiation.
@@ -66,6 +67,7 @@ namespace Mechanics_Sim
         }
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            saved = false;
             foreach (Control x in controlPanel.Controls)
             {
                 if (x is NumericUpDown) //Checks if control is NumericUpDown
@@ -132,6 +134,11 @@ namespace Mechanics_Sim
         {
             reset();
             forceQuestion(); //Generates new question.
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved);
         }
 
         private void exitBtn_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@ namespace Mechanics_Sim
         //Declaring variables with scope of the simulation form.
         PictureBox ball; //Initialise all pictureboxes to be used.
         bool oneD = true;
+        bool saved = false;
         bool start = false;
         bool test = false;
         double ans;
@@ -115,6 +116,7 @@ namespace Mechanics_Sim
 
         public void reset() //Resets displayed stats, picturebox locations, time and also stops timer.
         {
+            saved = false;
             foreach (Control x in controlPanel.Controls){
                 if (x is NumericUpDown){ //Checks if control is NumericUpDown
                     NumericUpDown y = x as NumericUpDown;
@@ -178,6 +180,11 @@ namespace Mechanics_Sim
         private void resetBtn_Click(object sender, EventArgs e)
         { 
             reset(); //Call reset routine on button click.
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved);
         }
 
         private void exitBtn_Click(object sender, EventArgs e)

@@ -89,7 +89,7 @@ namespace Mechanics_Sim
             this.varAccBtn.Location = new System.Drawing.Point(12, 251);
             this.varAccBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.varAccBtn.Name = "varAccBtn";
-            this.varAccBtn.Size = new System.Drawing.Size(537, 51);
+            this.varAccBtn.Size = new System.Drawing.Size(537, 50);
             this.varAccBtn.TabIndex = 3;
             this.varAccBtn.Text = "Variable Acceleration";
             this.varAccBtn.UseVisualStyleBackColor = false;

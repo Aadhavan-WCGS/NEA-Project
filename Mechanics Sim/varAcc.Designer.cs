@@ -78,6 +78,7 @@ namespace Mechanics_Sim
             this.varAccTimer = new System.Windows.Forms.Timer(this.components);
             this.assumptions = new System.Windows.Forms.Label();
             this.questionLabel = new System.Windows.Forms.Label();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.statsPanel.SuspendLayout();
             this.controlPanel.SuspendLayout();
             this.coverPanel.SuspendLayout();
@@ -248,6 +249,7 @@ namespace Mechanics_Sim
             // 
             // coverPanel
             // 
+            this.coverPanel.Controls.Add(this.saveBtn);
             this.coverPanel.Controls.Add(this.ansLabel);
             this.coverPanel.Controls.Add(this.ansBox);
             this.coverPanel.Controls.Add(this.correctLabel);
@@ -264,7 +266,7 @@ namespace Mechanics_Sim
             this.ansLabel.AutoSize = true;
             this.ansLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ansLabel.ForeColor = System.Drawing.Color.White;
-            this.ansLabel.Location = new System.Drawing.Point(173, 37);
+            this.ansLabel.Location = new System.Drawing.Point(32, 14);
             this.ansLabel.Name = "ansLabel";
             this.ansLabel.Size = new System.Drawing.Size(78, 25);
             this.ansLabel.TabIndex = 62;
@@ -273,7 +275,7 @@ namespace Mechanics_Sim
             // ansBox
             // 
             this.ansBox.DecimalPlaces = 2;
-            this.ansBox.Location = new System.Drawing.Point(257, 39);
+            this.ansBox.Location = new System.Drawing.Point(116, 16);
             this.ansBox.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -288,7 +290,7 @@ namespace Mechanics_Sim
             this.correctLabel.AutoSize = true;
             this.correctLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.correctLabel.ForeColor = System.Drawing.Color.White;
-            this.correctLabel.Location = new System.Drawing.Point(375, 37);
+            this.correctLabel.Location = new System.Drawing.Point(234, 14);
             this.correctLabel.Name = "correctLabel";
             this.correctLabel.Size = new System.Drawing.Size(78, 25);
             this.correctLabel.TabIndex = 64;
@@ -299,7 +301,7 @@ namespace Mechanics_Sim
             this.ansUnitsLabel.AutoSize = true;
             this.ansUnitsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ansUnitsLabel.ForeColor = System.Drawing.Color.White;
-            this.ansUnitsLabel.Location = new System.Drawing.Point(316, 37);
+            this.ansUnitsLabel.Location = new System.Drawing.Point(175, 14);
             this.ansUnitsLabel.Name = "ansUnitsLabel";
             this.ansUnitsLabel.Size = new System.Drawing.Size(53, 25);
             this.ansUnitsLabel.TabIndex = 63;
@@ -703,6 +705,23 @@ namespace Mechanics_Sim
             this.questionLabel.Text = "Question\r\n";
             this.questionLabel.Visible = false;
             // 
+            // saveBtn
+            // 
+            this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.saveBtn.Font = new System.Drawing.Font("Segoe UI", 13.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.saveBtn.ForeColor = System.Drawing.Color.Black;
+            this.saveBtn.Location = new System.Drawing.Point(33, 47);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(280, 36);
+            this.saveBtn.TabIndex = 67;
+            this.saveBtn.Text = "Save question";
+            this.saveBtn.UseMnemonic = false;
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // varAccSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -786,5 +805,6 @@ namespace Mechanics_Sim
         private System.Windows.Forms.NumericUpDown ansBox;
         private System.Windows.Forms.Label questionLabel;
         private System.Windows.Forms.Panel coverPanel;
+        private System.Windows.Forms.Button saveBtn;
     }
 }

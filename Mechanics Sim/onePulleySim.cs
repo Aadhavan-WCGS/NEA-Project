@@ -14,6 +14,7 @@ namespace Mechanics_Sim
         int tblH = 500; int tblW = 1000; //Height and width of the table.
         bool test = false;
         bool start = false;
+        bool saved = false;
         double m1, m2, m3, mu; //Variables for test mode.
         double ans = 0;
         double timeNum = 0; //Variable to store time elapsed, set to zero initially.
@@ -97,6 +98,7 @@ namespace Mechanics_Sim
             questionLabel.Text = info;  //Outputs question into a label.
         }
         public void reset(){  //Resets displayed stats, picturebox locations, time and also stops timer.
+            saved = false;
             foreach (Control x in controlPanel.Controls){
                 if(x is NumericUpDown) //Checks if control is NumericUpDown
                 {
@@ -156,19 +158,7 @@ namespace Mechanics_Sim
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!File.Exists("Questions.txt")){ // If file does not exists
-                File.Create("Questions.txt").Close(); // Create file
-                using (StreamWriter sw = File.AppendText("Questions.txt")){
-                    sw.WriteLine(questionLabel.Text); // Write text to .txt file
-                    sw.WriteLine("Correct answer: " + ans.ToString());
-                }
-            }else{ // If file already exists  
-                using (StreamWriter sw = File.AppendText("Questions.txt")){
-                    sw.WriteLine("_______________________");
-                    sw.WriteLine(questionLabel.Text); // Write text to .txt file
-                    sw.WriteLine("Correct answer: " + ans.ToString());
-                }
-            }
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved); 
         }
 
         private void testMode_Click(object sender, EventArgs e){
@@ -179,6 +169,7 @@ namespace Mechanics_Sim
         }
 
         private void generateQuestion_Click(object sender, EventArgs e){
+            
             reset();
             pulleyQuestion();
         }
