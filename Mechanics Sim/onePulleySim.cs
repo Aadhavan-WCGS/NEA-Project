@@ -27,8 +27,8 @@ namespace Mechanics_Sim
             simForms.initiate(statsPanel, controlPanel, this); //Initialise UI elements.
             startX = this.Width * 7/8; ; startY = this.Height/2 ;
             //Appropriate pictureboxes are defined below.
-            pulley = new PictureBox{Name = "pulley",Size = new Size(60, 60),SizeMode = PictureBoxSizeMode.Zoom,Image = Properties.Resources.Ball,};
-            pulleyOne = new PictureBox{Name = "pulley1",Size = new Size(60, 60),SizeMode = PictureBoxSizeMode.Zoom,Image = Properties.Resources.Ball,};
+            pulley = new PictureBox{Name = "pulley",Size = new Size(80, 80),SizeMode = PictureBoxSizeMode.Zoom,Image = Properties.Resources.Ball,};
+            pulleyOne = new PictureBox{Name = "pulley1",Size = new Size(80, 80),SizeMode = PictureBoxSizeMode.Zoom,Image = Properties.Resources.Ball,};
             p1 = new PictureBox{ Name = "p1", Size = new Size(40, 40), SizeMode = PictureBoxSizeMode.CenterImage, Image = Properties.Resources.Square, }; //3rd particle only used in configuration with 2 pulleys and 3 masses
             p2 = new PictureBox{Name = "p2",Size = new Size(40, 40),SizeMode = PictureBoxSizeMode.CenterImage,Image = Properties.Resources.Square,};
             p3 = new PictureBox   {Name = "p3",Size = new Size(40, 40),SizeMode = PictureBoxSizeMode.CenterImage,Image = Properties.Resources.Square,};
@@ -97,7 +97,7 @@ namespace Mechanics_Sim
             info += "\n (g = 9.8, give answer to 2 decimal places)"; //Adds extra info to question.
             questionLabel.Text = info;  //Outputs question into a label.
         }
-        public void reset(){  //Resets displayed stats, picturebox locations, time and also stops timer.
+        public void reset(){  //Resets displayed stats, picturebox locations, time and also stops timer
             saved = false;
             foreach (Control x in controlPanel.Controls){
                 if(x is NumericUpDown) //Checks if control is NumericUpDown
@@ -118,7 +118,7 @@ namespace Mechanics_Sim
                 if (use2Pulley){
                     pulleyOne.Location = new Point(startX - table.Width, startY); pulleyOne.Show();
                     mass3Box.Show(); massUnitLabel3.Show(); mass3Label.Show();
-                    p1.Show(); p1.Location = new Point(table.Left - p1.Width, startY + gap);
+                    p1.Show(); p1.Location = new Point(table.Left - p1.Width + 10, startY + gap);
                     tn2Txt.Show();
                 }else{
                     pulleyOne.Hide();
@@ -130,7 +130,8 @@ namespace Mechanics_Sim
                 //Makes table, 2nd pulley and 2nd pulley checkbox hidden if check box is unticked.
                 table.Hide(); fricCoeffLabel.Hide(); coeffBox.Hide(); pulleyOne.Hide();checkBoxPulley.Hide();
                 p1.Hide(); mass3Box.Hide(); massUnitLabel3.Hide(); mass3Label.Hide(); tn2Txt.Hide();
-                p2.Location = new Point(startX - pulley.Width / 2 - 20, startY + gap); p3.Location = new Point(startX + pulley.Width / 2 + 20, startY + gap);
+                p2.Location = new Point(startX - pulley.Width / 2 + 30, startY + gap); p3.Location = new Point(startX + pulley.Width / 2 + 10, startY + gap);
+                pulley.SendToBack(); p2.BringToFront(); p3.BringToFront();
             }
             //Below code resets text in relevant labels for simulation.
             timeNum = 0;
@@ -141,6 +142,7 @@ namespace Mechanics_Sim
             speedTxt.Text = "Speed: ";
             start = false;
             pullTimer.Stop();
+            this.Refresh();
         }
 
         private void resetBtn_Click(object sender, EventArgs e){
@@ -159,6 +161,16 @@ namespace Mechanics_Sim
         private void button1_Click(object sender, EventArgs e)
         {
             simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved); 
+        }
+
+        private void assumptions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void onePulleySim_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void testMode_Click(object sender, EventArgs e){
@@ -198,7 +210,17 @@ namespace Mechanics_Sim
         }
 
         private void onePulleySim_Paint(object sender, PaintEventArgs e){
-            //Adding string for pulley code goes here.
+            Graphics g = this.CreateGraphics(); //Instantiate graphics.
+            Pen myPen = new Pen(Color.Green){Width = 1}; //Create pen.
+            //Strings drawn below for each case.
+            g.DrawLine(myPen, p3.Left + p3.Width / 2, pulley.Top + pulley.Height / 2, p3.Left + p3.Width / 2, p3.Top); //String connecting right pulley to right particle.
+            if (useTable){
+                g.DrawLine(myPen, p2.Left + p2.Width, p2.Top + p2.Height/2, pulley.Left, p2.Top + p2.Height / 2); //String connecting centre particle to right pulley.
+                if (use2Pulley){ 
+                    g.DrawLine(myPen, pulleyOne.Left + pulleyOne.Width, p2.Top + p2.Height / 2, p2.Left, p2.Top + p2.Height / 2); //String connecting centre particle to left pulley.
+                    g.DrawLine(myPen, p1.Left + p1.Width/2, p1.Top,  p1.Left + p1.Width / 2, pulleyOne.Top + pulleyOne.Height + 20);  //String connecting left particle to left pulley.
+                }
+            }else{g.DrawLine(myPen, p2.Left + p2.Width / 2 - 5, pulley.Top + pulley.Height / 2, p2.Left + p2.Width / 2 - 5, p2.Top); } //String connecting left particle to single pulley.
         }
 
         private void checkBoxTable_CheckedChanged(object sender, EventArgs e){
@@ -237,12 +259,12 @@ namespace Mechanics_Sim
             //Sets appropriate boundary conditions depending on the pulley arrangement being used.
             if (useTable){
                 if (use2Pulley){
-                    condition = p2.Left >= pulley.Left || p2.Left <= pulleyOne.Left || p1.Top < pulleyOne.Top + pulleyOne.Height || p3.Top < pulley.Top + pulley.Height;
+                    condition = p2.Left >= pulley.Left || p2.Left <= pulleyOne.Left || p1.Top < pulleyOne.Top + pulleyOne.Height + 20 || p3.Top < pulley.Top + pulley.Height;
                 }else{
                     condition = (p2.Left >= pulley.Left || p3.Top >= table.Top + table.Height);
                 }
             }else{
-                condition = (p2.Top <= pulley.Top + pulley.Height || p3.Top <= pulley.Top + pulley.Height || p3.Top >= this.Height || p2.Top >= this.Height);
+                condition = (p2.Top <= pulley.Top + pulley.Height|| p3.Top <= pulley.Top + pulley.Height|| p3.Top >= this.Height || p2.Top >= this.Height);
             }
             simForms.time(ref timeNum, ref start, condition, pullTimer);
             //Call move method for pictureboxes, update stats.

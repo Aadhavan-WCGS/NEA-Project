@@ -39,6 +39,14 @@ namespace Mechanics_Sim
             reset();
         }
 
+        private void ProjectilesSim_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = this.CreateGraphics(); //Instantiate graphics.
+            Pen myPen = new Pen(Color.Green) { Width = 2}; //Create pen.
+            //Ground drawn below.
+            g.DrawLine(myPen, startX, startY+ proj.Height+2,this.Width-60, startY + proj.Height+2); //String connecting right pulley to right particle.
+        }
+
         public void projQuestion()
         {
             Random rnd = new Random(); //Initialise random variable.
@@ -119,7 +127,7 @@ namespace Mechanics_Sim
 
         private void projTimer_Tick(object sender, EventArgs e) //Timer function, responible for animation.
         {
-            simForms.time(ref timeNum, ref start, (proj.Top > startY), projTimer); //Projectile  should stop when it reaches its initial height.
+            simForms.time(ref timeNum, ref start, (proj.Top> startY), projTimer); //Projectile  should stop when it reaches its initial height.
             //Call move method for pictureboxes, update stats.
             p.move(proj);
             speedTxt.Text = "Speed: " + p.getSpeed() + " ms\u207b\xB9";

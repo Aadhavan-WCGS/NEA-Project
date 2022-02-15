@@ -44,6 +44,7 @@ namespace Mechanics_Sim
             this.projTimer = new System.Windows.Forms.Timer(this.components);
             this.controlPanel = new System.Windows.Forms.Panel();
             this.coverPanel = new System.Windows.Forms.Panel();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.ansLabel = new System.Windows.Forms.Label();
             this.correctLabel = new System.Windows.Forms.Label();
             this.ansBox = new System.Windows.Forms.NumericUpDown();
@@ -61,7 +62,6 @@ namespace Mechanics_Sim
             this.statsPanel = new System.Windows.Forms.Panel();
             this.assumptions = new System.Windows.Forms.Label();
             this.questionLabel = new System.Windows.Forms.Label();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.controlPanel.SuspendLayout();
             this.coverPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ansBox)).BeginInit();
@@ -226,6 +226,23 @@ namespace Mechanics_Sim
             this.coverPanel.Size = new System.Drawing.Size(371, 99);
             this.coverPanel.TabIndex = 72;
             this.coverPanel.Visible = false;
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.saveBtn.Font = new System.Drawing.Font("Segoe UI", 13.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.saveBtn.ForeColor = System.Drawing.Color.Black;
+            this.saveBtn.Location = new System.Drawing.Point(6, 44);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(280, 36);
+            this.saveBtn.TabIndex = 67;
+            this.saveBtn.Text = "Save question";
+            this.saveBtn.UseMnemonic = false;
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // ansLabel
             // 
@@ -457,23 +474,6 @@ namespace Mechanics_Sim
             this.questionLabel.Text = "Question\r\n";
             this.questionLabel.Visible = false;
             // 
-            // saveBtn
-            // 
-            this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(144)))), ((int)(((byte)(190)))));
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveBtn.Font = new System.Drawing.Font("Segoe UI", 13.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.saveBtn.ForeColor = System.Drawing.Color.Black;
-            this.saveBtn.Location = new System.Drawing.Point(6, 44);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(280, 36);
-            this.saveBtn.TabIndex = 67;
-            this.saveBtn.Text = "Save question";
-            this.saveBtn.UseMnemonic = false;
-            this.saveBtn.UseVisualStyleBackColor = false;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
-            // 
             // ProjectilesSim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -488,6 +488,7 @@ namespace Mechanics_Sim
             this.Name = "ProjectilesSim";
             this.Text = "Projectiles Simulator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ProjectilesSim_Paint);
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
             this.coverPanel.ResumeLayout(false);

@@ -555,6 +555,7 @@ namespace Mechanics_Sim
             this.assumptions.Text = resources.GetString("assumptions.Text");
             this.assumptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.assumptions.Visible = false;
+            this.assumptions.Click += new System.EventHandler(this.assumptions_Click);
             // 
             // questionLabel
             // 
@@ -580,6 +581,7 @@ namespace Mechanics_Sim
             this.Controls.Add(this.assumptions);
             this.Name = "onePulleySim";
             this.Text = "onePulleySim";
+            this.Load += new System.EventHandler(this.onePulleySim_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.onePulleySim_Paint);
             this.controlPanel.ResumeLayout(false);
             this.controlPanel.PerformLayout();
