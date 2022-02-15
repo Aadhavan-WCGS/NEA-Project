@@ -210,8 +210,9 @@ namespace Mechanics_Sim
         }
 
         private void onePulleySim_Paint(object sender, PaintEventArgs e){
+            System.Drawing.Color green = System.Drawing.ColorTranslator.FromHtml("#00FF00");
             Graphics g = this.CreateGraphics(); //Instantiate graphics.
-            Pen myPen = new Pen(Color.Green){Width = 1}; //Create pen.
+            Pen myPen = new Pen(green) {Width = 1}; //Create pen.
             //Strings drawn below for each case.
             g.DrawLine(myPen, p3.Left + p3.Width / 2, pulley.Top + pulley.Height / 2, p3.Left + p3.Width / 2, p3.Top); //String connecting right pulley to right particle.
             if (useTable){

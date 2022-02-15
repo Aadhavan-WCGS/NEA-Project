@@ -41,8 +41,9 @@ namespace Mechanics_Sim
 
         private void ProjectilesSim_Paint(object sender, PaintEventArgs e)
         {
+            System.Drawing.Color green = System.Drawing.ColorTranslator.FromHtml("#00FF00");
             Graphics g = this.CreateGraphics(); //Instantiate graphics.
-            Pen myPen = new Pen(Color.Green) { Width = 2}; //Create pen.
+            Pen myPen = new Pen(green) { Width = 2}; //Create pen.
             //Ground drawn below.
             g.DrawLine(myPen, startX, startY+ proj.Height+2,this.Width-60, startY + proj.Height+2); //String connecting right pulley to right particle.
         }
