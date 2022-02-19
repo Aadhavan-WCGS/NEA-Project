@@ -116,9 +116,9 @@ namespace Mechanics_Sim
                 p2.Location = new Point(table.Left + tblW/2, startY + 14); p3.Location = new Point(table.Left + tblW + p2.Width, startY + gap);
                 checkBoxPulley.Show();
                 if (use2Pulley){
-                    pulleyOne.Location = new Point(startX - table.Width, startY); pulleyOne.Show();
+                    pulleyOne.Location = new Point(startX - table.Width - 50, startY); pulleyOne.Show();
                     mass3Box.Show(); massUnitLabel3.Show(); mass3Label.Show();
-                    p1.Show(); p1.Location = new Point(table.Left - p1.Width + 10, startY + gap);
+                    p1.Show(); p1.Location = new Point(pulleyOne.Left, startY + gap);
                     tn2Txt.Show();
                 }else{
                     pulleyOne.Hide();
@@ -219,7 +219,7 @@ namespace Mechanics_Sim
                 g.DrawLine(myPen, p2.Left + p2.Width, p2.Top + p2.Height/2, pulley.Left, p2.Top + p2.Height / 2); //String connecting centre particle to right pulley.
                 if (use2Pulley){ 
                     g.DrawLine(myPen, pulleyOne.Left + pulleyOne.Width, p2.Top + p2.Height / 2, p2.Left, p2.Top + p2.Height / 2); //String connecting centre particle to left pulley.
-                    g.DrawLine(myPen, p1.Left + p1.Width/2, p1.Top,  p1.Left + p1.Width / 2, pulleyOne.Top + pulleyOne.Height + 20);  //String connecting left particle to left pulley.
+                    g.DrawLine(myPen, p1.Left + p1.Width/2, p1.Top,  p1.Left + p1.Width / 2, pulleyOne.Top + pulleyOne.Height);  //String connecting left particle to left pulley.
                 }
             }else{g.DrawLine(myPen, p2.Left + p2.Width / 2 - 5, pulley.Top + pulley.Height / 2, p2.Left + p2.Width / 2 - 5, p2.Top); } //String connecting left particle to single pulley.
         }
