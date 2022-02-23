@@ -50,11 +50,11 @@ namespace Mechanics_Sim
         {
             stats.Width = Screen.PrimaryScreen.Bounds.Width;
             Control learnLabel = inp.Controls["assumptions"];
-            learnLabel.Anchor = (AnchorStyles.Top | AnchorStyles.Left); //Anchor learning mode label. EXXXPLAAAAIN
+            learnLabel.Anchor = (AnchorStyles.Top | AnchorStyles.Left); //Anchor learning mode label. 
             int i = 1;
-            learnLabel.Font = new Font("Segoe UI", i, FontStyle.Regular); //EXXXPLAAAAIN  
+            learnLabel.Font = new Font("Segoe UI", i, FontStyle.Regular); //Initalise font to be used below.
             while (learnLabel.Width < Screen.PrimaryScreen.Bounds.Width / 2 & learnLabel.Height < Screen.PrimaryScreen.Bounds.Height/4){
-                learnLabel.Font = stats.Font =  new Font("Segoe UI",i, FontStyle.Regular); //EXXXPLAAAAIN
+                learnLabel.Font = stats.Font =  new Font("Segoe UI",i, FontStyle.Regular); //Increments font size of learning mode label until textbox is half the screen width.
                 i++;
             }
             stats.Anchor = (AnchorStyles.Top | AnchorStyles.Right); //Keeps Stats panel at top right of screen.
