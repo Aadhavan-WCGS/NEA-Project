@@ -38,7 +38,7 @@ namespace Mechanics_Sim
             reset();
         }
 
-        public void forceQuestion()
+        public void forceQuestion() //Question generation procedure.
         {
             Random rnd = new Random(); //Initialise random variable.
             int choice = rnd.Next(1, 3); //Used to decide what question to give.
@@ -87,8 +87,7 @@ namespace Mechanics_Sim
             forceTimer.Stop();
         }
     
-        private void Switch_Click(object sender, EventArgs e)
-        {
+        private void Switch_Click(object sender, EventArgs e){ //Switch button procedure.
             if (!start)
             {
                 reset();
@@ -103,55 +102,51 @@ namespace Mechanics_Sim
             else
             {
                 if (forceTimer.Enabled) { forceTimer.Stop(); } else { forceTimer.Start(); }
-            }
-            
-            
+            }       
         }
 
         private void forceTimer_Tick(object sender, EventArgs e)  //Timer function, responible for animation.
         {
             simForms.time(ref timeNum, ref start, (false), forceTimer);  //Condition is simply false here as simulation continues indefinitely until user responds appropriately.
             //Call move method for pictureboxes, update stats.
-            p.move(ball);
+            p.move(ball); //Calls move method to animate picturebox.
             speedTxt.Text = "Speed: " + p.getSpeed().ToString() + " ms\u207b\xB9"; 
-            timeTxt.Text = "Time Elapsed: " + timeNum/1000 + " s";
+            timeTxt.Text = "Time Elapsed: " + timeNum/1000 + " s"; //Update  displayed time.
         }
 
-        private void resetBtn_Click(object sender, EventArgs e)
-        {
+        private void resetBtn_Click(object sender, EventArgs e){ //Reset button procedure.
             reset(); //Call reset routine on button click.
         }
 
-        private void checkBtn_Click(object sender, EventArgs e)
-        {
+        private void checkBtn_Click(object sender, EventArgs e){  //Check Answer button procedure.
             reset();
             NumericUpDown[] boxes = { massBox, xfBox, yfBox };
             double[] data = { mass, forceX, forceY};
             simForms.check(boxes, data, ans, ansBox.Text, switchBtn, correctLabel); //Calles routine to check answer and run animation if correct.
         }
 
-        private void generateQuestion_Click(object sender, EventArgs e)
+        private void generateQuestion_Click(object sender, EventArgs e) //Next question button procedure.
         {
             reset();
             forceQuestion(); //Generates new question.
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e) //Save question button procedure.
         {
-            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved);
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved); //Calls questionSave method to save question locally.
         }
 
-        private void exitBtn_Click(object sender, EventArgs e)
+        private void exitBtn_Click(object sender, EventArgs e) //Exit button procedure.
         {
             this.Close(); //Close window when exit button clicked.
         }
 
-        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        private void learnBox_CheckedChanged(object sender, EventArgs e) //Learn more checkbox procedure.
         {
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
 
-        private void testMode_Click(object sender, EventArgs e)
+        private void testMode_Click(object sender, EventArgs e) //Test Yourself button procedure.
         {
             reset();
             simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);

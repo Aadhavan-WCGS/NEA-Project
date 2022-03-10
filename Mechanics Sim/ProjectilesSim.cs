@@ -48,7 +48,7 @@ namespace Mechanics_Sim
             g.DrawLine(myPen, startX, startY+ proj.Height+2,this.Width-60, startY + proj.Height+2); //String connecting right pulley to right particle.
         }
 
-        public void projQuestion()
+        public void projQuestion() //Question generation procedure.
         {
             Random rnd = new Random(); //Initialise random variable.
             int choice = rnd.Next(1, 4); //Used to decide what question to give.
@@ -102,7 +102,7 @@ namespace Mechanics_Sim
             projTimer.Stop();
 
         }
-        private void Switch_Click(object sender, EventArgs e)
+        private void Switch_Click(object sender, EventArgs e) //Switch button procedure.
         {
             if (!start)
             {
@@ -121,33 +121,31 @@ namespace Mechanics_Sim
             else
             {
                 if (projTimer.Enabled) { projTimer.Stop(); } else { projTimer.Start(); } //Allows button to behave as a toggle, to start or stop simulation.
-            }
-            
-            
+            }  
         }
 
         private void projTimer_Tick(object sender, EventArgs e) //Timer function, responible for animation.
         {
             simForms.time(ref timeNum, ref start, (proj.Top> startY), projTimer); //Projectile  should stop when it reaches its initial height.
             //Call move method for pictureboxes, update stats.
-            p.move(proj);
+            p.move(proj); //Calls move method to animate picturebox.
             speedTxt.Text = "Speed: " + p.getSpeed() + " ms\u207b\xB9";
-            timeTxt.Text = "Time elapsed: " + timeNum / 1000 + " s";
+            timeTxt.Text = "Time elapsed: " + timeNum / 1000 + " s"; //Update  displayed time.
         }
 
-        private void resetBtn_Click(object sender, EventArgs e)
+        private void resetBtn_Click(object sender, EventArgs e) //Reset button procedure.
         {
             reset(); //Call reset routine on button click.
         }
 
 
-        private void exitBtn_Click(object sender, EventArgs e)
+        private void exitBtn_Click(object sender, EventArgs e) //Exit button procedure.
         {
             this.Close(); //Close window when exit button clicked.
         }
 
 
-        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        private void learnBox_CheckedChanged(object sender, EventArgs e) //Learn more checkbox procedure.
         {
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
@@ -157,12 +155,12 @@ namespace Mechanics_Sim
 
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e) //Save question button procedure.
         {
-            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved);
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved); //Calls questionSave method to save question locally.
         }
 
-        private void testMode_Click(object sender, EventArgs e)
+        private void testMode_Click(object sender, EventArgs e) //Test Yourself button procedure.
         {
             reset();
             simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);
@@ -170,13 +168,13 @@ namespace Mechanics_Sim
             test = !test;
         }
 
-        private void generateQuestion_Click(object sender, EventArgs e)
+        private void generateQuestion_Click(object sender, EventArgs e) //Next question button procedure.
         {
             reset();
             projQuestion(); //Generates new question.
         }
 
-        private void checkBtn_Click(object sender, EventArgs e)
+        private void checkBtn_Click(object sender, EventArgs e) //Check Answer button procedure.
         {
             reset();
             NumericUpDown[] boxes = { uBox, angleBox }; //Array of input boxes.

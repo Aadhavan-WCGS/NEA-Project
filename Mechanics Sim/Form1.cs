@@ -165,7 +165,7 @@ namespace Mechanics_Sim
             velY = newSY;
         }
 
-        //Getters
+        //Getters below.
         public double getVelX()
         {
             return Math.Round(velX, 2);
@@ -222,6 +222,7 @@ namespace Mechanics_Sim
             return p;
         }
 
+        //Getters below.
         public double getRf() //Returns resultant force of particle.
         {
             return Math.Round(rf, 2);
@@ -280,6 +281,8 @@ namespace Mechanics_Sim
             particle[] px = {p1, p2, p3}; //Creates array for 3 particles then returns it.
             return px;
         }
+
+        //Getters below.
         public double getT1() //Returns resultant force of particle.
         {
             return Math.Round(t1, 2); 
@@ -315,6 +318,7 @@ namespace Mechanics_Sim
             return p;
         }
 
+        //Getters below.
         public double getRange() // Returns range of projectile.
         {
             return Math.Round(range, 2);
@@ -370,6 +374,7 @@ namespace Mechanics_Sim
             return y;
         }
 
+        //Getters below.
         public double[] getVel()
         {
             return vel;

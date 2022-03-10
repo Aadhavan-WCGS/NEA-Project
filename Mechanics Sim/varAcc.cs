@@ -70,7 +70,7 @@ namespace Mechanics_Sim
             return newstr;
         }
 
-        public void varAccQuestion()
+        public void varAccQuestion() //Question generation procedure.
         {
             Random rnd = new Random(); //Initialise random variable.
             int choice = rnd.Next(1, 3); //Used to decide what question to give.
@@ -142,12 +142,12 @@ namespace Mechanics_Sim
 
 
 
-        private void learnBox_CheckedChanged(object sender, EventArgs e)
+        private void learnBox_CheckedChanged(object sender, EventArgs e) //Learn more checkbox procedure.
         {
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
 
-        private void testMode_Click(object sender, EventArgs e)
+        private void testMode_Click(object sender, EventArgs e) //Test Yourself button procedure.
         {
             reset();
             simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);
@@ -156,7 +156,7 @@ namespace Mechanics_Sim
             dimensionSwitch.Enabled = !dimensionSwitch.Enabled; //Locks dimension switch in test mode.
         }
 
-        private void checkBtn_Click(object sender, EventArgs e){
+        private void checkBtn_Click(object sender, EventArgs e){ //Check Answer button procedure.
             reset();
             if (oneD){
                 NumericUpDown[] boxes = { x0Box, x1Box, x2Box, x3Box };
@@ -171,28 +171,28 @@ namespace Mechanics_Sim
             }
         }
 
-        private void generateQuestion_Click(object sender, EventArgs e)
+        private void generateQuestion_Click(object sender, EventArgs e) //Next question button procedure.
         {
             reset();
             varAccQuestion(); //Generates new question.
         }
 
-        private void resetBtn_Click(object sender, EventArgs e)
+        private void resetBtn_Click(object sender, EventArgs e) //Reset button procedure.
         { 
             reset(); //Call reset routine on button click.
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e) //Save question button procedure.
         {
-            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved);
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved); //Calls questionSave method to save question locally.
         }
 
-        private void exitBtn_Click(object sender, EventArgs e)
+        private void exitBtn_Click(object sender, EventArgs e) //Exit button procedure.
         {
             this.Close(); //Close window when exit button clicked.
         }
 
-        private void switchBtn_Click(object sender, EventArgs e)
+        private void switchBtn_Click(object sender, EventArgs e) //Switch button procedure.
         {
             if (!start)
             {
@@ -258,8 +258,8 @@ namespace Mechanics_Sim
                 accTxt.Text = "Acceleration: " + Math.Round(acc, 2) + "ms\u207b\xB2";
                 dispTxt.Text = "Displacement: " + Math.Round(dis, 2) + "m";
             }
-            p.move(ball);
-            timeTxt.Text = "Time elapsed: " + timeNum / 1000 + "s";
+            p.move(ball); //Calls move method to animate picturebox.
+            timeTxt.Text = "Time elapsed: " + timeNum / 1000 + "s"; //Update  displayed time.
         }
 
         private void varAccSim_Load(object sender, EventArgs e)

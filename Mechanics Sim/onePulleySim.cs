@@ -39,7 +39,7 @@ namespace Mechanics_Sim
             reset();
         }
 
-        public void pulleyQuestion(){
+        public void pulleyQuestion(){ //Question generation procedure.
             Random rnd = new Random(); //Initialise random variable.
             int choice = rnd.Next(1, 3); //Used to decide what question to give.
             m1 = rnd.Next(1, 5);m2 = rnd.Next(6, 10);m3 = rnd.Next(11, 15); //Generate a suitable masses for particles.
@@ -145,7 +145,7 @@ namespace Mechanics_Sim
             this.Refresh();
         }
 
-        private void resetBtn_Click(object sender, EventArgs e){
+        private void resetBtn_Click(object sender, EventArgs e){ //Reset button procedure.
             reset(); //Call reset routine on button click.
         }
 
@@ -154,13 +154,13 @@ namespace Mechanics_Sim
             reset();
         }
 
-        private void learnBox_CheckedChanged(object sender, EventArgs e){
+        private void learnBox_CheckedChanged(object sender, EventArgs e){ //Learn more checkbox procedure.
             assumptions.Visible = !assumptions.Visible; //Toggle assumptions label visibility.
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Save question button procedure.
         {
-            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved); 
+            simForms.questionSave(questionLabel.Text, ans, ansUnitsLabel.Text, ref saved);  //Calls questionSave method to save question locally.
         }
 
         private void assumptions_Click(object sender, EventArgs e)
@@ -173,19 +173,18 @@ namespace Mechanics_Sim
 
         }
 
-        private void testMode_Click(object sender, EventArgs e){
+        private void testMode_Click(object sender, EventArgs e){ //Test Yourself button procedure.
             reset();
             simForms.testSetup(statsPanel, controlPanel, coverPanel, learnBox, questionLabel);
             if (test) { testMode.Text = "Test yourself"; } else { testMode.Text = "Return to simulation"; pulleyQuestion(); } //Change text displayed on button to reflect mode change. Generates a question if switched to test mode.
-            test = !test;
+            test = !test; 
         }
 
-        private void generateQuestion_Click(object sender, EventArgs e){
-            
+        private void generateQuestion_Click(object sender, EventArgs e){ //Next question button procedure.
             reset();
             pulleyQuestion();
         }
-        private void checkBtn_Click(object sender, EventArgs e){
+        private void checkBtn_Click(object sender, EventArgs e){ //Check Answer button procedure.
             reset();
             if (useTable){
                 if (use2Pulley){
@@ -205,7 +204,7 @@ namespace Mechanics_Sim
             }
         }
 
-        private void exitBtn_Click(object sender, EventArgs e){
+        private void exitBtn_Click(object sender, EventArgs e){ //Exit button procedure.
             this.Close(); //Close window when exit button clicked.
         }
 
@@ -231,7 +230,7 @@ namespace Mechanics_Sim
             reset();
         }
 
-        private void switchBtn_Click(object sender, EventArgs e){
+        private void switchBtn_Click(object sender, EventArgs e){ //Switch button procedure.
             if (!start){
                 reset();
                 //Following lines instantiate simulation and appropriately configure the particle.
@@ -272,7 +271,7 @@ namespace Mechanics_Sim
             if (use2Pulley) { masses[0].move(p1); masses[1].move(p2); masses[2].move(p3);}
             else{masses[0].move(p2);masses[1].move(p3);}
             speedTxt.Text = "Speed: " + masses[0].getSpeed().ToString() + " ms\u207b\xB9";
-            timeTxt.Text = "Time Elapsed: " + timeNum / 1000 + " s";
+            timeTxt.Text = "Time Elapsed: " + timeNum / 1000 + " s"; //Update  displayed time.
         }
     }
 }
